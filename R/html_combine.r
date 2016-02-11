@@ -7,6 +7,7 @@
 #' @param combine character string with the location of the raw html files or list with file names within same directory
 #' @param out filename for the output HTML file (if NULL it will print to console)
 #' @param toctheme logical indicating if the created file should also have a toc (take into account for template)
+#' @param css character with name of the css style sheet to use, default use package style sheet
 #' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
 #'
 #' @details Currently the generated output is saved in the same place where the separate tables and plots are located
@@ -32,7 +33,7 @@
 #'               toctheme=TRUE)
 #'  }
 
-html_combine <- function(combine=".",out=NULL,toctheme=TRUE,...){
+html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.file(package="Rout"),"/style.css"),...){
 
   if(class(combine)!="list"){rt <- list.files(combine,"\\.rawhtml$",full.names=TRUE)}else{rt <- unlist(combine)}
   if(length(grep(out,rt))!=0) rt <- rt[-grep(out,rt)]
@@ -57,10 +58,14 @@ html_combine <- function(combine=".",out=NULL,toctheme=TRUE,...){
     rtl <- plyr::llply(rt,function(x){r <- readLines(x); r <- c(r,"<br/>")})
   }
   # The logics for the rendlist
+  if(!is.null(out) & length(grep("https:|http:",css))==0){
+    file.copy(from=css,to=dirname(out),overwrite=TRUE)
+    css <- basename(css)
+  }
   if(!hasArg(rendlist)){
-    rendlist <- list(css=paste0(system.file(package="Rout"),"/style.css"),rrres=paste(unlist(rtl),collapse="\n"))
+    rendlist <- list(css=css,rrres=paste(unlist(rtl),collapse="\n"))
   }else{
-    rendlist <- c(rendlist,css=paste0(system.file(package="Rout"),"/style.css"),rrres=paste(unlist(rtl),collapse="\n"))
+    rendlist <- c(rendlist,css=css,rrres=paste(unlist(rtl),collapse="\n"))
   }
   if(toctheme) rendlist <- c(rendlist,rrtoc=toc)
 

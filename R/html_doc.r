@@ -41,8 +41,8 @@ html_doc <- function(text,out=NULL,show=TRUE,rtitle="report",template=paste0(sys
 
   if(!is.null(out) & length(grep("https:|http:",css))==0){
     file.copy(from=css,to=dirname(out),overwrite=TRUE)
+    css <- basename(css)
   }
-  css <- ifelse(grepl("https:|http:",css),css,basename(css))
 
   # Create render list (if not available) and read in template file for processing with whisker
   # Take into account that a default template should have the items in rendlist or else a user
