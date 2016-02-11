@@ -60,8 +60,8 @@ html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.fi
   # The logics for the rendlist
   if(!is.null(out) & length(grep("https:|http:",css))==0){
     file.copy(from=css,to=dirname(out),overwrite=TRUE)
-    css <- basename(css)
   }
+  css <- ifelse(grepl("https:|http:",css),css,basename(css))
   if(!hasArg(rendlist)){
     rendlist <- list(css=css,rrres=paste(unlist(rtl),collapse="\n"))
   }else{
