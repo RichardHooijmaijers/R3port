@@ -1,0 +1,25 @@
+Package: Rout
+Type: Package
+Version: 0.1.1.9000
+Title: Rout functions for HTML and PDF files
+Description: The package includes functions to create table and plots
+    to be included in HTML or PDF reports.
+Authors@R: person("Richard","Hooijmaijers", ,"<richardhooijmaijers@gmail.com>",c("aut", "cre"))
+Depends:
+    R (>= 3.2.0)
+Imports:
+    plyr,
+    reshape2,
+    whisker,
+    tools
+License: GPL (>= 2)
+LazyData: true
+Suggests:
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat
+RoxygenNote: 5.0.1
+Author: Richard Hooijmaijers [aut, cre]
+Maintainer: Richard Hooijmaijers <richardhooijmaijers@gmail.com>
+VignetteBuilder: knitr
