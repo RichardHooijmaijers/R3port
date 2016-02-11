@@ -10,7 +10,7 @@
 
 <meta name="author" content="Richard Hooijmaijers" />
 
-<meta name="date" content="2016-02-10" />
+<meta name="date" content="2016-02-11" />
 
 <title>Introduction to the Rout package</title>
 
@@ -72,7 +72,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Introduction to the Rout package</h1>
 <h4 class="author"><em>Richard Hooijmaijers</em></h4>
-<h4 class="date"><em>2016-02-10</em></h4>
+<h4 class="date"><em>2016-02-11</em></h4>
 </div>
 
 
@@ -162,7 +162,7 @@ tips$day &lt;-<span class="st"> </span><span class="kw">factor</span>(tips$day,<
 ## &lt;html&gt;
 ## &lt;title&gt; report &lt;/title&gt;
 ## &lt;head&gt;
-##   &lt;link rel='stylesheet' href='style.css' type='text/css'&gt;
+##   &lt;link rel='stylesheet' href='/Library/Frameworks/R.framework/Versions/3.2/Resources/library/Rout/style.css' type='text/css'&gt;
 ## &lt;/head&gt;
 ## &lt;body&gt;
 ## This is just some &lt;em&gt;text&lt;/em&gt;
@@ -214,7 +214,6 @@ tbl3           &lt;-<span class="st"> </span><span class="kw">freq</span>(tips,<
 tbl3$statistic &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;N (perc)&quot;</span>)
 tbl3$value     &lt;-<span class="st"> </span>tbl3$FreqPerc
 tbl3           &lt;-<span class="st"> </span><span class="kw">rbind.fill</span>(tbl1,tbl3)
-tmp            &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">system.file</span>(<span class="dt">package =</span>  <span class="st">&quot;Rout&quot;</span>), <span class="st">&quot;/listing.tex&quot;</span>)
 <span class="kw">ltx_table</span>(tbl3,<span class="dt">x=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>,<span class="st">&quot;day&quot;</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;time&quot;</span>,<span class="st">&quot;statistic&quot;</span>),<span class="dt">var=</span><span class="st">&quot;value&quot;</span>,<span class="dt">convchar =</span> <span class="ot">TRUE</span>,
           <span class="dt">title=</span><span class="st">&quot;total bill statistics&quot;</span>,<span class="dt">xabove=</span><span class="ot">TRUE</span>,<span class="dt">out=</span><span class="st">&quot;out5.tex&quot;</span>,
           <span class="dt">mancol=</span><span class="kw">paste</span>(<span class="kw">rep</span>(<span class="st">&quot;l&quot;</span>,<span class="dv">16</span>),<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>),
@@ -227,10 +226,10 @@ tmp            &lt;-<span class="st"> </span><span class="kw">paste0</span>(<spa
 <p>The graphical output system is basically the same as for the tables and listings. The only difference is that the figures are also saved as png or pdf files. Then they are referenced in the tex or html file, and if selected compiled. Using grid graphics is the easiest because you can just place the plot in an object and pass it to the functions. The way base plots can be used is by placing it in a function. Some examples are given below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tips,<span class="kw">aes</span>(<span class="dt">x=</span>day,<span class="dt">y=</span>total_bill)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()
-<span class="kw">ltx_plot</span>(pl,<span class="dt">out=</span><span class="st">&quot;out6.tex&quot;</span>,<span class="dt">titlepr =</span> <span class="st">&quot;plot A&quot;</span>,<span class="dt">title=</span><span class="st">&quot;example for plotting lists&quot;</span>)
-<span class="kw">html_plot</span>(pl,<span class="dt">out=</span><span class="st">&quot;out6.html&quot;</span>,<span class="dt">titlepr =</span> <span class="st">&quot;plot A&quot;</span>,<span class="dt">title=</span><span class="st">&quot;example for plotting lists&quot;</span>)
+<span class="kw">ltx_plot</span>(pl,<span class="dt">out=</span><span class="st">&quot;out6.tex&quot;</span>,<span class="dt">titlepr =</span> <span class="st">&quot;plot A&quot;</span>,<span class="dt">title=</span><span class="st">&quot;example for basic plotting&quot;</span>)
+<span class="kw">html_plot</span>(pl,<span class="dt">out=</span><span class="st">&quot;out6.html&quot;</span>,<span class="dt">titlepr =</span> <span class="st">&quot;plot A&quot;</span>,<span class="dt">title=</span><span class="st">&quot;example for basic plotting&quot;</span>)
 
-<span class="co"># you can output a list of plots for instance:</span>
+<span class="co"># you can output a list of plots e.g:</span>
 pl &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(tips$sex),function(x){
   <span class="kw">ggplot</span>(tips[tips$sex==x,],<span class="kw">aes</span>(time,total_bill)) +<span class="st"> </span><span class="kw">geom_boxplot</span>() +
 <span class="st">    </span><span class="kw">facet_wrap</span>(~day) +<span class="st"> </span><span class="kw">ggtitle</span>(x)
