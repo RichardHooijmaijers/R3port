@@ -196,7 +196,7 @@ html_combine(out="comb1.html",toctheme=TRUE,
 
 # The templates
 
-You probably noticed that not all output generated has the same layout. This is controlled by the templates,
+You might have noticed that not all output generated has the same layout. This is controlled by the templates,
 I didn't explain the template argument before because I think it deserves a section of it's own.
 The template system uses `whisker` to create output in different styes. A couple
 of templates are included within the package to start with, however users can generate their own
