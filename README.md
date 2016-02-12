@@ -4,3 +4,9 @@ Although there are other options to do this within R, this package takes a somew
 It aims to be flexible in a way that it can be used with other *reporting* packages but also as standalone.
 Furthermore, the template system makes it possible to fully customize the style of the reports.
 If you want to see how it works read the [vignette](http://richardhooijmaijers.github.io/Rout/)!
+
+# Installation
+To install the development version you need the devtools package:
+```
+devtools::install_github("RichardHooijmaijers/Rout")
+```
