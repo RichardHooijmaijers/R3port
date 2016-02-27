@@ -5,10 +5,10 @@ It aims to be flexible in a way that it can be used with other *reporting* packa
 Furthermore, the template system makes it possible to fully customize the style of the reports.
 
 # Documentation
-If you want to see how the package works read the [**vignette**](http://richardhooijmaijers.github.io/Rout/)
+If you want to see how the package works read the [**vignette**](http://richardhooijmaijers.github.io/R3port/)
 
 # Installation
 To install the development version you need the devtools package:
 ```
-devtools::install_github("RichardHooijmaijers/Rout")
+devtools::install_github("RichardHooijmaijers/R3port")
 ```
