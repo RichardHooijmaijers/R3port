@@ -1,6 +1,6 @@
 #' Report functions for HTML and PDF files
 #'
-#' The Rout package is written to easily create pdf and html documents
+#' The R3port package is written to easily create pdf and html documents
 #' including tables, listings and plots.
 #'
 #' The package makes use of the option system within R. The way it was implemented is to always use
@@ -18,6 +18,6 @@
 #'   }
 #'
 #' @docType package
-#' @name Rout
+#' @name R3port
 #' @import plyr reshape2 whisker tools
 NULL

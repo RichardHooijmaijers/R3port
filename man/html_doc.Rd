@@ -5,8 +5,8 @@
 \title{Prints a HTML table, listing or plot to a a file or console}
 \usage{
 html_doc(text, out = NULL, show = TRUE, rtitle = "report",
-  template = paste0(system.file(package = "Rout"), "/simple.html"), rendlist,
-  css = paste0(system.file(package = "Rout"), "/style.css"))
+  template = paste0(system.file(package = "R3port"), "/simple.html"),
+  rendlist, css = paste0(system.file(package = "R3port"), "/style.css"))
 }
 \arguments{
 \item{text}{character vector to be placed within HTML document}
@@ -27,12 +27,12 @@ html_doc(text, out = NULL, show = TRUE, rtitle = "report",
 The function returns a HTML file (or writes output to console)
 }
 \description{
-This function makes a HTML document using output generated with functions in the Rout package
+This function makes a HTML document using output generated with functions in the R3port package
 or any other HTML code available as vector. Basically it adds tags to a html template file and let's
 the user select various options to customize the output.
 }
 \details{
-This function is used as wrapper within multiple functions in the Rout package but is also convenient in case
+This function is used as wrapper within multiple functions in the R3port package but is also convenient in case
   custom information should be placed within an output document
 }
 \examples{

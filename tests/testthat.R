@@ -1,4 +1,4 @@
 library(testthat)
-library(Rout)
+library(R3port)
 
-test_check("Rout")
+test_check("R3port")

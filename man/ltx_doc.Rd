@@ -4,7 +4,7 @@
 \alias{ltx_doc}
 \title{Prints latex code for a table, listing, plot, or text to a a file or console}
 \usage{
-ltx_doc(text, out = NULL, template = paste0(system.file(package = "Rout"),
+ltx_doc(text, out = NULL, template = paste0(system.file(package = "R3port"),
   "/simple.tex"), rendlist, orientation = "landscape", rtitle = "report",
   compile = TRUE, show = TRUE)
 }
@@ -29,7 +29,7 @@ ltx_doc(text, out = NULL, template = paste0(system.file(package = "Rout"),
 The function returns a latex file (or writes output to console)
 }
 \description{
-This function makes a latex document using output generated with functions in the Rout package
+This function makes a latex document using output generated with functions in the R3port package
 or any other latex code available as vector. Basically it adds a preamble to a tex file and let's
 the user select various options to customize the output.
 }

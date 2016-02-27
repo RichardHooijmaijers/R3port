@@ -29,11 +29,11 @@
 #'   # toctheme can be used to have a clickable toc,
 #'   # a bootstrap template for this is provided in the package
 #'   html_combine(combine=tempdir(),out="rep1.html",
-#'               template=paste0(system.file(package="Rout"),"/bootstrap.html"),
+#'               template=paste0(system.file(package="R3port"),"/bootstrap.html"),
 #'               toctheme=TRUE)
 #'  }
 
-html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.file(package="Rout"),"/style.css"),...){
+html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.file(package="R3port"),"/style.css"),...){
 
   if(class(combine)!="list"){rt <- list.files(combine,"\\.rawhtml$",full.names=TRUE)}else{rt <- unlist(combine)}
   if(length(grep(out,rt))!=0) rt <- rt[-grep(out,rt)]

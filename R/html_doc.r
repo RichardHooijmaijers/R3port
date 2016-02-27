@@ -1,7 +1,7 @@
 #------------------------------------------ html_doc ------------------------------------------
 #' Prints a HTML table, listing or plot to a a file or console
 #'
-#' This function makes a HTML document using output generated with functions in the Rout package
+#' This function makes a HTML document using output generated with functions in the R3port package
 #' or any other HTML code available as vector. Basically it adds tags to a html template file and let's
 #' the user select various options to customize the output.
 #'
@@ -13,7 +13,7 @@
 #' @param rendlist list with render items to be used for the template file (see (see \code{\link{whisker-package}}))
 #' @param css character with name of the css style sheet to use, default use package style sheet
 #'
-#' @details This function is used as wrapper within multiple functions in the Rout package but is also convenient in case
+#' @details This function is used as wrapper within multiple functions in the R3port package but is also convenient in case
 #'   custom information should be placed within an output document
 #'
 #' @return The function returns a HTML file (or writes output to console)
@@ -28,7 +28,7 @@
 #' \dontrun{
 #'   html_doc(c(txt,tbl,add),out=tempfile(fileext=".html"))
 #' }
-html_doc <- function(text,out=NULL,show=TRUE,rtitle="report",template=paste0(system.file(package="Rout"),"/simple.html"),rendlist,css=paste0(system.file(package="Rout"),"/style.css")){
+html_doc <- function(text,out=NULL,show=TRUE,rtitle="report",template=paste0(system.file(package="R3port"),"/simple.html"),rendlist,css=paste0(system.file(package="R3port"),"/style.css")){
   if(!is.null(out) && !dir.exists(dirname(out))){
     succ <- try(dir.create(dirname(out),showWarnings = FALSE))
     if(!succ) stop("Output folder cannot be created")

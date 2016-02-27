@@ -51,7 +51,7 @@ The function returns a HTML file (or writes output to console)
 }
 \description{
 This function creates a HTML table. The function calls a combination of functions within the
-Rout package to create an overall table and writes it to a file or console
+R3port package to create an overall table and writes it to a file or console
 }
 \details{
 The format of the current table/css was designed to look good in the browser and in a WORD

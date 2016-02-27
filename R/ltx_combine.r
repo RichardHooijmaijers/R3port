@@ -28,12 +28,12 @@
 #'
 #'   # possibility for presentation layout (beamer template provided in package)
 #'   ltx_combine(combine=tempdir(),out="rep1.tex",
-#'               template=paste0(system.file(package="Rout"),"/beamer.tex"),
+#'               template=paste0(system.file(package="R3port"),"/beamer.tex"),
 #'               presentation=TRUE)
 #'
 #'   # Or other template with different orientation
 #'   ltx_combine(combine=tempdir(),out="rep1.tex",
-#'               template=paste0(system.file(package="Rout"),"/listing.tex"),
+#'               template=paste0(system.file(package="R3port"),"/listing.tex"),
 #'               orientation="portrait")
 #' }
 ltx_combine <- function(combine=".",out=NULL,presentation=FALSE,...){

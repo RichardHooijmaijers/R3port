@@ -58,7 +58,7 @@ The function returns a latex file (or writes output to console)
 }
 \description{
 This function creates a latex table. The function calls a combination of functions within the
-Rout package to create an overall table and writes it to a file or console
+R3port package to create an overall table and writes it to a file or console
 }
 \examples{
 

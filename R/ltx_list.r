@@ -38,7 +38,7 @@
 #'   data(Theoph)
 #'   grp <- c(rep("",3),rep("grouped variables",2))
 #'   ltx_list(Theoph,out=tempfile(fileext=".tex"),vargroup=grp,
-#'            template=paste0(system.file(package="Rout"),"/listing.tex"))
+#'            template=paste0(system.file(package="R3port"),"/listing.tex"))
 #' }
 ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,uselabel=TRUE,footnote="",mancol=NULL,size="\\footnotesize",
                    title="listing",titlepr=NULL,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,...){

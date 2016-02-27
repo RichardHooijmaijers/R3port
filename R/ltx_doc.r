@@ -1,7 +1,7 @@
 #------------------------------------------ ltx_doc ------------------------------------------
 #' Prints latex code for a table, listing, plot, or text to a a file or console
 #'
-#' This function makes a latex document using output generated with functions in the Rout package
+#' This function makes a latex document using output generated with functions in the R3port package
 #' or any other latex code available as vector. Basically it adds a preamble to a tex file and let's
 #' the user select various options to customize the output.
 #'
@@ -34,7 +34,7 @@
 #'
 #' }
 
-ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="Rout"),"/simple.tex"),rendlist,orientation="landscape",rtitle="report",compile=TRUE,show=TRUE){
+ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),"/simple.tex"),rendlist,orientation="landscape",rtitle="report",compile=TRUE,show=TRUE){
   if(!is.null(out) && !dir.exists(dirname(out))){
     succ <- try(dir.create(dirname(out),showWarnings = FALSE))
     if(!succ) stop("Output folder cannot be created")

@@ -2,7 +2,7 @@
 #' Creates a HTML table
 #'
 #' This function creates a HTML table. The function calls a combination of functions within the
-#' Rout package to create an overall table and writes it to a file or console
+#' R3port package to create an overall table and writes it to a file or console
 #'
 #' @param dfrm the data frame for which the table should be generated
 #' @param x vector of x variable(s) in the data frame
