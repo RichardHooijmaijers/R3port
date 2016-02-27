@@ -1,0 +1,7 @@
+\renewcommand{\figurename}{} \renewcommand\thefigure{{plot C}}
+\lfoot{\footnotesize }
+\begin{figure}[H]
+\hypertarget{example for base plot}{} \bookmark[dest=example for base plot,level=0]{plot C: example for base plot}
+\caption{example for base plot}
+\includegraphics[width=\linewidth]{{figures/out8001}.pdf}\\
+\end{figure}\clearpage

@@ -1,0 +1,49 @@
+<h1>  total bill statistics </h1>
+<table class='sample'>
+<tr><td colspan='8'></td></tr>
+<tr><td></td><td></td>
+<td id='fh' colspan='2'>Thur</td><td id='fh' colspan='2'>Fri</td><td id='fh' colspan='1'>Sat</td><td id='fh' colspan='1'>Sun</td> </tr>
+<tr><td colspan='8'></td></tr>
+<tr><td id='lhfcol'> sex </td><td id='lhfcol'> statistic </td>
+<td id='lh'> Dinner </td><td id='lh'> Lunch </td><td id='lh'> Dinner </td><td id='lh'> Lunch </td><td id='lh'> Dinner </td><td id='lh'> Dinner </td></tr>
+<tr><td id='xabove' colspan='8'>Female</td></tr>
+<tr><td></td><td id='fcol'> N </td>
+<td> 1 </td><td> 31 </td><td> 5 </td><td> 4 </td><td> 28 </td><td> 18 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Mean </td>
+<td> 18.78 </td><td> 16.65 </td><td> 14.31 </td><td> 13.94 </td><td> 19.68 </td><td> 19.87 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Median </td>
+<td> 18.78 </td><td> 13.42 </td><td> 15.38 </td><td> 14.70 </td><td> 18.36 </td><td> 17.41 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> SD </td>
+<td>  NA </td><td> 7.88 </td><td> 6.29 </td><td> 2.87 </td><td> 8.81 </td><td> 7.84 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Min </td>
+<td> 18.78 </td><td> 8.35 </td><td> 5.75 </td><td> 10.09 </td><td> 3.07 </td><td> 9.60 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Max </td>
+<td> 18.78 </td><td> 43.11 </td><td> 22.75 </td><td> 16.27 </td><td> 44.30 </td><td> 35.26 </td></tr>
+<tr><td id='xabove' colspan='8'>Male</td></tr>
+<tr><td></td><td id='fcol'> N </td>
+<td>  </td><td> 30 </td><td> 7 </td><td> 3 </td><td> 59 </td><td> 58 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Mean </td>
+<td>  </td><td> 18.71 </td><td> 23.49 </td><td> 11.39 </td><td> 20.80 </td><td> 21.89 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Median </td>
+<td>  </td><td> 16.98 </td><td> 22.49 </td><td> 12.16 </td><td> 18.24 </td><td> 20.73 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> SD </td>
+<td>  </td><td> 8.02 </td><td> 9.86 </td><td> 2.51 </td><td> 9.84 </td><td> 9.13 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Min </td>
+<td>  </td><td> 7.51 </td><td> 12.03 </td><td> 8.58 </td><td> 7.74 </td><td> 7.25 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Max </td>
+<td>  </td><td> 41.19 </td><td> 40.17 </td><td> 13.42 </td><td> 50.81 </td><td> 48.17 </td></tr>
+<tr><td id='xabove' colspan='8'>Total</td></tr>
+<tr><td></td><td id='fcol'> N </td>
+<td> 1 </td><td> 61 </td><td> 12 </td><td> 7 </td><td> 87 </td><td> 76 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Mean </td>
+<td> 18.78 </td><td> 17.66 </td><td> 19.66 </td><td> 12.85 </td><td> 20.44 </td><td> 21.41 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Median </td>
+<td> 18.78 </td><td> 16.00 </td><td> 18.66 </td><td> 13.42 </td><td> 18.24 </td><td> 19.63 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> SD </td>
+<td>  NA </td><td> 7.95 </td><td> 9.47 </td><td> 2.84 </td><td> 9.48 </td><td> 8.83 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Min </td>
+<td> 18.78 </td><td> 7.51 </td><td> 5.75 </td><td> 8.58 </td><td> 3.07 </td><td> 7.25 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Max </td>
+<td> 18.78 </td><td> 43.11 </td><td> 40.17 </td><td> 16.27 </td><td> 50.81 </td><td> 48.17 </td></tr>
+</table>
+</br></br>
