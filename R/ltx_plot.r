@@ -8,7 +8,7 @@
 #' @param title character string to define the title of the table which will be added to the caption
 #' @param titlepr character string to define the prefix of the table title. Can be used to create custom table numbering
 #' @param footnote character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)
-#' @param lwidth character string indicating the width of the plot within latex (e.g. "\\linewidth")
+#' @param lwidth character string indicating the width of the plot within latex (e.g. "\\\\linewidth")
 #' @param pwidth numeric indicating the width of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)
 #' @param pheight numeric indicating the height of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)
 #' @param res numeric indicating the resolution of the plot (in case png is used), if set to NULL it will adapt the value according height of the plot
