@@ -11,6 +11,8 @@
 #' @param pwidth numeric indicating the width of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)
 #' @param pheight numeric indicating the height of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)
 #' @param res numeric indicating the resolution of the plot (in case png is used), if set to NULL it will adapt the value according height of the plot
+#' @param fontsize character string with the default font or pointsize passed through to png or pdf function
+#' @param units character string with the units to use for plot width and height passed through to png function
 #' @param hyper logical indicating if a hypertarget should be set used for bookmarks
 #' @param outfmt character string indicating the format of the output file (currently "pdf" and "png" are accepted)
 #' @param rawout character string with the name of the raw latex file to generate (e.g. only plot code with no preamble and document ending)
@@ -41,7 +43,7 @@
 #'            outfmt="png",pwidth=2000,pheight=1200)
 #' }
 ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=12,pheight=6,res=NULL,hyper=TRUE,outfmt="pdf",
-                     rawout=paste0(out,".rawtex"),...){
+                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
@@ -54,10 +56,10 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=12,ph
   # Save plot to location.
   prpl <- function(){
     if(outfmt=="pdf"){
-	  pdf(file=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.pdf"),width=pwidth,height=pheight,onefile=FALSE)
+	  pdf(file=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.pdf"),width=pwidth,height=pheight,onefile=FALSE,pointsize=fontsize)
 	}else if(outfmt=="png"){
-	  reso <- ifelse(is.null(res),as.numeric(pheight)/6,res)
-	  png(filename=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso)
+	  reso   <- ifelse(is.null(res),as.numeric(pheight)/6,res)
+    png(filename=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
 	}else{
 	  stop("provide valid format for output (outfmt should be 'pdf' or 'png')")
 	}

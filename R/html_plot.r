@@ -11,6 +11,8 @@
 #' @param pwidth numeric indicating the width of the plot to be generated in pixels
 #' @param pheight numeric indicating the height of the plot to be generated in pixels
 #' @param res numeric indicating the resolution of the plot, if set to NULL it will adapt the value according height of the plot
+#' @param fontsize character string with the default font or pointsize passed through to png function
+#' @param units character string with the units to use for plot width and height passed through to png function
 #' @param rawout character string with the name of the raw HTML file to generate (e.g. only plotting code)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html
 #' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
@@ -37,7 +39,8 @@
 #'   }
 #'   html_plot(pl(),out=tempfile(fileext=".html"))
 #' }
-html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000,pheight=600,res=NULL,rawout=paste0(out,".rawhtml"),...){
+html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000,pheight=600,res=NULL,
+                      fontsize=12,units="px",rawout=paste0(out,".rawhtml"),...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
@@ -50,7 +53,7 @@ html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000
   # Save plot to location. For now only png is selected as this is the best format for HTML
   prpl <- function(){
     reso <- ifelse(is.null(res),as.numeric(pheight)/6,res)
-    png(filename=paste0(dirname(out),"/figures/",sub("\\.html$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso)
+    png(filename=paste0(dirname(out),"/figures/",sub("\\.html$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
     print(plot)
     dev.off()
   }
