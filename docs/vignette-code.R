@@ -92,3 +92,4 @@ lapply(1:length(tmpl),function(x){
 
 # Clean files to only keep pdf and html extensions
 unlink(list.files(pattern="\\.tex|\\.rawtex|\\.rawhtml"))
+file.copy("R3port-vignette.html","index.html")
