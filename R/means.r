@@ -47,8 +47,8 @@ means <- function(dfrm,variable,by,total=NULL,pack=1,dig=2,alpha=.1){
     stats <-  function(x){
       data.frame(N        = length(x$variable),
                  Mean     = mean(x$variable,na.rm=TRUE),
-                 Median   = median(x$variable,na.rm=TRUE),
-                 SD       = sd(x$variable,na.rm=TRUE),
+                 Median   = stats::median(x$variable,na.rm=TRUE),
+                 SD       = stats::sd(x$variable,na.rm=TRUE),
                  Min      = min(x$variable,na.rm=TRUE),
                  Max      = max(x$variable,na.rm=TRUE),
                  stringsAsFactors=FALSE)
@@ -56,23 +56,23 @@ means <- function(dfrm,variable,by,total=NULL,pack=1,dig=2,alpha=.1){
   }else if(pack==2){
     stats <-  function(x){
       data.frame(Ntot     = length(x$variable),
-                 N        = length(na.omit(x$variable)),
-                 Nmiss    = length(x$variable) - length(na.omit(x$variable)),
+                 N        = length(stats::na.omit(x$variable)),
+                 Nmiss    = length(x$variable) - length(stats::na.omit(x$variable)),
                  Mean     = mean(x$variable,na.rm=TRUE),
-                 Median   = median(x$variable,na.rm=TRUE),
-                 SD       = sd(x$variable,na.rm=TRUE),
+                 Median   = stats::median(x$variable,na.rm=TRUE),
+                 SD       = stats::sd(x$variable,na.rm=TRUE),
                  Min      = min(x$variable,na.rm=TRUE),
                  Max      = max(x$variable,na.rm=TRUE),
-                 CLM      = paste0(formatC(mean(x$variable,na.rm=TRUE) - qt(1-(alpha/2),df=length(na.omit(x$variable))-1)*sd(x$variable,na.rm=TRUE)/sqrt(length(na.omit(x$variable))),digits=dig,format="f")," - ",
-                                   formatC(mean(x$variable,na.rm=TRUE) + qt(1-(alpha/2),df=length(na.omit(x$variable))-1)*sd(x$variable,na.rm=TRUE)/sqrt(length(na.omit(x$variable))),digits=dig,format="f")),
+                 CLM      = paste0(formatC(mean(x$variable,na.rm=TRUE) - stats::qt(1-(alpha/2),df=length(stats::na.omit(x$variable))-1)*stats::sd(x$variable,na.rm=TRUE)/sqrt(length(stats::na.omit(x$variable))),digits=dig,format="f")," - ",
+                                   formatC(mean(x$variable,na.rm=TRUE) + stats::qt(1-(alpha/2),df=length(stats::na.omit(x$variable))-1)*stats::sd(x$variable,na.rm=TRUE)/sqrt(length(stats::na.omit(x$variable))),digits=dig,format="f")),
                  stringsAsFactors=FALSE)
     }
   }else if(pack==3){
     stats <-  function(x){
       data.frame(N        = length(x$variable),
                  MeanSD   = paste0(formatC(mean(x$variable,na.rm=TRUE),digits=dig,format="f")," (",
-                                   formatC(sd(x$variable,na.rm=TRUE),digits=dig,format="f"),")"),
-                 Median   = median(x$variable,na.rm=TRUE),
+                                   formatC(stats::sd(x$variable,na.rm=TRUE),digits=dig,format="f"),")"),
+                 Median   = stats::median(x$variable,na.rm=TRUE),
                  Range    = paste0(formatC(min(x$variable,na.rm=TRUE),digits=dig,format="f")," - ",
                                    formatC(max(x$variable,na.rm=TRUE),digits=dig,format="f")),
                  stringsAsFactors=FALSE)

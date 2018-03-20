@@ -62,7 +62,7 @@ html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.fi
     file.copy(from=css,to=dirname(out),overwrite=TRUE)
   }
   css <- ifelse(grepl("https:|http:",css),css,basename(css))
-  if(!hasArg(rendlist)){
+  if(!methods::hasArg(rendlist)){
     rendlist <- list(css=css,rrres=paste(unlist(rtl),collapse="\n"))
   }else{
     rendlist <- c(rendlist,css=css,rrres=paste(unlist(rtl),collapse="\n"))

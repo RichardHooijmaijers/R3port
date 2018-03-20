@@ -58,19 +58,19 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,
   # Save plot to location.
   prpl <- function(){
     if(outfmt=="pdf"){
-      pdf(file=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.pdf"),width=pwidth,height=pheight,onefile=FALSE,pointsize=fontsize)
+      grDevices::pdf(file=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.pdf"),width=pwidth,height=pheight,onefile=FALSE,pointsize=fontsize)
     }else if(outfmt=="png"){
       reso   <- ifelse(is.null(res) & units=="px",as.numeric(pheight)/6,ifelse(is.null(res) & units!="px",200,res))
-      png(filename=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
+      grDevices::png(filename=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
     }else{
       stop("provide valid format for output (outfmt should be 'pdf' or 'png')")
     }
     print(plot)
-    dev.off()
+    grDevices::dev.off()
   }
   tplot <- try(prpl())
   if(class(tplot)=="try-error"){
-    if(!is.null(dev.list())) dev.off()
+    if(!is.null(grDevices::dev.list())) grDevices::dev.off()
     stop("Cannot create the plot")
   }
 

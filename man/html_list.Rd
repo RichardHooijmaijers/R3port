@@ -58,12 +58,11 @@ The vargroup argument should be provided in the following form: \cr
 }
 \examples{
 
-data(Theoph)
-html_list(Theoph,out=tempfile(fileext=".html"))
-
 # an example how vargroup can be used
 grp <- c(rep("",3),rep("grouped variables",2))
 \dontrun{
+  data(Theoph)
+  html_list(Theoph,out=tempfile(fileext=".html"))
   html_list(Theoph,out=tempfile(fileext=".html"),vargroup=grp)
 }
 }

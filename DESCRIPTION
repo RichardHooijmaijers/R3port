@@ -11,7 +11,11 @@ Imports:
     plyr,
     reshape2,
     whisker,
-    tools
+    tools,
+    grDevices,
+    methods,
+    stats,
+    utils
 License: GPL (>= 2)
 LazyData: true
 Suggests:
