@@ -47,4 +47,3 @@ add <- "<p>Including some additional text</p>"
 \seealso{
 \code{\link{ltx_doc}}
 }
-

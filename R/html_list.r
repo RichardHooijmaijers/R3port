@@ -57,17 +57,9 @@ html_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,us
   hdr <- NULL
   # this should be made easier
   if(!is.null(vargroup)){
-    for(i in 1:length(vargroup)){
-      if(i==1){
-        un <- 1
-      }else{
-        if(vargroup[i]==vargroup[i-1]) {
-          un[i] <- un[i-1]
-        }else{
-          un[i] <- un[i-1] + 1
-        }
-      }
-    }
+    # Could not use as.numeric(as.factor()) here because every increment should be unique
+    un         <- 1
+    for(i in seq_along(vargroup)[-1]) if(vargroup[i]==vargroup[i-1]) {un[i] <- un[i-1]}else{un[i] <- un[i-1] + 1}
     vargr      <- plyr::ddply(data.frame(vargroup,un),c("un","vargroup"),nrow)
     vargr$sstr <- (cumsum(vargr$V1)-vargr$V1) + 1
     vargr$sstp <- (cumsum(vargr$V1)-vargr$V1) + 1 + vargr$V1 - 1

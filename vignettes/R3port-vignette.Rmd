@@ -1,0 +1,237 @@
+---
+title: "Introduction to the R3port package"
+author: "Richard Hooijmaijers"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+The R3port package is developed to easily create pdf or html reports including tables, listings and plots created in R. The reporting idea was initiated within the context of clinical research, where listings for pharmacokinetics and safety are generated. The package was set up such that it is generic enough to be used in other fields too.
+
+The main options to create reports in R are `knitr` or `rmarkdown`. These packages are perfect for writing small to medium sized documents. Especially when you want to add code, plots or tables to help tell the story.
+There are however times when you're working in an R script and just want to see how a table or plot look like in a browser or pdf.
+Also when someone else writes the report or it has relatively little R results, knitr or rmarkdown might not be the best option
+There are simple options like `png()` and `pdf()` or more advanced within packages like `xtable`. With packages like `tables`, `greport`, `rapport` or `startgazer` you can also  directly create (full) reports including R results. But I believe there is a gap between lower level flexibility and the more specialized packages
+Within this vignette I will try to explain my preferred workflow (as simple as possible) and how I implemented it in the package.
+To demonstrate the usage of the package the tips dataset from the reshape2 package was used as
+this dataset has a nice combination of numerical and discrete values:
+```{r}
+library(R3port)
+library(reshape2)
+data(tips)
+tips$day <- factor(tips$day,levels=c("Thur","Fri","Sat","Sun" ),ordered = TRUE)
+head(tips)
+```
+
+# Calculation functions
+
+The package includes a few simple calculation functions. Say we want to know basic statistics for the total bill per gender, day of the week and time of day. the following can be done to achieve this:
+```{r}
+tbl1 <- means(tips,variable="total_bill",by=c("sex","day","time"),total="sex")
+head(tbl1,20)
+```
+The function above calculates a standard set of descriptive statistics frequently used in reporting clinical
+results. Also it places the results in a long format data frame (for easy processing in the other functions). There are some options for
+calculation of totals and number of digits in output but mainly it uses plyr to do the work.
+For this reason a predefined set of statisitcs was chosen as it is quite easy to calculate other statistics just using plyr.
+
+Using a similar function, the frequencies within a data frame can be calculated. Let's say we want
+to know the frequencies of each gender, day of the week and time of day within the data frame.
+Something like the following can be used:
+```{r}
+tbl2       <- freq(tips,vars=c("sex","day","time"),total=c("sex","day"),spacechar = "~")
+head(tbl2)
+```
+In general the base of the function is the default `table` within R. Although percentages are
+also given. Options are available for the denominator, calculation of totals and taking
+duplicates into account. This was mainly inspired by clinical safety analyses.
+
+
+# The doc functions
+
+The package has two sets of functions to create documents in either tex (and pdf) or html format.
+The doc functions `ltx_doc` and `html_doc` are quite generic in the sense that any kind of
+character vector can be included. This means simple text can be added to a document or the
+output of functions that can create TeX/html coding. The following example demonstrates how it works
+
+```{r}
+ltx_doc("This is just some \\emph{text}")
+html_doc("This is just some <em>text</em>")
+```
+
+At first sight it might seem that there is little added value in the above function, however
+it's also possible to output the results of `xtable` or similar packages. Combine this with an
+output statement and you can directly see the compiled pdf (or tex if you like) which is opened by
+default. The same is goes for the html but without compilation. The next example demonstrates this.
+The resulting html and pdf files for this and all subsequent examples are available in the links
+below the code block. Also in some examples the html version is not displayed but works almost the same as the latex version.
+
+```{r echo=TRUE,eval=FALSE}
+library(xtable)
+xtbl     <- means(tips,variable="total_bill",by=c("day"))
+xtbl_ltx <- print(xtable(xtbl),print.results=FALSE)
+ltx_doc(xtbl_ltx,out="out1.tex")
+
+xtbl_html <- print(xtable(xtbl),print.results=FALSE,type="html", html.table.attributes = "class=table")
+html_doc(xtbl_html,out="out1.html",
+         css="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+```
+<a target="_blank" href="out1.pdf">out1.pdf</a><br/>
+<a target="_blank" href="out1.html">out1.html</a>
+
+
+# The list functions
+
+With the list functions you can directly output a data frame without using xtable. The function is intended to display a data frame a bit more attractive. Within the following example the header is be adapted and the variables are grouped and ordered. Furthermore a title, footnote and column width is adapted
+
+```{r echo=TRUE,eval=FALSE}
+lst1 <- means(tips,variable="tip",by=c("sex","day"),pack=2)
+lst2 <- means(tips,variable="total_bill",by=c("sex","day"),pack=2)
+lst  <- merge(lst1,lst2,by=c("sex","day","statistic"))
+names(lst)[4:5] <- c("tip","Total Bill")
+
+ltx_list(lst,vargroup=c("","","","income","income"),group = 2, title="a listing",
+         fill="-",footnote="a footnote",mancol="p{3cm}llll",out="out2.tex")
+```
+An html document can be created quite similar, with the exception of the column width option
+```{r echo=TRUE,eval=FALSE}
+html_list(lst,vargroup=c("","","","income","income"),group = 2,title="a listing",
+          fill="-",footnote="a footnote",out="out2.html")
+```
+<a target="_blank" href="out2.pdf">out2.pdf</a><br/>
+<a target="_blank" href="out2.html">out2.html</a>
+
+# The table functions
+
+The most comprehensive functions are `ltx_table` and  `html_table`. With these functions
+it is possible to reshape the data before presenting the results. This can make the results
+easier to read and offers the possibility to tweak the table header. Because the data is transposed
+to a wide format it is important to keep the results "unique". Read more about aggregating in `reshape2::dcast` which is used in this function.The following example demonstrates a common usage of the function:
+
+```{r echo=TRUE,eval=FALSE}
+ltx_table(tbl1,x=c("sex","statistic"),y=c("day","time"),var="value",
+          title="total bill statistics",xabove=TRUE,out="out3.tex")
+html_table(tbl1,x=c("sex","statistic"),y=c("day","time"),var="value",
+          title="total bill statistics",xabove=TRUE,out="out3.html")
+```
+<a target="_blank" href="out3.pdf">out3.pdf</a><br/>
+<a target="_blank" href="out3.html">out3.html</a>
+
+The xabove option makes it possible to group the data and to save space. the header has two levels
+as two variables are selected to cast the results. Although you can add many levels this way, it is
+advised to use no more than three for the sake of readability.
+Another examples is presented where labels are added to the data frame and where some common options
+are adapted
+```{r echo=TRUE,eval=FALSE}
+attr(tbl2$sex,"label") <- "Gender"
+attr(tbl2$day,"label") <- "Day of the week"
+ltx_table(tbl2,x=c("sex","day"),y=c("time"),var="FreqPerc",yhead = TRUE,size="\\normalsize",
+          title="customer frequency",xabove=TRUE,out="out4.tex",group=1,mancol="lllll",
+          template=paste0(system.file(package =  "R3port"), "/listing.tex"))
+```
+<a target="_blank" href="out4.pdf">out4.pdf</a>
+
+With a bit of fantasy you can make combinations like this for instance:
+```{r echo=TRUE,eval=FALSE}
+library(plyr)
+tbl3           <- freq(tips,c("sex","day","time"),total=c("day","time"),spacechar = "~")
+tbl3$statistic <- factor("N (perc)")
+tbl3$value     <- tbl3$FreqPerc
+tbl3           <- rbind.fill(tbl1,tbl3)
+ltx_table(tbl3,x=c("sex","day"),y=c("time","statistic"),var="value",convchar = TRUE,
+          title="total bill statistics",xabove=TRUE,out="out5.tex",
+          mancol=paste(rep("l",16),collapse=""),
+          template=paste0(system.file(package =  "R3port"), "/listing.tex"))
+```
+<a target="_blank" href="out5.pdf">out5.pdf</a>
+
+# Graphical output
+
+The graphical output system is basically the same as for the tables and listings. The only difference is that the figures are also saved as png or pdf files. Then they are referenced in the tex or html file, and if selected compiled. Using grid graphics is the easiest because you can just place the plot in an object and pass it to the functions. The way base plots can be used is by placing it in a function. Some examples are given below:
+```{r echo=TRUE,eval=FALSE}
+# Used lwidth to ensure correct width in beamer presentations
+library(ggplot2)
+pl <- ggplot(tips,aes(x=day,y=total_bill)) + geom_boxplot()
+ltx_plot(pl,out="out6.tex",titlepr = "plot A",
+         title="example for basic plotting",lwidth="0.9\\linewidth")
+html_plot(pl,out="out6.html",titlepr = "plot A",
+          title="example for basic plotting")
+
+# you can output a list of plots e.g:
+pl <- lapply(unique(tips$sex),function(x){
+  ggplot(tips[tips$sex==x,],aes(time,total_bill)) + geom_boxplot() +
+    facet_wrap(~day) + ggtitle(x)
+})
+ltx_plot(pl,out="out7.tex",titlepr = "plot B",
+         title="example for plotting lists",lwidth="0.9\\linewidth")
+html_plot(pl,out="out7.html",titlepr = "plot B",
+          title="example for plotting lists")
+
+# base plots can be used but placed in function:
+bpl <- function() plot(tips$day,tips$total_bill)
+ltx_plot(bpl(),out="out8.tex",titlepr = "plot C",
+         title="example for base plot",lwidth="0.9\\linewidth")
+html_plot(bpl(),out="out8.html",titlepr = "plot C",
+          title="example for base plot")
+```
+<a target="_blank" href="out6.pdf">out6.pdf</a><br/>
+<a target="_blank" href="out6.html">out6.html</a><br/>
+<a target="_blank" href="out7.pdf">out7.pdf</a><br/>
+<a target="_blank" href="out7.html">out7.html</a><br/>
+<a target="_blank" href="out8.pdf">out8.pdf</a><br/>
+<a target="_blank" href="out8.html">out8.html</a>
+
+
+# Putting it together
+
+The last thing to after creating the tables listings and plots is to combine it in an overall
+document. Here the last two functions will come in `ltx_combine` and `html_combine`.
+To have a bit of background on how these functions work we should first look at all the output that is created. For each table and listing, by default 3 files are generated. For latex output, the tex file,  compiled pdf and a raw tex file. For html only a html and raw html file. In case of plotting also a figures folder is created with teh plots.  The raw files have only the text/coding for the table or listing. The combine functions can pick these files up and place it in a combined document. The combine argument can be used to select files, for instance if you want to combine a selected set of output.
+
+```{r echo=TRUE,eval=FALSE}
+ltx_combine(out="comb1.tex",template=paste0(system.file(package="R3port"),"/default.tex"))
+html_combine(out="comb1.html",toctheme=TRUE,
+             template=paste0(system.file(package="R3port"),"/bootstrap.html"))
+```
+<a target="_blank" href="comb1.pdf">comb1.pdf</a><br/>
+<a target="_blank" href="comb1.html">comb1.html</a>
+
+# The templates
+
+You probably noticed that not all output generated has the same layout. This is controlled by the templates,
+I didn't explain the template argument before because I think it deserves a section of it's own.
+The template system uses `whisker` to create output in different styes. A couple
+of templates are included within the package to start with, however users can generate their own
+templates using this system. The whisker package is set up to provide a template and a list with
+variables to render (called rendlist in this package). Provide a template and a rendlist to create
+a custom styled output.
+The included templates are demonstrated below with the combine functions (but will work the same for the list, table and plot functions). But if you want to experiment read further for some details.
+
+```{r echo=TRUE,eval=FALSE}
+tmpl  <- list.files(system.file(package="R3port"),pattern="\\.tex$",full.names=TRUE)
+lapply(1:length(tmpl),function(x){
+  ppt <- ifelse(grepl("beamer.tex",tmpl[x]),TRUE,FALSE)
+  ltx_combine(out=paste0("combt",x,".tex"),template=tmpl[x],presentation=ppt)
+})
+```
+<a target="_blank" href="combt1.pdf">comb1.pdf</a><br/>
+<a target="_blank" href="combt2.pdf">comb2.pdf</a><br/>
+<a target="_blank" href="combt3.pdf">comb3.pdf</a><br/>
+<a target="_blank" href="combt4.pdf">comb4.pdf</a><br/>
+<a target="_blank" href="combt5.pdf">comb5.pdf</a><br/>
+
+
+## Create your own template
+
+The way the package handles the rendlist is that certain information
+is always added to this list within a function. This is off course necessary to be able to include the
+table,list or plot to be created within the final document. Practically this means that the `rrres`
+tag is always included in the template to place in the R results to be included. Other special tags include
+`rrtoc`, `css` and `orientation`. The safest way is to not include these tags in rendlist or change this
+within the template (or at least be aware of the effect when omitting tags or placing them elsewhere
+in the template)

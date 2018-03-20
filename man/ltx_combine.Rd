@@ -4,7 +4,8 @@
 \alias{ltx_combine}
 \title{Combines multiple latex files to a single tex and compiles document}
 \usage{
-ltx_combine(combine = ".", out = NULL, presentation = FALSE, ...)
+ltx_combine(combine = ".", out = NULL, presentation = FALSE, clean = 0,
+  ...)
 }
 \arguments{
 \item{combine}{character string with the location of the raw tex files or list with file names within same directory}
@@ -13,6 +14,9 @@ ltx_combine(combine = ".", out = NULL, presentation = FALSE, ...)
 
 \item{presentation}{logical indicating if the output is a latex presentation (in this case the results will be placed
 within frames and without captions and clearpage)}
+
+\item{clean}{integer between 0 and 2 indicating if all individual files should be kept (0), all individual tex and raw tex files should
+be deleted (1) or all individual files should be deleted (2)}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }
@@ -48,4 +52,3 @@ ltx_plot(plot(conc~Time,data=Theoph),out=tempfile(fileext=".tex"),show=FALSE)
               orientation="portrait")
 }
 }
-

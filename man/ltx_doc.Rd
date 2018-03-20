@@ -52,4 +52,3 @@ the user select various options to customize the output.
 \seealso{
 \code{\link{html_doc}}
 }
-

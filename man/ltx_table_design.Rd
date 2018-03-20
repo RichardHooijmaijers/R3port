@@ -50,4 +50,3 @@ This function designs a latex pivot table based on the results of the rr_table_p
 
 \dontrun{ltx_table_design(lstobject)}
 }
-

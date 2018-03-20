@@ -8,6 +8,8 @@
 #' @param out filename for the output HTML file (if NULL it will print to console)
 #' @param toctheme logical indicating if the created file should also have a toc (take into account for template)
 #' @param css character with name of the css style sheet to use, default use package style sheet
+#' @param clean integer between 0 and 2 indicating if all individual files should be kept (0), all individual raw html files should
+#'    be deleted (1) or all individual files should be deleted (2)
 #' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
 #'
 #' @details Currently the generated output is saved in the same place where the separate tables and plots are located
@@ -33,10 +35,9 @@
 #'               toctheme=TRUE)
 #'  }
 
-html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.file(package="R3port"),"/style.css"),...){
+html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.file(package="R3port"),"/style.css"),clean=0,...){
 
   if(class(combine)!="list"){rt <- list.files(combine,"\\.rawhtml$",full.names=TRUE)}else{rt <- unlist(combine)}
-  if(length(grep(out,rt))!=0) rt <- rt[-grep(out,rt)]
 
   # For now assume that output is always saved in (one) 'location' (to prevent broken links for figures)
   location <- dirname(rt)[1]
@@ -50,7 +51,6 @@ html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.fi
       r <- c(paste0("<div id='out",x,"d' class='showhide'>"),r,'</div>')
     })
     titl  <- plyr::laply(rtl,function(x) x[grep("<h1>.*</h1>",x)])
-    #titl  <- gsub("<h1>\\&nbsp\\&nbsp|</h1>","",titl)
     titl  <- gsub("<h1>|</h1>","",titl)
     ids1  <- paste0("out",1:length(rt))
     toc   <- paste(paste0("<li ><a id='",ids1,"' href='#'>",titl,"</a></li>"),collapse='')
@@ -68,6 +68,8 @@ html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.fi
     rendlist <- c(rendlist,css=css,rrres=paste(unlist(rtl),collapse="\n"))
   }
   if(toctheme) rendlist <- c(rendlist,rrtoc=toc)
+  if(clean==1) file.remove(list.files(location,"\\.rawhtml$",full.names=TRUE))
+  if(clean==2) file.remove(list.files(location,"\\.rawhtml$|\\.html$",full.names=TRUE))
 
   html_doc(rtl,out=out,rendlist=rendlist,...)
 }

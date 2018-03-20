@@ -67,4 +67,3 @@ grp <- c(rep("",3),rep("grouped variables",2))
   html_list(Theoph,out=tempfile(fileext=".html"),vargroup=grp)
 }
 }
-

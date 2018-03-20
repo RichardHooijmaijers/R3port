@@ -39,4 +39,3 @@ This function only prepares the data for pivotal tabulation. The base of the fun
 data(Indometh)
 table_prep(Indometh,"time","Subject","conc")
 }
-

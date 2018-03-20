@@ -45,4 +45,3 @@ This function designs a HTML pivot table based on the results of the rr_table_pr
 
 \dontrun{html_table_design(lstobject)}
 }
-

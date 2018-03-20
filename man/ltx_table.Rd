@@ -81,4 +81,3 @@ R3port package to create an overall table and writes it to a file or console
             footnote="this table is not very informative")
 }
 }
-

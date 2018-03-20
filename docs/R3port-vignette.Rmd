@@ -154,23 +154,30 @@ ltx_table(tbl3,x=c("sex","day"),y=c("time","statistic"),var="value",convchar = T
 
 The graphical output system is basically the same as for the tables and listings. The only difference is that the figures are also saved as png or pdf files. Then they are referenced in the tex or html file, and if selected compiled. Using grid graphics is the easiest because you can just place the plot in an object and pass it to the functions. The way base plots can be used is by placing it in a function. Some examples are given below:
 ```{r echo=TRUE,eval=FALSE}
+# Used lwidth to ensure correct width in beamer presentations
 library(ggplot2)
 pl <- ggplot(tips,aes(x=day,y=total_bill)) + geom_boxplot()
-ltx_plot(pl,out="out6.tex",titlepr = "plot A",title="example for basic plotting")
-html_plot(pl,out="out6.html",titlepr = "plot A",title="example for basic plotting")
+ltx_plot(pl,out="out6.tex",titlepr = "plot A",
+         title="example for basic plotting",lwidth="0.9\\linewidth")
+html_plot(pl,out="out6.html",titlepr = "plot A",
+          title="example for basic plotting")
 
 # you can output a list of plots e.g:
 pl <- lapply(unique(tips$sex),function(x){
   ggplot(tips[tips$sex==x,],aes(time,total_bill)) + geom_boxplot() +
     facet_wrap(~day) + ggtitle(x)
 })
-ltx_plot(pl,out="out7.tex",titlepr = "plot B",title="example for plotting lists")
-html_plot(pl,out="out7.html",titlepr = "plot B",title="example for plotting lists")
+ltx_plot(pl,out="out7.tex",titlepr = "plot B",
+         title="example for plotting lists",lwidth="0.9\\linewidth")
+html_plot(pl,out="out7.html",titlepr = "plot B",
+          title="example for plotting lists")
 
 # base plots can be used but placed in function:
 bpl <- function() plot(tips$day,tips$total_bill)
-ltx_plot(bpl(),out="out8.tex",titlepr = "plot C",title="example for base plot")
-html_plot(bpl(),out="out8.html",titlepr = "plot C",title="example for base plot")
+ltx_plot(bpl(),out="out8.tex",titlepr = "plot C",
+         title="example for base plot",lwidth="0.9\\linewidth")
+html_plot(bpl(),out="out8.html",titlepr = "plot C",
+          title="example for base plot")
 ```
 <a target="_blank" href="out6.pdf">out6.pdf</a><br/>
 <a target="_blank" href="out6.html">out6.html</a><br/>

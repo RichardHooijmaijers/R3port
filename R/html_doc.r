@@ -58,5 +58,11 @@ html_doc <- function(text,out=NULL,show=TRUE,rtitle="report",template=paste0(sys
   if(is.null(out)) out <- stdout()
   writeLines(whisker::whisker.render(hout, rendlist), out)
 
-  if(out!=stdout() && show) browseURL(paste0("file://",normalizePath(out)))
+  if(out!=stdout() && show){
+    if(Sys.info()['sysname']=="Darwin"){
+      try(system(paste0("open '",normalizePath(out),"'"),wait=FALSE))
+    }else{
+      browseURL(paste0("file://",normalizePath(out)))
+    }
+  }
 }

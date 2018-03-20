@@ -79,4 +79,3 @@ The format of the current table/css was designed to look good in the browser and
             footnote="this table is not very informative")
 }
 }
-

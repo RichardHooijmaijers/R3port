@@ -5,8 +5,9 @@
 \title{Prints a R plot to a latex file or console}
 \usage{
 ltx_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
-  pwidth = 12, pheight = 6, res = NULL, hyper = TRUE, outfmt = "pdf",
-  rawout = paste0(out, ".rawtex"), ...)
+  lwidth = NULL, pwidth = 10, pheight = 5.5, res = NULL, hyper = TRUE,
+  outfmt = "pdf", fontsize = 12, units = "px", rawout = paste0(out,
+  ".rawtex"), linebreak = TRUE, ...)
 }
 \arguments{
 \item{plot}{plot object or function call that creates plot to be printed to file}
@@ -19,6 +20,8 @@ ltx_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
 
 \item{footnote}{character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)}
 
+\item{lwidth}{character string indicating the width of the plot within latex (e.g. "\\\\linewidth")}
+
 \item{pwidth}{numeric indicating the width of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)}
 
 \item{pheight}{numeric indicating the height of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)}
@@ -29,8 +32,14 @@ ltx_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
 
 \item{outfmt}{character string indicating the format of the output file (currently "pdf" and "png" are accepted)}
 
+\item{fontsize}{character string with the default font or pointsize passed through to png or pdf function}
+
+\item{units}{character string with the units to use for plot width and height passed through to png function}
+
 \item{rawout}{character string with the name of the raw latex file to generate (e.g. only plot code with no preamble and document ending)
 In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex}
+
+\item{linebreak}{logical indicating if a linebreak (clearpage) should be given after a plot}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }
@@ -61,4 +70,3 @@ This function makes a latex document including the plots defined
            outfmt="png",pwidth=2000,pheight=1200)
 }
 }
-

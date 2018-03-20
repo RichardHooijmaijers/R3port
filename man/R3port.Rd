@@ -24,4 +24,3 @@ The following options can be set within the package:
     \item pheight (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
   }
 }
-

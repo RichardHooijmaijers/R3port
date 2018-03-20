@@ -18,6 +18,7 @@
 #' @param outfmt character string indicating the format of the output file (currently "pdf" and "png" are accepted)
 #' @param rawout character string with the name of the raw latex file to generate (e.g. only plot code with no preamble and document ending)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex
+#' @param linebreak logical indicating if a linebreak (clearpage) should be given after a plot
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
@@ -44,7 +45,7 @@
 #'            outfmt="png",pwidth=2000,pheight=1200)
 #' }
 ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,pwidth=10,pheight=5.5,res=NULL,hyper=TRUE,outfmt="pdf",
-                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),...){
+                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
@@ -57,13 +58,13 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,
   # Save plot to location.
   prpl <- function(){
     if(outfmt=="pdf"){
-	  pdf(file=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.pdf"),width=pwidth,height=pheight,onefile=FALSE,pointsize=fontsize)
-	}else if(outfmt=="png"){
-	  reso   <- ifelse(is.null(res),as.numeric(pheight)/6,res)
-    png(filename=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
-	}else{
-	  stop("provide valid format for output (outfmt should be 'pdf' or 'png')")
-	}
+      pdf(file=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.pdf"),width=pwidth,height=pheight,onefile=FALSE,pointsize=fontsize)
+    }else if(outfmt=="png"){
+      reso   <- ifelse(is.null(res) & units=="px",as.numeric(pheight)/6,ifelse(is.null(res) & units!="px",200,res))
+      png(filename=paste0(dirname(out),"/figures/",sub("\\.tex$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
+    }else{
+      stop("provide valid format for output (outfmt should be 'pdf' or 'png')")
+    }
     print(plot)
     dev.off()
   }
@@ -82,21 +83,21 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,
   for(i in 1:length(numplots)){
     if(!missing(titlepr))  plt <- c(plt,paste0("\\renewcommand{\\figurename}{} \\renewcommand\\thefigure{{",titlepr,"}}"))
     plt <- c(plt,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
-	plt  <- c(plt,"\\begin{figure}[H]")
-	if(hyper & !missing(titlepr) & i==1) plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
+    plt  <- c(plt,"\\begin{figure}[H]")
+    if(hyper & !missing(titlepr) & i==1) plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
     if(hyper & missing(titlepr) & i==1)  plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",title,"}"))
     if(i==1) {
-	  plt  <- c(plt,paste0("\\caption{",title,"}"))
-	}else{
-	  if(!missing(titlepr)) plt  <- c(plt,paste0("\\caption[]{",title,", cont'd}"))
-	}
-    if(is.null(lwidth)){
-      plt  <- c(plt,paste0("\\includegraphics{{figures/",paste0(sub("\\.tex$","",basename(out)),formatC(i,width=3,flag="0"),"}.",outfmt),"}\\\\"))
+      plt  <- c(plt,paste0("\\caption{",title,"}"))
     }else{
-      plt  <- c(plt,paste0("\\includegraphics[width=",lwidth,"]{{figures/",paste0(sub("\\.tex$","",basename(out)),formatC(i,width=3,flag="0"),"}.",outfmt),"}\\\\"))
+      if(!missing(titlepr)) plt  <- c(plt,paste0("\\caption[]{",title,", cont'd}"))
+    }
+    if(is.null(lwidth)){
+      plt  <- c(plt,paste0("\\includegraphics{{\"figures/",paste0(sub("\\.tex$","",basename(out)),formatC(i,width=3,flag="0"),"\"}.",outfmt),"}\\\\"))
+    }else{
+      plt  <- c(plt,paste0("\\includegraphics[width=",lwidth,"]{{\"figures/",paste0(sub("\\.tex$","",basename(out)),formatC(i,width=3,flag="0"),"\"}.",outfmt),"}\\\\"))
     }
 
-    plt  <- c(plt,paste0("\\end{figure}\\clearpage"))
+    plt  <- c(plt,paste0("\\end{figure}",ifelse(linebreak,"\\clearpage","")))
   }
 
   # Print the plot

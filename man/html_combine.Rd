@@ -5,7 +5,8 @@
 \title{Combines multiple HTML files to a single tex and compiles document}
 \usage{
 html_combine(combine = ".", out = NULL, toctheme = TRUE,
-  css = paste0(system.file(package = "R3port"), "/style.css"), ...)
+  css = paste0(system.file(package = "R3port"), "/style.css"), clean = 0,
+  ...)
 }
 \arguments{
 \item{combine}{character string with the location of the raw html files or list with file names within same directory}
@@ -15,6 +16,9 @@ html_combine(combine = ".", out = NULL, toctheme = TRUE,
 \item{toctheme}{logical indicating if the created file should also have a toc (take into account for template)}
 
 \item{css}{character with name of the css style sheet to use, default use package style sheet}
+
+\item{clean}{integer between 0 and 2 indicating if all individual files should be kept (0), all individual raw html files should
+be deleted (1) or all individual files should be deleted (2)}
 
 \item{...}{additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show}
 }
@@ -46,4 +50,3 @@ html_plot(plot(conc~Time,data=Theoph),out=tempfile(fileext=".html"),show=FALSE)
               toctheme=TRUE)
  }
 }
-

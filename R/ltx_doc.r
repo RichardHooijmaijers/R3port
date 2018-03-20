@@ -67,14 +67,22 @@ ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),
     try(setwd(dirname(out)))
     out <- basename(out)
   }
-  if(compile & out!=stdout()) try(tools::texi2dvi(out,pdf=TRUE,clean=TRUE))
+  if(compile & out!=stdout()){
+    # compilation on linux with space in path is not handled well by texi2dvi
+    if(Sys.info()['sysname']=="Linux" && grepl(" ",getwd())){
+      try(system(paste("pdflatex",out),ignore.stdout=TRUE))
+      try(system(paste("pdflatex",out),ignore.stdout=TRUE))
+    }else{
+      try(tools::texi2dvi(out,pdf=TRUE,clean=TRUE))
+    }
+  }
   if(show & out!=stdout()){
     if(Sys.info()['sysname']=="Darwin"){
-      try(system(paste("open",sub("\\.tex$","\\.pdf",out)),wait=FALSE))
+      try(system(paste0("open \"",sub("\\.tex$","\\.pdf",out),"\""),wait=FALSE))
     }else if(Sys.info()['sysname']=="Linux"){
-      try(system(paste0("gnome-open ",sub("\\.tex$","\\.pdf",out))))
+      try(system(paste0("xdg-open '",sub("\\.tex$","\\.pdf",out),"'")))
     }else if(Sys.info()['sysname']=="Windows"){
-      try(shell(sub("\\.tex$","\\.pdf",out),wait=FALSE))
+      try(shell(paste0("\"",sub("\\.tex$","\\.pdf",out),"\""),wait=FALSE))
     }
   }
   setwd(curwd)

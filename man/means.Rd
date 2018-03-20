@@ -46,4 +46,3 @@ The reason for this is that there are many other (more simple) options to do thi
 data(Indometh)
 means(Indometh,"conc","time",total="time",pack=3)
 }
-

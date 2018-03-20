@@ -70,4 +70,3 @@ The vargroup argument should be provided in the following form: \cr
            template=paste0(system.file(package="R3port"),"/listing.tex"))
 }
 }
-

@@ -52,7 +52,7 @@ html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000
 
   # Save plot to location. For now only png is selected as this is the best format for HTML
   prpl <- function(){
-    reso <- ifelse(is.null(res),as.numeric(pheight)/6,res)
+    reso   <- ifelse(is.null(res) & units=="px",as.numeric(pheight)/6,ifelse(is.null(res) & units!="px",200,res))
     png(filename=paste0(dirname(out),"/figures/",sub("\\.html$","",basename(out)),"%03d.png"),width=pwidth,height=pheight,res=reso,pointsize=fontsize,units=units)
     print(plot)
     dev.off()

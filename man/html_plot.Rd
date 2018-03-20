@@ -5,8 +5,8 @@
 \title{Prints a R plot to a HTML file or console}
 \usage{
 html_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
-  pwidth = 1000, pheight = 600, res = NULL, rawout = paste0(out,
-  ".rawhtml"), ...)
+  pwidth = 1000, pheight = 600, res = NULL, fontsize = 12,
+  units = "px", rawout = paste0(out, ".rawhtml"), ...)
 }
 \arguments{
 \item{plot}{plot object or function call that creates plot to be printed to file}
@@ -24,6 +24,10 @@ html_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
 \item{pheight}{numeric indicating the height of the plot to be generated in pixels}
 
 \item{res}{numeric indicating the resolution of the plot, if set to NULL it will adapt the value according height of the plot}
+
+\item{fontsize}{character string with the default font or pointsize passed through to png function}
+
+\item{units}{character string with the units to use for plot width and height passed through to png function}
 
 \item{rawout}{character string with the name of the raw HTML file to generate (e.g. only plotting code)
 In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html}
@@ -56,4 +60,3 @@ This function makes a HTML document including the defined plots
   html_plot(pl(),out=tempfile(fileext=".html"))
 }
 }
-

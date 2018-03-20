@@ -46,4 +46,3 @@ data(Indometh)
 freq(Indometh,vars="time",id="Subject",
         denom=nrow(Indometh),total="",totaldenom=nrow(Indometh))
 }
-

@@ -64,7 +64,9 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
   # Create header
   hdr <- NULL
   if(!is.null(vargroup)){
-    for(i in 1:length(vargroup)){if(i==1){un <- 1}else{if(vargroup[i]==vargroup[i-1]) {un[i] <- un[i-1]}else{un[i] <- un[i-1] + 1}}}
+    # Could not use as.numeric(as.factor()) here because every increment should be unique
+    un         <- 1
+    for(i in seq_along(vargroup)[-1]) if(vargroup[i]==vargroup[i-1]) {un[i] <- un[i-1]}else{un[i] <- un[i-1] + 1}
     vargr      <- plyr::ddply(data.frame(vargroup,un),c("un","vargroup"),nrow)
     vargr$sstr <- (cumsum(vargr$V1)-vargr$V1) + 1
     vargr$sstp <- (cumsum(vargr$V1)-vargr$V1) + 1 + vargr$V1 - 1
@@ -74,7 +76,7 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
 
   lb <- vars
   if(uselabel) lb <- sapply(lb,function(lbls) ifelse(is.null(attr(dfrm[,lbls],'label')),lbls,attr(dfrm[,lbls],'label')))
-  if(convchar) lb <- gsub('([#$%&_\\^\\\\{}])', '\\\\\\1',vars, perl = TRUE)
+  if(convchar) lb <- gsub('([#$%&_\\^\\\\{}])', '\\\\\\1',lb, perl = TRUE)
   hdr <- c(hdr,paste0(paste(lb,collapse= " & "),"\\\\"))
   hdr <- c(hdr,"\\hline")
   tbl <- c(tbl,"\\toprule",hdr,"\\endfirsthead")

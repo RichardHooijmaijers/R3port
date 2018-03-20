@@ -8,6 +8,8 @@
 #' @param out filename for the output latex file (if an empty string is provided it will print to console)
 #' @param presentation logical indicating if the output is a latex presentation (in this case the results will be placed
 #'    within frames and without captions and clearpage)
+#' @param clean integer between 0 and 2 indicating if all individual files should be kept (0), all individual tex and raw tex files should
+#'    be deleted (1) or all individual files should be deleted (2)
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @details Currently the generated output is saved in the same place where the separate tables and plots are located
@@ -36,11 +38,10 @@
 #'               template=paste0(system.file(package="R3port"),"/listing.tex"),
 #'               orientation="portrait")
 #' }
-ltx_combine <- function(combine=".",out=NULL,presentation=FALSE,...){
+ltx_combine <- function(combine=".",out=NULL,presentation=FALSE,clean=0,...){
 
   # list files, read and combine tex files and compile
   if(class(combine)!="list"){rt <- list.files(combine,"\\.rawtex$",full.names=TRUE)}else{rt <- unlist(combine)}
-  if(length(grep(out,rt))!=0) rt <- rt[-grep(out,rt)]
   location <- dirname(rt)[1]
 
   # remove log and aux files in directory
@@ -58,5 +59,7 @@ ltx_combine <- function(combine=".",out=NULL,presentation=FALSE,...){
     rtl <- plyr::llply(rt,function(x){r <- readLines(x); r <- c(r,"\\newpage")})
     rtl <- unlist(rtl)
   }
+  if(clean==1) file.remove(list.files(location,"\\.tex$|\\.rawtex$",full.names=TRUE))
+  if(clean==2) file.remove(list.files(location,"\\.tex$|\\.rawtex$|\\.pdf$",full.names=TRUE))
   ltx_doc(rtl,out=out,...)
 }
