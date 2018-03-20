@@ -1,6 +1,6 @@
 Package: R3port
 Type: Package
-Version: 0.1.1.9000
+Version: 0.1.1
 Title: Report functions for HTML and PDF files
 Description: The package includes functions to create table and plots
     to be included in HTML or PDF reports.
@@ -23,3 +23,5 @@ RoxygenNote: 6.0.1
 Author: Richard Hooijmaijers [aut, cre]
 Maintainer: Richard Hooijmaijers <richardhooijmaijers@gmail.com>
 VignetteBuilder: knitr
+URL: https://github.com/RichardHooijmaijers/R3port
+Date: 2018-03-20
