@@ -1,5 +1,5 @@
 ## Test environments
-* local OS X install, R 3.4.3
+* local OS X install, R 3.4.4
 * ubuntu 16.04 LTS, R 3.4.3
 * windows 7,  R 3.4.3
 
