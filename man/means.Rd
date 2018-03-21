@@ -19,10 +19,10 @@ means(dfrm, variable, by, total = NULL, pack = 1, dig = 2, alpha = 0.1)
 
 \item{dig}{the number of digits to use for output statistics (except for N which is always displayed as integer)}
 
-\item{alpha}{the alpha in case the statistcs pack calculates confidence limits}
+\item{alpha}{the alpha in case the statistics pack calculates confidence limits}
 }
 \value{
-The function returns a dataframe with calculated descriptive statisitics
+The function returns a dataframe with calculated descriptive statistics
 }
 \description{
 This function calculates summary statistics on a data frame. It is intended to use to
@@ -38,7 +38,7 @@ The function calculates multiple statistics of a data frame that can be stratifi
     \item N, Mean (SD), Median, Range (Both Mean (SD) and Range are concatenated to generate a dense overview of statistics)
   }
 All statistics are calculated on using na.rm set to TRUE, meaning that NA values are removed before calculating the statistics.
-A predefined set of statisitics is chosen and not the possibility to implement user defined descriptive statisitics.
+A predefined set of statistics is chosen and not the possibility to implement user defined descriptive statistics.
 The reason for this is that there are many other (more simple) options to do this within R.
 }
 \examples{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ltx_table_design.r
 \name{ltx_table_design}
 \alias{ltx_table_design}
-\title{Designs a table based on a object returned by the rr_table_prep function}
+\title{Designs a table based on a object returned by the table_prep function}
 \usage{
 ltx_table_design(dfl, uselabel = TRUE, yhead = FALSE, footnote = "",
   mancol = NULL, size = "\\\\normalsize", title = "table",
@@ -40,10 +40,10 @@ The function returns a vector that defines the entire latex table. This vector c
   however it is intended to be used in a print function to add to a latex document.
 }
 \description{
-This function designs the a latex table based on the data frame list returned by the rr_table_prep function.
+This function designs the a latex table based on the data frame list returned by the table_prep function.
 }
 \details{
-This function designs a latex pivot table based on the results of the rr_table_prep output. This means that the function
+This function designs a latex pivot table based on the results of the table_prep output. This means that the function
   Should always be used in conjunction with this function.
 }
 \examples{

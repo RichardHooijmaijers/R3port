@@ -10,7 +10,7 @@
 #' @param total character vector of variable(s) within the data frame to calculate totals on
 #' @param pack numeric indicating number of the pack or name of the function with different descriptive statistics (see details)
 #' @param dig the number of digits to use for output statistics (except for N which is always displayed as integer)
-#' @param alpha the alpha in case the statistcs pack calculates confidence limits
+#' @param alpha the alpha in case the statistics pack calculates confidence limits
 #'
 #' @details The function calculates multiple statistics of a data frame that can be stratified. Furthermore, the statistics for a total
 #'   can also be generated. Currently the function has the possibility to calculate 3 different sets of statistics which are commonly
@@ -21,10 +21,10 @@
 #'     \item N, Mean (SD), Median, Range (Both Mean (SD) and Range are concatenated to generate a dense overview of statistics)
 #'   }
 #' All statistics are calculated on using na.rm set to TRUE, meaning that NA values are removed before calculating the statistics.
-#' A predefined set of statisitics is chosen and not the possibility to implement user defined descriptive statisitics.
+#' A predefined set of statistics is chosen and not the possibility to implement user defined descriptive statistics.
 #' The reason for this is that there are many other (more simple) options to do this within R.
 #'
-#' @return The function returns a dataframe with calculated descriptive statisitics
+#' @return The function returns a dataframe with calculated descriptive statistics
 #'
 #' @export
 #' @examples

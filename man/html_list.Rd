@@ -27,7 +27,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{title}{character string to define the title of the output which will be added to the caption}
 
-\item{titlepr}{character string to define the prefix of the outpu title. Can be used to create custom table numbering}
+\item{titlepr}{character string to define the prefix of the output title. Can be used to create custom table numbering}
 
 \item{group}{numeric indicating the last index of the used variables that should be grouped (displayed in table with a certain white space), interpreted as x[1:group]}
 

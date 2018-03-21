@@ -12,7 +12,7 @@
 #'    If set to TRUE, the function will try to use the label attribute for the display of variable(s).
 #' @param footnote character string with the footnote to be placed in the footer of the page (HTML coding can be used for example to create line breaks)
 #' @param title character string to define the title of the output which will be added to the caption
-#' @param titlepr character string to define the prefix of the outpu title. Can be used to create custom table numbering
+#' @param titlepr character string to define the prefix of the output title. Can be used to create custom table numbering
 #' @param group numeric indicating the last index of the used variables that should be grouped (displayed in table with a certain white space), interpreted as x[1:group]
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param tclass character string with the table class. Can be used in combination with custom css

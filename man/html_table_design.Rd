@@ -2,7 +2,7 @@
 % Please edit documentation in R/html_table_design.r
 \name{html_table_design}
 \alias{html_table_design}
-\title{Designs a table based on a object returned by the rr_table_prep function}
+\title{Designs a table based on a object returned by the table_prep function}
 \usage{
 html_table_design(dfl, uselabel = TRUE, yhead = FALSE, footnote = NULL,
   title = "table", titlepr = NULL, xabove = TRUE, group = NULL,
@@ -35,10 +35,10 @@ The function returns a vector that defines the entire HTML table. This vector ca
   however it is intended to be used in a print function to add to a HTML document.
 }
 \description{
-This function designs the a HTML table based on the data frame list returned by the rr_table_prep function.
+This function designs the a HTML table based on the data frame list returned by the table_prep function.
 }
 \details{
-This function designs a HTML pivot table based on the results of the rr_table_prep output. This means that the function
+This function designs a HTML pivot table based on the results of the table_prep output. This means that the function
   Should always be used in conjunction with this function.
 }
 \examples{
