@@ -1,10 +1,13 @@
 Package: R3port
 Type: Package
 Version: 0.1.1
-Title: Report functions for HTML and PDF files
-Description: The package includes functions to create table and plots
-    to be included in HTML or PDF reports.
-Authors@R: person("Richard","Hooijmaijers", ,"<richardhooijmaijers@gmail.com>",c("aut", "cre"))
+Title: Report Functions to Create HTML and PDF Files
+Description: Create and combine HTML and PDF reports from within R.
+    Possibility to design tables and listings for reporting and also include R plots.
+Authors@R: c(
+  person("Richard","Hooijmaijers", ,"richardhooijmaijers@gmail.com",role=c("aut", "cre")),
+  person("Richard","Hooijmaijers", role=c("cph"))
+  )
 Depends:
     R (>= 3.2.0)
 Imports:
@@ -24,8 +27,6 @@ Suggests:
     rmarkdown,
     testthat
 RoxygenNote: 6.0.1
-Author: Richard Hooijmaijers [aut, cre]
-Maintainer: Richard Hooijmaijers <richardhooijmaijers@gmail.com>
 VignetteBuilder: knitr
 URL: https://github.com/RichardHooijmaijers/R3port
 Date: 2018-03-20
