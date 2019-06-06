@@ -13,6 +13,7 @@
 #'    If set to TRUE, the function will try to use the label attribute for the display of x variable(s).
 #' @param yhead logical indicating if the y variable should also be set as header in the table.
 #' @param footnote character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)
+#' @param tablenote character string with the table note to be placed directly below the table (LaTeX coding can be used for example to create line breaks)
 #' @param mancol character string to define manual column alignment. in case argument is NULL, a sensible default will be set.
 #' @param size character string to define the font size of the table
 #' @param title character string to define the title of the table which will be added to the caption
@@ -25,6 +26,8 @@
 #' @param rawout character string with the name of the raw latex file to generate (e.g. only table with no preamble and document ending)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex
 #' @param convchar logical indicating if special characters should be masked
+#' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
+#' @param label character with the label to add after the caption for referencing the table in text
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
@@ -50,11 +53,12 @@
 #'             group=1,titlepr="TBL01",title="Dummy table",
 #'             footnote="this table is not very informative")
 #' }
-ltx_table <- function(dfrm,x,y,var,fill="",uselabel=TRUE,yhead=FALSE,footnote=NULL,mancol=NULL,size="\\footnotesize",title="table",titlepr=NULL,
-                      xabove=FALSE,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,...){
+ltx_table <- function(dfrm,x,y,var,fill="",uselabel=TRUE,yhead=FALSE,footnote="",tablenote="",mancol=NULL,size="\\footnotesize",title="table",titlepr=NULL,
+                      xabove=FALSE,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,tabenv="longtable",label=NULL,...){
 
   tableprep    <- table_prep(dfrm=dfrm,x=x,y=y,var=var,fill=fill,type="latex",convchar=convchar)
-  tabledesign  <- ltx_table_design(tableprep,uselabel=uselabel,yhead=yhead,footnote=footnote,mancol=mancol,size=size,title=title,titlepr=titlepr,xabove=xabove,group=group,xrepeat=xrepeat,hyper=hyper)
+  tabledesign  <- ltx_table_design(tableprep,uselabel=uselabel,yhead=yhead,footnote=footnote,mancol=mancol,size=size,title=title,titlepr=titlepr,
+                                   xabove=xabove,group=group,xrepeat=xrepeat,hyper=hyper,tabenv=tabenv,tablenote=tablenote,label=label)
   ltx_doc(tabledesign,out=out,...)
   if(!is.null(rawout) & !dir.exists(dirname(rawout))){
     succ <- try(dir.create(dirname(rawout),showWarnings = FALSE))

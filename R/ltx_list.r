@@ -11,6 +11,7 @@
 #' @param uselabel logical indicating if labels should be used for the x variable(s).
 #'    If set to TRUE, the function will try to use the label attribute for the display of x variable(s).
 #' @param footnote character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)
+#' @param tablenote character string with the table note to be placed directly below the table (LaTeX coding can be used for example to create line breaks)
 #' @param mancol character string to define manual column alignment. in case argument is NULL, a sensible default will be set.
 #' @param size character string to define the font size of the table
 #' @param title character string to define the title of the table which will be added to the caption
@@ -22,6 +23,8 @@
 #' @param rawout character string with the name of the raw latex file to generate (e.g. only listing with no preamble and document ending)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex
 #' @param convchar logical indicating if special characters should be masked
+#' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
+#' @param label character with the label to add after the caption for referencing the table in text
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @details The vargroup argument should be provided in the following form: \cr
@@ -40,8 +43,9 @@
 #'   ltx_list(Theoph,out=tempfile(fileext=".tex"),vargroup=grp,
 #'            template=paste0(system.file(package="R3port"),"/listing.tex"))
 #' }
-ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,uselabel=TRUE,footnote="",mancol=NULL,size="\\footnotesize",
-                   title="listing",titlepr=NULL,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,...){
+ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,uselabel=TRUE,footnote="",tablenote="",mancol=NULL,size="\\footnotesize",
+                   title="listing",titlepr=NULL,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,tabenv="longtable",
+                   label=NULL,...){
 
   # Create pre-table attributes
   tbld  <- dfrm[,c(vars)]
@@ -56,10 +60,12 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
   if(hyper & !is.null(titlepr)) tbl <- c(tbl,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
   if(hyper & is.null(titlepr))  tbl <- c(tbl,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",title,"}"))
   if(!is.null(titlepr))  tbl <- c(tbl,paste0("\\renewcommand{\\tablename}{} \\renewcommand\\thetable{{",titlepr,"}}"))
-  tbl <- c(tbl,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
-  if(is.null(mancol))  tbl <- c(tbl,paste0(size,"\\begin{longtable}{",paste(rep("l",ncol(tbld)),collapse=""),"}"))
-  if(!is.null(mancol)) tbl <- c(tbl,paste0(size,"\\begin{longtable}{",mancol,"}"))
-  tbl <- c(tbl,paste0("\\caption{",title,"}\\\\"))
+  if(footnote!="") tbl <- c(tbl,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
+
+  coldef  <- ifelse(is.null(mancol),paste(rep("l",ncol(tbld)),collapse=""),mancol)
+  labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
+  if(tabenv=="longtable") tbl <- c(tbl,paste0("\\begin{longtable}{",coldef,"}\n\\caption{",title,"}",labdef,"\\\\"))
+  if(tabenv=="tabular")   tbl <- c(tbl,paste0("\\begin{table}\n\\caption{",title,"}",labdef,"\\begin{tabular}{",coldef,"}\n"))
 
   # Create header
   hdr <- NULL
@@ -79,9 +85,13 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
   if(convchar) lb <- gsub('([#$%&_\\^\\\\{}])', '\\\\\\1',lb, perl = TRUE)
   hdr <- c(hdr,paste0(paste(lb,collapse= " & "),"\\\\"))
   hdr <- c(hdr,"\\hline")
-  tbl <- c(tbl,"\\toprule",hdr,"\\endfirsthead")
-  tbl <- c(tbl,paste0("\\multicolumn{",ncol(tbld),"}{c}{\\tablename~\\thetable{}: ",title,", cont'd}\\\\\\\\"))
-  tbl <- c(tbl,"\\toprule",hdr,"\\endhead")
+  if(tabenv=="longtable"){
+    tbl <- c(tbl,"\\toprule",hdr,"\\endfirsthead")
+    tbl <- c(tbl,paste0("\\multicolumn{",ncol(tbld),"}{c}{\\tablename~\\thetable{}: ",title,", cont'd}\\\\\\\\"))
+    tbl <- c(tbl,"\\toprule",hdr,"\\endhead \\hline \\endfoot \\hline",tablenote,"\\endlastfoot")
+  }else{
+    tbl <- c(tbl,"\\hline",hdr)
+  }
 
   # Add data and close off
   if(!is.null(group)) dup <- !duplicated(tbld[,1:group,drop=FALSE],fromLast=TRUE)
@@ -95,7 +105,11 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
     return(dta)
   })
   tbl <- c(tbl,unlist(dtal))
-  tbl <- c(tbl,"\\bottomrule\\end{longtable}")
+  if(tabenv=="longtable") {
+    tbl <- c(tbl,"\\end{longtable}")
+  }else{
+    tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
+  }
 
   ltx_doc(text=tbl,out=out,...)
   if(!is.null(rawout) & !dir.exists(dirname(rawout))){

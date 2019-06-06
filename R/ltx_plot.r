@@ -8,6 +8,7 @@
 #' @param title character string to define the title of the table which will be added to the caption
 #' @param titlepr character string to define the prefix of the table title. Can be used to create custom table numbering
 #' @param footnote character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)
+#' @param plotnote character string with the plot note to be placed directly below the plot (LaTeX coding can be used for example to create line breaks)
 #' @param lwidth character string indicating the width of the plot within latex (e.g. "\\\\linewidth")
 #' @param pwidth numeric indicating the width of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)
 #' @param pheight numeric indicating the height of the plot to be generated in inches or pixels (for respectively the extensions pdf and png)
@@ -19,6 +20,7 @@
 #' @param rawout character string with the name of the raw latex file to generate (e.g. only plot code with no preamble and document ending)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex
 #' @param linebreak logical indicating if a linebreak (clearpage) should be given after a plot
+#' @param label character with the label to add after the caption for referencing the table in text
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
@@ -44,8 +46,8 @@
 #'   ltx_plot(plot(rnorm(1e6)),out=tempfile(fileext=".tex"),
 #'            outfmt="png",pwidth=2000,pheight=1200)
 #' }
-ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,pwidth=10,pheight=5.5,res=NULL,hyper=TRUE,outfmt="pdf",
-                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,...){
+ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",lwidth=NULL,pwidth=10,pheight=5.5,res=NULL,hyper=TRUE,outfmt="pdf",
+                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,label=NULL,...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
@@ -82,12 +84,13 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,
   plt  <- NULL
   for(i in 1:length(numplots)){
     if(!missing(titlepr))  plt <- c(plt,paste0("\\renewcommand{\\figurename}{} \\renewcommand\\thefigure{{",titlepr,"}}"))
-    plt <- c(plt,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
+    if(footnote!="")  plt <- c(plt,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
     plt  <- c(plt,"\\begin{figure}[H]")
     if(hyper & !missing(titlepr) & i==1) plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
     if(hyper & missing(titlepr) & i==1)  plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",title,"}"))
     if(i==1) {
-      plt  <- c(plt,paste0("\\caption{",title,"}"))
+      labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
+      plt  <- c(plt,paste0("\\caption{",title,"}",labdef))
     }else{
       if(!missing(titlepr)) plt  <- c(plt,paste0("\\caption[]{",title,", cont'd}"))
     }
@@ -99,7 +102,7 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",lwidth=NULL,
 
     plt  <- c(plt,paste0("\\end{figure}",ifelse(linebreak,"\\clearpage","")))
   }
-
+  plt <- c(plt,plotnote)
   # Print the plot
   ltx_doc(text=plt,out=out,...)
   if(!is.null(rawout) & !dir.exists(dirname(rawout))){

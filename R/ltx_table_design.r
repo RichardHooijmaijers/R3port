@@ -8,6 +8,7 @@
 #'    If set to TRUE, the function will try to use the label attribute for the display of x variable(s).
 #' @param yhead logical indicating if the y variable should also be set as header in the table.
 #' @param footnote character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)
+#' @param tablenote character string with the table note to be placed directly below the table (LaTeX coding can be used for example to create line breaks)
 #' @param mancol character string to define manual column alignment. in case argument is NULL, a sensible default will be set.
 #' @param size character string to define the font size of the table
 #' @param title character string to define the title of the table which will be added to the caption
@@ -16,6 +17,8 @@
 #' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param hyper logical indicating if a hypertarget should be set used for bookmarks
+#' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
+#' @param label character with the label to add after the caption for referencing the table in text
 #'
 #' @details This function designs a latex pivot table based on the results of the table_prep output. This means that the function
 #'   Should always be used in conjunction with this function.
@@ -27,17 +30,20 @@
 #'
 #' \dontrun{ltx_table_design(lstobject)}
 
-ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",mancol=NULL,size="\\normalsize",title="table",titlepr=NULL,xabove=TRUE,group=NULL,xrepeat=FALSE,hyper=TRUE){
+ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",tablenote="",mancol=NULL,size="\\normalsize",title="table",titlepr=NULL,
+                             xabove=TRUE,group=NULL,xrepeat=FALSE,hyper=TRUE,tabenv="longtable",label=NULL){
 
   # Create pre-table attributes
   tbl <- NULL
   if(hyper & !is.null(titlepr)) tbl <- c(tbl,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
   if(hyper & is.null(titlepr))  tbl <- c(tbl,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",title,"}"))
   if(!is.null(titlepr))  tbl <- c(tbl,paste0("\\renewcommand{\\tablename}{} \\renewcommand\\thetable{{",titlepr,"}}"))
-  tbl <- c(tbl,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
-  if(is.null(mancol))  tbl <- c(tbl,paste0(size,"\\begin{longtable}{",paste((c(rep("l",length(dfl$tblo$x)),rep("r",ncol(dfl$tbld)-length(dfl$tblo$x)))),collapse=""),"}"))
-  if(!is.null(mancol)) tbl <- c(tbl,paste0(size,"\\begin{longtable}{",mancol,"}"))
-  tbl <- c(tbl,paste0("\\caption{",title,"}\\\\"))
+  if(footnote!="") tbl <- c(tbl,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
+
+  coldef  <- ifelse(is.null(mancol),paste((c(rep("l",length(dfl$tblo$x)),rep("r",ncol(dfl$tbld)-length(dfl$tblo$x)))),collapse=""),mancol)
+  labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
+  if(tabenv=="longtable") tbl <- c(tbl,paste0("\\begin{longtable}{",coldef,"}\n\\caption{",title,"}",labdef,"\\\\"))
+  if(tabenv=="tabular")   tbl <- c(tbl,paste0("\\begin{table}\n\\caption{",title,"}",labdef,"\\begin{tabular}{",coldef,"}\n"))
 
   # Create header (check for future if hdr can be provided as argument (to create non standard tables))
   hdrl <- plyr::llply(1:length(dfl$tblo$y),function(num){
@@ -63,9 +69,14 @@ ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",mancol=NU
     }
     return(hdr)
   })
-  tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endfirsthead")
-  tbl <- c(tbl,paste0("\\multicolumn{",ncol(dfl$tbld),"}{c}{\\tablename~\\thetable{}: ",title," ,cont'd}\\\\\\\\"))
-  tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endhead")
+
+  if(tabenv=="longtable"){
+    tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endfirsthead")
+    tbl <- c(tbl,paste0("\\multicolumn{",ncol(dfl$tbld),"}{c}{\\tablename~\\thetable{}: ",title," ,cont'd}\\\\\\\\"))
+    tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endhead \\hline \\endfoot \\hline",tablenote,"\\endlastfoot")
+  }else{
+    tbl <- c(tbl,"\\hline",unlist(hdrl))
+  }
 
   # Add data and close off
   dup1 <- !duplicated(dfl$tbld[,dfl$tblo$x[1]])
@@ -86,6 +97,10 @@ ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",mancol=NU
     return(dta)
   })
   tbl <- c(tbl,unlist(dtal))
-  tbl <- c(tbl,"\\bottomrule\\end{longtable}")
+  if(tabenv=="longtable") {
+    tbl <- c(tbl,"\\end{longtable}")
+  }else{
+    tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
+  }
   return(tbl)
 }

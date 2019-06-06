@@ -13,6 +13,8 @@
 #' @param rtitle string indicating the title of the output document
 #' @param compile logical indicating if the tex file should be compiled (using tools::texi2dvi)
 #' @param show logical indicating if the resulting pdf file from the compiled tex file should be opened when created
+#' @param compilewith character with the compiler, can be either "texi2dvi" (tools package) or "pdflatex" (system command)
+#'    in case this is NULL (or there is no other way) it will try to find out automatically
 #'
 #' @return The function returns a latex file (or writes output to console)
 #' @seealso \code{\link{html_doc}}
@@ -34,7 +36,8 @@
 #'
 #' }
 
-ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),"/simple.tex"),rendlist,orientation="landscape",rtitle="report",compile=TRUE,show=TRUE){
+ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),"/simple.tex"),
+                    rendlist,orientation="landscape",rtitle="report",compile=TRUE,show=TRUE,compilewith=NULL){
   if(!is.null(out) && !dir.exists(dirname(out))){
     succ <- try(dir.create(dirname(out),showWarnings = FALSE))
     if(!succ) stop("Output folder cannot be created")
@@ -69,9 +72,11 @@ ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),
   }
   if(compile & out!=stdout()){
     # compilation on linux with space in path is not handled well by texi2dvi
-    if(Sys.info()['sysname']=="Linux" && grepl(" ",getwd())){
-      try(system(paste("pdflatex",out),ignore.stdout=TRUE))
-      try(system(paste("pdflatex",out),ignore.stdout=TRUE))
+    if(is.null(compilewith)) compilewith <- "texi2dvi"
+    if(compilewith=="pdflatex" || (Sys.info()['sysname']=="Linux" && grepl(" ",getwd()))){
+      ret <- try(system(paste("pdflatex -interaction=nonstopmode",out),ignore.stdout=FALSE,intern=TRUE))
+      ret <- try(system(paste("pdflatex -interaction=nonstopmode",out),ignore.stdout=FALSE,intern=TRUE))
+      if(any(grepl("Fatal error",ret))) stop("Could not create PDF (check if PDF is open)")
     }else{
       try(tools::texi2dvi(out,pdf=TRUE,clean=TRUE))
     }
@@ -80,7 +85,11 @@ ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),
     if(Sys.info()['sysname']=="Darwin"){
       try(system(paste0("open \"",sub("\\.tex$","\\.pdf",out),"\""),wait=FALSE))
     }else if(Sys.info()['sysname']=="Linux"){
-      try(system(paste0("xdg-open '",sub("\\.tex$","\\.pdf",out),"'")))
+      if(any(grepl("error",suppressWarnings(try(system("xdg-open",intern=TRUE,ignore.stdout=FALSE)))))){
+        try(browseURL(paste0("file://",normalizePath(sub("\\.tex$","\\.pdf",out)))))
+      }else{
+        try(system(paste0("xdg-open '",sub("\\.tex$","\\.pdf",out),"'")))
+      }
     }else if(Sys.info()['sysname']=="Windows"){
       try(shell(paste0("\"",sub("\\.tex$","\\.pdf",out),"\""),wait=FALSE))
     }
