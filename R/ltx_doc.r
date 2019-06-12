@@ -78,7 +78,8 @@ ltx_doc <- function(text,out=NULL,template=paste0(system.file(package="R3port"),
       ret <- try(system(paste("pdflatex -interaction=nonstopmode",out),ignore.stdout=FALSE,intern=TRUE))
       if(any(grepl("Fatal error",ret))) stop("Could not create PDF (check if PDF is open)")
     }else{
-      try(tools::texi2dvi(out,pdf=TRUE,clean=TRUE))
+      try(tools::texi2dvi(out,pdf=TRUE,clean=FALSE))
+      try(file.remove(paste0(gsub("\\.tex$","",out),c(".aux",".log"))))
     }
   }
   if(show & out!=stdout()){
