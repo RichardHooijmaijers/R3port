@@ -93,7 +93,7 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",
       labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
       capt    <- paste0("\\caption{",title,"}",labdef)
     }else{
-      if(!missing(titlepr)) {capt  <- c(plt,paste0("\\caption[]{",title,", cont'd}"))}else{capt <- ""}
+      if(!missing(titlepr)) {capt  <- paste0("\\caption[]{",title,", cont'd}")}else{capt <- ""}
     }
     if(captpl=="top") plt <- c(plt,capt)
     if(is.null(lwidth)){
