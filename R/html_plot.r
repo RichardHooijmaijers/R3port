@@ -69,7 +69,7 @@ html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000
   plt  <- NULL
   for(i in 1:length(numplots)){
     if(i==1) plt <- c(plt,paste("<h1>",titlepr,title,"</h1>"))
-    plt <- c(plt,paste0("<img src='./figures/",paste0(sub("\\.html$","",basename(out)),formatC(i,width=3,flag="0"),".png" ),"' alt='Oops something went wrong, check your code' class='img-responsive'>"))
+    plt <- c(plt,paste0("<img src='./figures/",paste0(sub("\\.html$","",basename(out)),formatC(i,width=3,flag="0"),".png" ),"' alt='Oops something went wrong, check your code' class='img-resp'>"))
     if(!is.null(footnote) & i==length(numplots)) plt <- c(plt,"<br/>",footnote)
   }
 

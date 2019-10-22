@@ -57,3 +57,8 @@ th{
   border-bottom:1px solid #000000;
 }
 #grps{height:7px}
+.img-resp{
+  max-width: 100%;
+  height: auto;
+  max-height: 80vh;
+}
