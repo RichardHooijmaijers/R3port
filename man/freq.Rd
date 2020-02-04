@@ -4,8 +4,16 @@
 \alias{freq}
 \title{Calculate frequency statistics on data frame}
 \usage{
-freq(dfrm, vars, id, denom = nrow(dfrm), dig = 2, total = NULL,
-  totaldenom = nrow(dfrm), spacechar = NULL)
+freq(
+  dfrm,
+  vars,
+  id,
+  denom = nrow(dfrm),
+  dig = 2,
+  total = NULL,
+  totaldenom = nrow(dfrm),
+  spacechar = NULL
+)
 }
 \arguments{
 \item{dfrm}{data frame to calculate the statistics on}

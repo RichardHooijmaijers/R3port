@@ -4,9 +4,16 @@
 \alias{ltx_doc}
 \title{Prints latex code for a table, listing, plot, or text to a a file or console}
 \usage{
-ltx_doc(text, out = NULL, template = paste0(system.file(package = "R3port"),
-  "/simple.tex"), rendlist, orientation = "landscape", rtitle = "report",
-  compile = TRUE, show = TRUE)
+ltx_doc(
+  text,
+  out = NULL,
+  template = paste0(system.file(package = "R3port"), "/simple.tex"),
+  rendlist,
+  orientation = "landscape",
+  rtitle = "report",
+  compile = TRUE,
+  show = TRUE
+)
 }
 \arguments{
 \item{text}{character vector to be placed within latex document}

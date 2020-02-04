@@ -4,10 +4,23 @@
 \alias{html_list}
 \title{Creates a HTML listing}
 \usage{
-html_list(dfrm, vars = names(dfrm), fill = "", vargroup = NULL,
-  porder = TRUE, uselabel = TRUE, footnote = NULL, title = "listing",
-  titlepr = NULL, group = NULL, xrepeat = FALSE, tclass = "sample",
-  out = NULL, rawout = paste0(out, ".rawhtml"), ...)
+html_list(
+  dfrm,
+  vars = names(dfrm),
+  fill = "",
+  vargroup = NULL,
+  porder = TRUE,
+  uselabel = TRUE,
+  footnote = NULL,
+  title = "listing",
+  titlepr = NULL,
+  group = NULL,
+  xrepeat = FALSE,
+  tclass = "sample",
+  out = NULL,
+  rawout = paste0(out, ".rawhtml"),
+  ...
+)
 }
 \arguments{
 \item{dfrm}{data frame to be listed}

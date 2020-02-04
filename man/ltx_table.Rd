@@ -4,11 +4,31 @@
 \alias{ltx_table}
 \title{Creates a latex table}
 \usage{
-ltx_table(dfrm, x, y, var, fill = "", uselabel = TRUE, yhead = FALSE,
-  footnote = NULL, mancol = NULL, size = "\\\\footnotesize",
-  title = "table", titlepr = NULL, xabove = FALSE, group = NULL,
-  xrepeat = FALSE, hyper = TRUE, out = NULL, rawout = paste0(out,
-  ".rawtex"), convchar = TRUE, ...)
+ltx_table(
+  dfrm,
+  x,
+  y,
+  var,
+  fill = "",
+  uselabel = TRUE,
+  yhead = FALSE,
+  footnote = "",
+  tablenote = "",
+  mancol = NULL,
+  size = "\\\\footnotesize",
+  title = "table",
+  titlepr = NULL,
+  xabove = FALSE,
+  group = NULL,
+  xrepeat = FALSE,
+  hyper = TRUE,
+  out = NULL,
+  rawout = paste0(out, ".rawtex"),
+  convchar = TRUE,
+  tabenv = "longtable",
+  label = NULL,
+  ...
+)
 }
 \arguments{
 \item{dfrm}{the data frame for which the table should be generated}
@@ -27,6 +47,8 @@ If set to TRUE, the function will try to use the label attribute for the display
 \item{yhead}{logical indicating if the y variable should also be set as header in the table.}
 
 \item{footnote}{character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)}
+
+\item{tablenote}{character string with the table note to be placed directly below the table (LaTeX coding can be used for example to create line breaks)}
 
 \item{mancol}{character string to define manual column alignment. in case argument is NULL, a sensible default will be set.}
 
@@ -50,6 +72,10 @@ If set to TRUE, the function will try to use the label attribute for the display
 In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex}
 
 \item{convchar}{logical indicating if special characters should be masked}
+
+\item{tabenv}{character with the table environment to use. Currently "longtable" and "tabular" are supported}
+
+\item{label}{character with the label to add after the caption for referencing the table in text}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }

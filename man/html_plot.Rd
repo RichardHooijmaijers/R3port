@@ -4,9 +4,20 @@
 \alias{html_plot}
 \title{Prints a R plot to a HTML file or console}
 \usage{
-html_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
-  pwidth = 1000, pheight = 600, res = NULL, fontsize = 12,
-  units = "px", rawout = paste0(out, ".rawhtml"), ...)
+html_plot(
+  plot,
+  out,
+  title = "plot",
+  titlepr = NULL,
+  footnote = "",
+  pwidth = 1000,
+  pheight = 600,
+  res = NULL,
+  fontsize = 12,
+  units = "px",
+  rawout = paste0(out, ".rawhtml"),
+  ...
+)
 }
 \arguments{
 \item{plot}{plot object or function call that creates plot to be printed to file}

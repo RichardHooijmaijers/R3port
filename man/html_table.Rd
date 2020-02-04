@@ -4,10 +4,25 @@
 \alias{html_table}
 \title{Creates a HTML table}
 \usage{
-html_table(dfrm, x, y, var, fill = "", uselabel = TRUE, yhead = FALSE,
-  footnote = NULL, title = "table", titlepr = NULL, xabove = FALSE,
-  group = NULL, xrepeat = FALSE, tclass = "sample", out = NULL,
-  rawout = paste0(out, ".rawhtml"), ...)
+html_table(
+  dfrm,
+  x,
+  y,
+  var,
+  fill = "",
+  uselabel = TRUE,
+  yhead = FALSE,
+  footnote = NULL,
+  title = "table",
+  titlepr = NULL,
+  xabove = FALSE,
+  group = NULL,
+  xrepeat = FALSE,
+  tclass = "sample",
+  out = NULL,
+  rawout = paste0(out, ".rawhtml"),
+  ...
+)
 }
 \arguments{
 \item{dfrm}{the data frame for which the table should be generated}

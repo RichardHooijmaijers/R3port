@@ -4,9 +4,15 @@
 \alias{html_doc}
 \title{Prints a HTML table, listing or plot to a a file or console}
 \usage{
-html_doc(text, out = NULL, show = TRUE, rtitle = "report",
+html_doc(
+  text,
+  out = NULL,
+  show = TRUE,
+  rtitle = "report",
   template = paste0(system.file(package = "R3port"), "/simple.html"),
-  rendlist, css = paste0(system.file(package = "R3port"), "/style.css"))
+  rendlist,
+  css = paste0(system.file(package = "R3port"), "/style.css")
+)
 }
 \arguments{
 \item{text}{character vector to be placed within HTML document}

@@ -4,9 +4,14 @@
 \alias{html_combine}
 \title{Combines multiple HTML files to a single tex and compiles document}
 \usage{
-html_combine(combine = ".", out = NULL, toctheme = TRUE,
-  css = paste0(system.file(package = "R3port"), "/style.css"), clean = 0,
-  ...)
+html_combine(
+  combine = ".",
+  out = NULL,
+  toctheme = TRUE,
+  css = paste0(system.file(package = "R3port"), "/style.css"),
+  clean = 0,
+  ...
+)
 }
 \arguments{
 \item{combine}{character string with the location of the raw html files or list with file names within same directory}

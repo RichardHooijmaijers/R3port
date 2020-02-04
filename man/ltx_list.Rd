@@ -4,11 +4,29 @@
 \alias{ltx_list}
 \title{Creates a latex listing}
 \usage{
-ltx_list(dfrm, vars = names(dfrm), fill = "", vargroup = NULL,
-  porder = TRUE, uselabel = TRUE, footnote = "", mancol = NULL,
-  size = "\\\\footnotesize", title = "listing", titlepr = NULL,
-  group = NULL, xrepeat = FALSE, hyper = TRUE, out = NULL,
-  rawout = paste0(out, ".rawtex"), convchar = TRUE, ...)
+ltx_list(
+  dfrm,
+  vars = names(dfrm),
+  fill = "",
+  vargroup = NULL,
+  porder = TRUE,
+  uselabel = TRUE,
+  footnote = "",
+  tablenote = "",
+  mancol = NULL,
+  size = "\\\\footnotesize",
+  title = "listing",
+  titlepr = NULL,
+  group = NULL,
+  xrepeat = FALSE,
+  hyper = TRUE,
+  out = NULL,
+  rawout = paste0(out, ".rawtex"),
+  convchar = TRUE,
+  tabenv = "longtable",
+  label = NULL,
+  ...
+)
 }
 \arguments{
 \item{dfrm}{the data frame to be prepared}
@@ -25,6 +43,8 @@ ltx_list(dfrm, vars = names(dfrm), fill = "", vargroup = NULL,
 If set to TRUE, the function will try to use the label attribute for the display of x variable(s).}
 
 \item{footnote}{character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)}
+
+\item{tablenote}{character string with the table note to be placed directly below the table (LaTeX coding can be used for example to create line breaks)}
 
 \item{mancol}{character string to define manual column alignment. in case argument is NULL, a sensible default will be set.}
 
@@ -46,6 +66,10 @@ If set to TRUE, the function will try to use the label attribute for the display
 In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex}
 
 \item{convchar}{logical indicating if special characters should be masked}
+
+\item{tabenv}{character with the table environment to use. Currently "longtable" and "tabular" are supported}
+
+\item{label}{character with the label to add after the caption for referencing the table in text}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }

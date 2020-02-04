@@ -4,21 +4,40 @@
 \alias{ltx_plot}
 \title{Prints a R plot to a latex file or console}
 \usage{
-ltx_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
-  lwidth = NULL, pwidth = 10, pheight = 5.5, res = NULL, hyper = TRUE,
-  outfmt = "pdf", fontsize = 12, units = "px", rawout = paste0(out,
-  ".rawtex"), linebreak = TRUE, ...)
+ltx_plot(
+  plot,
+  out,
+  title = "plot",
+  titlepr = NULL,
+  footnote = "",
+  plotnote = "",
+  lwidth = NULL,
+  pwidth = 10,
+  pheight = 5.5,
+  res = NULL,
+  hyper = TRUE,
+  outfmt = "pdf",
+  fontsize = 12,
+  units = "px",
+  rawout = paste0(out, ".rawtex"),
+  linebreak = TRUE,
+  label = NULL,
+  captpl = "top",
+  ...
+)
 }
 \arguments{
 \item{plot}{plot object or function call that creates plot to be printed to file}
 
 \item{out}{filename for the output latex file}
 
-\item{title}{character string to define the title of the table which will be added to the caption}
+\item{title}{character string to define the title of the plot which will be added to the caption}
 
-\item{titlepr}{character string to define the prefix of the table title. Can be used to create custom table numbering}
+\item{titlepr}{character string to define the prefix of the title. Can be used to create custom numbering}
 
 \item{footnote}{character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)}
+
+\item{plotnote}{character string with the plot note to be placed directly below the plot (LaTeX coding can be used for example to create line breaks)}
 
 \item{lwidth}{character string indicating the width of the plot within latex (e.g. "\\\\linewidth")}
 
@@ -40,6 +59,10 @@ ltx_plot(plot, out, title = "plot", titlepr = NULL, footnote = "",
 In case NULL no raw output will be generated. In order to combine results the filename should end in .rawtex}
 
 \item{linebreak}{logical indicating if a linebreak (clearpage) should be given after a plot}
+
+\item{label}{character with the label to add after the caption for referencing the table in text}
+
+\item{captpl}{character with the caption placement, can be either "top" or "bottom"}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }

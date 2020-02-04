@@ -4,8 +4,7 @@
 \alias{ltx_combine}
 \title{Combines multiple latex files to a single tex and compiles document}
 \usage{
-ltx_combine(combine = ".", out = NULL, presentation = FALSE, clean = 0,
-  ...)
+ltx_combine(combine = ".", out = NULL, presentation = FALSE, clean = 0, ...)
 }
 \arguments{
 \item{combine}{character string with the location of the raw tex files or list with file names within same directory}

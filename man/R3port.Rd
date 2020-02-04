@@ -3,7 +3,6 @@
 \docType{package}
 \name{R3port}
 \alias{R3port}
-\alias{R3port-package}
 \title{Report functions for HTML and PDF files}
 \description{
 The R3port package is written to easily create pdf and html documents
