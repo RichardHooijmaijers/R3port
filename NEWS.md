@@ -2,10 +2,12 @@
 
 First version of the package
 
-# R3port 0.2.2
+# R3port 0.2.3
 
 - Improvements in compilation of latex files
 - More responsive plots within html files
 - Added tabular environment for latex tables and listings
 - Added possibility to include labels for latex output
 - Added possibility to define the location of the caption in latex output
+- Added possibility to rotate figures in latex output
+- Added possibility to delete figures in case they were already created under the same name
