@@ -1,6 +1,6 @@
 Package: R3port
 Type: Package
-Version: 0.2.2
+Version: 0.2.3
 Title: Report Functions to Create HTML and PDF Files
 Description: Create and combine HTML and PDF reports from within R.
     Possibility to design tables and listings for reporting and also include R plots.

@@ -16,6 +16,7 @@ html_plot(
   fontsize = 12,
   units = "px",
   rawout = paste0(out, ".rawhtml"),
+  cleancur = FALSE,
   ...
 )
 }
@@ -42,6 +43,8 @@ html_plot(
 
 \item{rawout}{character string with the name of the raw HTML file to generate (e.g. only plotting code)
 In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html}
+
+\item{cleancur}{logical indicating if the available plots should be deleted before creating new ones}
 
 \item{...}{additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show}
 }

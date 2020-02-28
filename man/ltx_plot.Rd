@@ -23,6 +23,8 @@ ltx_plot(
   linebreak = TRUE,
   label = NULL,
   captpl = "top",
+  rotate = FALSE,
+  cleancur = FALSE,
   ...
 )
 }
@@ -63,6 +65,10 @@ In case NULL no raw output will be generated. In order to combine results the fi
 \item{label}{character with the label to add after the caption for referencing the table in text}
 
 \item{captpl}{character with the caption placement, can be either "top" or "bottom"}
+
+\item{rotate}{logical indicating if the resulting figure should be rotated 90 degrees clockwise}
+
+\item{cleancur}{logical indicating if the available plots should be deleted before creating new ones}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }

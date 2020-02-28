@@ -15,6 +15,7 @@
 #' @param units character string with the units to use for plot width and height passed through to png function
 #' @param rawout character string with the name of the raw HTML file to generate (e.g. only plotting code)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html
+#' @param cleancur logical indicating if the available plots should be deleted before creating new ones
 #' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
 #'
 #' @return The function returns a HTML file (or writes output to console)
@@ -40,12 +41,19 @@
 #'   html_plot(pl(),out=tempfile(fileext=".html"))
 #' }
 html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000,pheight=600,res=NULL,
-                      fontsize=12,units="px",rawout=paste0(out,".rawhtml"),...){
+                      fontsize=12,units="px",rawout=paste0(out,".rawhtml"),cleancur=FALSE,...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
   if(!is.null(getOption('pwidth')))   pwidth   <- getOption('pwidth')
   if(!is.null(getOption('pheight')))  pheight  <- getOption('pheight')
+
+  # Delete figure files when specified
+  if(cleancur){
+    dirnm <- list.files(paste0(dirname(out),"/figures"),full.names = TRUE)
+    dirnm <- dirnm[grepl(paste0("^",basename(tools::file_path_sans_ext(out)),"[[:digit:]]{3}\\.png"),basename(dirnm))]
+    if(length(dirnm)>0) try(file.remove(dirnm),silent=TRUE)
+  }
 
   # Create subfolder to place graphs in
   dir.create(paste(dirname(out),"figures",sep="/"),showWarnings = FALSE)
@@ -65,7 +73,7 @@ html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000
 
   # Create the HTML plot code
   # Multiple plots are implemented where the title is not repeated.
-  numplots <-  list.files(paste0(dirname(out),"/figures/"),pattern=paste0(sub("\\.html$","",basename(out)),"...\\.png"))
+  numplots <-  list.files(paste0(dirname(out),"/figures/"),pattern=paste0("^",tools::file_path_sans_ext(basename(out)),"[[:digit:]]{3}\\.png"))
   plt  <- NULL
   for(i in 1:length(numplots)){
     if(i==1) plt <- c(plt,paste("<h1>",titlepr,title,"</h1>"))

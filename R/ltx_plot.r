@@ -22,6 +22,8 @@
 #' @param linebreak logical indicating if a linebreak (clearpage) should be given after a plot
 #' @param label character with the label to add after the caption for referencing the table in text
 #' @param captpl character with the caption placement, can be either "top" or "bottom"
+#' @param rotate logical indicating if the resulting figure should be rotated 90 degrees clockwise
+#' @param cleancur logical indicating if the available plots should be deleted before creating new ones
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
@@ -48,12 +50,19 @@
 #'            outfmt="png",pwidth=2000,pheight=1200)
 #' }
 ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",lwidth=NULL,pwidth=10,pheight=5.5,res=NULL,hyper=TRUE,outfmt="pdf",
-                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,label=NULL,captpl="top",...){
+                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,label=NULL,captpl="top",rotate=FALSE,cleancur=FALSE,...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
   if(!is.null(getOption('pwidth')))   pwidth   <- getOption('pwidth')
   if(!is.null(getOption('pheight')))  pheight  <- getOption('pheight')
+
+  # Delete figure files when specified
+  if(cleancur){
+    dirnm <- list.files(paste0(dirname(out),"/figures"),full.names = TRUE)
+    dirnm <- dirnm[grepl(paste0("^",basename(tools::file_path_sans_ext(out)),"[[:digit:]]{3}\\.",outfmt),basename(dirnm))]
+    if(length(dirnm)>0) try(file.remove(dirnm),silent=TRUE)
+  }
 
   # Create subfolder to place graphs in
   dir.create(paste(dirname(out),"figures",sep="/"),showWarnings = FALSE)
@@ -81,12 +90,12 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",
   # Multiple plots are implemented where the caption and bookmarks are not repeated.
   # However if a titlepr is provided, the caption is repeated with ",cont'd" and not added to lof
   # This strategy was chosen as the default behaviour is to increment number the caption
-  numplots <-  list.files(paste0(dirname(out),"/figures/"),pattern=paste0(sub("\\.tex$","",basename(out)),"...\\.",outfmt))
+  numplots <-  list.files(paste0(dirname(out),"/figures/"),pattern=paste0("^",tools::file_path_sans_ext(basename(out)),"[[:digit:]]{3}\\.",outfmt))
   plt  <- NULL
   for(i in 1:length(numplots)){
     if(!missing(titlepr))  plt <- c(plt,paste0("\\renewcommand{\\figurename}{} \\renewcommand\\thefigure{{",titlepr,"}}"))
     if(footnote!="")  plt <- c(plt,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
-    plt  <- c(plt,"\\begin{figure}[H]")
+    plt  <- c(plt,ifelse(rotate,"\\begin{sidewaysfigure}",""),"\\begin{figure}[H]")
     if(hyper & !missing(titlepr) & i==1) plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
     if(hyper & missing(titlepr) & i==1)  plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",title,"}"))
     if(i==1) {
@@ -102,7 +111,7 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",
       plt  <- c(plt,paste0("\\includegraphics[width=",lwidth,"]{{\"figures/",paste0(sub("\\.tex$","",basename(out)),formatC(i,width=3,flag="0"),"\"}.",outfmt),"}\\\\"))
     }
     if(captpl=="bottom") plt <- c(plt,capt)
-    plt  <- c(plt,paste0("\\end{figure}",ifelse(linebreak,"\\clearpage","")))
+    plt  <- c(plt,paste0("\\end{figure}",ifelse(rotate,"\\end{sidewaysfigure}",""),ifelse(linebreak,"\\clearpage","")))
   }
   plt <- c(plt,plotnote)
   # Print the plot
