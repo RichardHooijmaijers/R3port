@@ -1,0 +1,33 @@
+\hypertarget{customer frequency}{} \bookmark[dest=customer frequency,level=0]{customer frequency}
+\begin{longtable}{lllll}
+\caption{customer frequency}\\
+\toprule
+&&
+\multicolumn{ 3 }{c}{ time } \\
+\cmidrule(lr){3-5}
+Gender & Day of the week & Dinner & Lunch & Total \\
+\hline
+\endfirsthead
+\multicolumn{5}{c}{\tablename~\thetable{}: customer frequency ,cont'd}\\\\
+\toprule
+&&
+\multicolumn{ 3 }{c}{ time } \\
+\cmidrule(lr){3-5}
+Gender & Day of the week & Dinner & Lunch & Total \\
+\hline
+\endhead \hline \endfoot \hline
+
+\endlastfoot
+\multicolumn{ 4 }{l}{\textit{ Female }}\\
+& Thur & 1~~(0.41) & 31~(12.70) & 32~(13.11) \\
+ & Fri & 5~~(2.05) & 4~~(1.64) & 9~~(3.69) \\
+ & Sat & 28~(11.48) &  & 28~(11.48) \\
+ & Sun & 18~(7.38) &  & 18~(7.38) \\
+[2ex]
+\multicolumn{ 4 }{l}{\textit{ Male }}\\
+& Thur &  & 30~(12.30) & 30~(12.30) \\
+ & Fri & 7~~(2.87) & 3~~(1.23) & 10~(4.10) \\
+ & Sat & 59~(24.18) &  & 59~(24.18) \\
+ & Sun & 58~(23.77) &  & 58~(23.77) \\
+[2ex]
+\end{longtable}

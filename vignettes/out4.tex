@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[ landscape,a4paper,top=1in, bottom=1.2in, left=0.75in, right=0.75in]{geometry}
+\usepackage{graphicx,longtable,amsfonts,booktabs,fancyhdr,lastpage,hyperref,bookmark,caption,listings,float}
+\usepackage[figuresleft]{rotating}
+\renewcommand*{\familydefault}{\ttdefault}
+\setlength\parindent{0pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTcapwidth}{8in}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{}\rfoot{}\lhead{\today}  \chead{ report } \rhead{\thepage\ of \pageref{LastPage}}
+\makeatletter \renewcommand*\l@table{\@dottedtocline{1}{1.5em}{6em}} \makeatother
+\makeatletter \renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{6em}} \makeatother
+\begin{document}
+\hypertarget{customer frequency}{} \bookmark[dest=customer frequency,level=0]{customer frequency}
+\begin{longtable}{lllll}
+\caption{customer frequency}\\
+\toprule
+&&
+\multicolumn{ 3 }{c}{ time } \\
+\cmidrule(lr){3-5}
+Gender & Day of the week & Dinner & Lunch & Total \\
+\hline
+\endfirsthead
+\multicolumn{5}{c}{\tablename~\thetable{}: customer frequency ,cont'd}\\\\
+\toprule
+&&
+\multicolumn{ 3 }{c}{ time } \\
+\cmidrule(lr){3-5}
+Gender & Day of the week & Dinner & Lunch & Total \\
+\hline
+\endhead \hline \endfoot \hline
+
+\endlastfoot
+\multicolumn{ 4 }{l}{\textit{ Female }}\\
+& Thur & 1~~(0.41) & 31~(12.70) & 32~(13.11) \\
+ & Fri & 5~~(2.05) & 4~~(1.64) & 9~~(3.69) \\
+ & Sat & 28~(11.48) &  & 28~(11.48) \\
+ & Sun & 18~(7.38) &  & 18~(7.38) \\
+[2ex]
+\multicolumn{ 4 }{l}{\textit{ Male }}\\
+& Thur &  & 30~(12.30) & 30~(12.30) \\
+ & Fri & 7~~(2.87) & 3~~(1.23) & 10~(4.10) \\
+ & Sat & 59~(24.18) &  & 59~(24.18) \\
+ & Sun & 58~(23.77) &  & 58~(23.77) \\
+[2ex]
+\end{longtable}
+\end{document}

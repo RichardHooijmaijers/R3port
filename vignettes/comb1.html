@@ -1,0 +1,196 @@
+<!-- Take into account that Rout always returns information for css and rrres tags -->
+<!-- In case the rr_hcombine function is used with argument toctheme=TRUE also information for rrtoc is returned-->
+<!DOCTYPE html>
+<html>
+<title> report</title>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='style.css' type='text/css'>
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'></script>
+  <script>
+  $(document).ready(function(){
+    $('.showhide').hide();
+    $('a').click(function(){
+      $('.showhide').hide();
+      $('#'+$(this).attr('id')+'d').show();
+    });
+  });
+  </script>
+</head>
+<body>
+  <h2 class='text-center'> report </small></h2><hr>
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-md-3'>
+        <ul class='nav nav-pills nav-stacked'>
+          <li ><a id='out1' href='#'>a listing</a></li><li ><a id='out2' href='#'>  total bill statistics </a></li><li ><a id='out3' href='#'> plot A example for basic plotting </a></li><li ><a id='out4' href='#'> plot B example for plotting lists </a></li><li ><a id='out5' href='#'> plot C example for base plot </a></li>
+        </ul>
+      </div>
+      <div class='col-md-9'>
+        <div id='out1d' class='showhide'>
+<h1>a listing</h1>
+<table class='sample'>
+<tr><td colspan=' 5 '></td></tr>
+<td colspan='3'></td><td id='fh' colspan='2'>income</td>
+<tr><td colspan=' 5 '></td></tr>
+</tr><td id='lh'> sex </td><td id='lh'> day </td><td id='lh'> statistic </td><td id='lh'> tip </td><td id='lh'> Total Bill </td></tr>
+<td> Female </td><td> Thur </td><td> Ntot </td><td> 32 </td><td> 32 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 32 </td><td> 32 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 2.58 </td><td> 16.72 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 2.00 </td><td> 13.79 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.11 </td><td> 7.76 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.25 </td><td> 8.35 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 5.17 </td><td> 43.11 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.24 - 2.91 </td><td> 14.39 - 19.04 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td>  </td><td> Fri </td><td> Ntot </td><td> 9 </td><td> 9 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 9 </td><td> 9 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 2.78 </td><td> 14.15 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 3.00 </td><td> 15.38 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 0.94 </td><td> 4.79 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.00 </td><td> 5.75 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 4.30 </td><td> 22.75 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.20 - 3.36 </td><td> 11.18 - 17.11 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td>  </td><td> Sat </td><td> Ntot </td><td> 28 </td><td> 28 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 28 </td><td> 28 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 2.80 </td><td> 19.68 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 2.62 </td><td> 18.36 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.23 </td><td> 8.81 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.00 </td><td> 3.07 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 6.50 </td><td> 44.30 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.40 - 3.20 </td><td> 16.85 - 22.52 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td>  </td><td> Sun </td><td> Ntot </td><td> 18 </td><td> 18 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 18 </td><td> 18 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 3.37 </td><td> 19.87 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 3.50 </td><td> 17.41 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.14 </td><td> 7.84 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.01 </td><td> 9.60 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 5.20 </td><td> 35.26 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.90 - 3.83 </td><td> 16.66 - 23.09 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td> Male </td><td> Thur </td><td> Ntot </td><td> 30 </td><td> 30 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 30 </td><td> 30 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 2.98 </td><td> 18.71 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 2.53 </td><td> 16.98 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.35 </td><td> 8.02 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.44 </td><td> 7.51 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 6.70 </td><td> 41.19 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.56 - 3.40 </td><td> 16.23 - 21.20 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td>  </td><td> Fri </td><td> Ntot </td><td> 10 </td><td> 10 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 10 </td><td> 10 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 2.69 </td><td> 19.86 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 2.60 </td><td> 17.21 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.14 </td><td> 10.02 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.50 </td><td> 8.58 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 4.73 </td><td> 40.17 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.03 - 3.35 </td><td> 14.05 - 25.66 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td>  </td><td> Sat </td><td> Ntot </td><td> 59 </td><td> 59 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 59 </td><td> 59 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 3.08 </td><td> 20.80 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 3.00 </td><td> 18.24 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.79 </td><td> 9.84 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.00 </td><td> 7.74 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 10.00 </td><td> 50.81 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.69 - 3.47 </td><td> 18.66 - 22.94 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+<td>  </td><td> Sun </td><td> Ntot </td><td> 58 </td><td> 58 </td></tr>
+<td>  </td><td>  </td><td> N </td><td> 58 </td><td> 58 </td></tr>
+<td>  </td><td>  </td><td> Nmiss </td><td> 0 </td><td> 0 </td></tr>
+<td>  </td><td>  </td><td> Mean </td><td> 3.22 </td><td> 21.89 </td></tr>
+<td>  </td><td>  </td><td> Median </td><td> 3.08 </td><td> 20.73 </td></tr>
+<td>  </td><td>  </td><td> SD </td><td> 1.27 </td><td> 9.13 </td></tr>
+<td>  </td><td>  </td><td> Min </td><td> 1.32 </td><td> 7.25 </td></tr>
+<td>  </td><td>  </td><td> Max </td><td> 6.50 </td><td> 48.17 </td></tr>
+<td>  </td><td>  </td><td> 90% CLM </td><td> 2.94 - 3.50 </td><td> 19.88 - 23.89 </td></tr>
+<tr><td id='grps' colspan='5'></td></tr>
+</table>
+a footnote
+</div>
+<div id='out2d' class='showhide'>
+<h1>  total bill statistics </h1>
+<table class='sample'>
+<tr><td colspan='8'></td></tr>
+<tr><td></td><td></td>
+<td id='fh' colspan='2'>Thur</td><td id='fh' colspan='2'>Fri</td><td id='fh' colspan='1'>Sat</td><td id='fh' colspan='1'>Sun</td> </tr>
+<tr><td colspan='8'></td></tr>
+<tr><td id='lhfcol'> sex </td><td id='lhfcol'> statistic </td>
+<td id='lh'> Dinner </td><td id='lh'> Lunch </td><td id='lh'> Dinner </td><td id='lh'> Lunch </td><td id='lh'> Dinner </td><td id='lh'> Dinner </td></tr>
+<tr><td id='xabove' colspan='8'>Female</td></tr>
+<tr><td></td><td id='fcol'> N </td>
+<td> 1 </td><td> 31 </td><td> 5 </td><td> 4 </td><td> 28 </td><td> 18 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Mean </td>
+<td> 18.78 </td><td> 16.65 </td><td> 14.31 </td><td> 13.94 </td><td> 19.68 </td><td> 19.87 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Median </td>
+<td> 18.78 </td><td> 13.42 </td><td> 15.38 </td><td> 14.70 </td><td> 18.36 </td><td> 17.41 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> SD </td>
+<td>  NA </td><td> 7.88 </td><td> 6.29 </td><td> 2.87 </td><td> 8.81 </td><td> 7.84 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Min </td>
+<td> 18.78 </td><td> 8.35 </td><td> 5.75 </td><td> 10.09 </td><td> 3.07 </td><td> 9.60 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Max </td>
+<td> 18.78 </td><td> 43.11 </td><td> 22.75 </td><td> 16.27 </td><td> 44.30 </td><td> 35.26 </td></tr>
+<tr><td id='xabove' colspan='8'>Male</td></tr>
+<tr><td></td><td id='fcol'> N </td>
+<td>  </td><td> 30 </td><td> 7 </td><td> 3 </td><td> 59 </td><td> 58 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Mean </td>
+<td>  </td><td> 18.71 </td><td> 23.49 </td><td> 11.39 </td><td> 20.80 </td><td> 21.89 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Median </td>
+<td>  </td><td> 16.98 </td><td> 22.49 </td><td> 12.16 </td><td> 18.24 </td><td> 20.73 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> SD </td>
+<td>  </td><td> 8.02 </td><td> 9.86 </td><td> 2.51 </td><td> 9.84 </td><td> 9.13 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Min </td>
+<td>  </td><td> 7.51 </td><td> 12.03 </td><td> 8.58 </td><td> 7.74 </td><td> 7.25 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Max </td>
+<td>  </td><td> 41.19 </td><td> 40.17 </td><td> 13.42 </td><td> 50.81 </td><td> 48.17 </td></tr>
+<tr><td id='xabove' colspan='8'>Total</td></tr>
+<tr><td></td><td id='fcol'> N </td>
+<td> 1 </td><td> 61 </td><td> 12 </td><td> 7 </td><td> 87 </td><td> 76 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Mean </td>
+<td> 18.78 </td><td> 17.66 </td><td> 19.66 </td><td> 12.85 </td><td> 20.44 </td><td> 21.41 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Median </td>
+<td> 18.78 </td><td> 16.00 </td><td> 18.66 </td><td> 13.42 </td><td> 18.24 </td><td> 19.63 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> SD </td>
+<td>  NA </td><td> 7.95 </td><td> 9.47 </td><td> 2.84 </td><td> 9.48 </td><td> 8.83 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Min </td>
+<td> 18.78 </td><td> 7.51 </td><td> 5.75 </td><td> 8.58 </td><td> 3.07 </td><td> 7.25 </td></tr>
+<tr><td id='fcol'>  </td><td id='fcol'> Max </td>
+<td> 18.78 </td><td> 43.11 </td><td> 40.17 </td><td> 16.27 </td><td> 50.81 </td><td> 48.17 </td></tr>
+</table>
+</br></br>
+</div>
+<div id='out3d' class='showhide'>
+<h1> plot A example for basic plotting </h1>
+<img src='./figures/out6001.png' alt='Oops something went wrong, check your code' class='img-resp'>
+<br/>
+
+</div>
+<div id='out4d' class='showhide'>
+<h1> plot B example for plotting lists </h1>
+<img src='./figures/out7001.png' alt='Oops something went wrong, check your code' class='img-resp'>
+<img src='./figures/out7002.png' alt='Oops something went wrong, check your code' class='img-resp'>
+<br/>
+
+</div>
+<div id='out5d' class='showhide'>
+<h1> plot C example for base plot </h1>
+<img src='./figures/out8001.png' alt='Oops something went wrong, check your code' class='img-resp'>
+<br/>
+
+</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

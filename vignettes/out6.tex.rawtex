@@ -1,0 +1,8 @@
+\renewcommand{\figurename}{} \renewcommand\thefigure{{plot A}}
+
+\begin{figure}[H]
+\hypertarget{example for basic plotting}{} \bookmark[dest=example for basic plotting,level=0]{plot A: example for basic plotting}
+\caption{example for basic plotting}
+\includegraphics[width=0.9\linewidth]{{"figures/out6001"}.pdf}\\
+\end{figure}\clearpage
+

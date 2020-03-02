@@ -1,0 +1,36 @@
+\hypertarget{total bill statistics}{} \bookmark[dest=total bill statistics,level=0]{total bill statistics}
+\begin{longtable}{llllllllllllllll}
+\caption{total bill statistics}\\
+\toprule
+&&
+\multicolumn{7}{c}{Dinner}&\multicolumn{7}{c}{Lunch} \\
+\cmidrule(lr){3-9} \cmidrule(lr){10-16}
+sex & day & N & Mean & Median & SD & Min & Max & N (perc) & N & Mean & Median & SD & Min & Max & N (perc) \\
+\hline
+\endfirsthead
+\multicolumn{16}{c}{\tablename~\thetable{}: total bill statistics ,cont'd}\\\\
+\toprule
+&&
+\multicolumn{7}{c}{Dinner}&\multicolumn{7}{c}{Lunch} \\
+\cmidrule(lr){3-9} \cmidrule(lr){10-16}
+sex & day & N & Mean & Median & SD & Min & Max & N (perc) & N & Mean & Median & SD & Min & Max & N (perc) \\
+\hline
+\endhead \hline \endfoot \hline
+
+\endlastfoot
+\multicolumn{ 15 }{l}{\textit{ Female }}\\
+& Thur & 1 & 18.78 & 18.78 &  NA & 18.78 & 18.78 & 1~~(0.41) & 31 & 16.65 & 13.42 & 7.88 & 8.35 & 43.11 & 31~(12.70) \\
+ & Fri & 5 & 14.31 & 15.38 & 6.29 & 5.75 & 22.75 & 5~~(2.05) & 4 & 13.94 & 14.70 & 2.87 & 10.09 & 16.27 & 4~~(1.64) \\
+ & Sat & 28 & 19.68 & 18.36 & 8.81 & 3.07 & 44.30 & 28~(11.48) &  &  &  &  &  &  &  \\
+ & Sun & 18 & 19.87 & 17.41 & 7.84 & 9.60 & 35.26 & 18~(7.38) &  &  &  &  &  &  &  \\
+\multicolumn{ 15 }{l}{\textit{ Male }}\\
+& Thur &  &  &  &  &  &  &  & 30 & 18.71 & 16.98 & 8.02 & 7.51 & 41.19 & 30~(12.30) \\
+ & Fri & 7 & 23.49 & 22.49 & 9.86 & 12.03 & 40.17 & 7~~(2.87) & 3 & 11.39 & 12.16 & 2.51 & 8.58 & 13.42 & 3~~(1.23) \\
+ & Sat & 59 & 20.80 & 18.24 & 9.84 & 7.74 & 50.81 & 59~(24.18) &  &  &  &  &  &  &  \\
+ & Sun & 58 & 21.89 & 20.73 & 9.13 & 7.25 & 48.17 & 58~(23.77) &  &  &  &  &  &  &  \\
+\multicolumn{ 15 }{l}{\textit{ Total }}\\
+& Thur & 1 & 18.78 & 18.78 &  NA & 18.78 & 18.78 & 1~~(0.41) & 61 & 17.66 & 16.00 & 7.95 & 7.51 & 43.11 & 61~(25.00) \\
+ & Fri & 12 & 19.66 & 18.66 & 9.47 & 5.75 & 40.17 & 12~(4.92) & 7 & 12.85 & 13.42 & 2.84 & 8.58 & 16.27 & 7~~(2.87) \\
+ & Sat & 87 & 20.44 & 18.24 & 9.48 & 3.07 & 50.81 & 87~(35.66) &  &  &  &  &  &  &  \\
+ & Sun & 76 & 21.41 & 19.63 & 8.83 & 7.25 & 48.17 & 76~(31.15) &  &  &  &  &  &  &  \\
+\end{longtable}

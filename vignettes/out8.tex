@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage[ landscape,a4paper,top=1in, bottom=1.2in, left=0.75in, right=0.75in]{geometry}
+\usepackage{graphicx,longtable,amsfonts,booktabs,fancyhdr,lastpage,hyperref,bookmark,caption,listings,float}
+\usepackage[figuresleft]{rotating}
+\setlength\parindent{0pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTcapwidth}{8in}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{}\rfoot{}\lhead{\today}\rhead{\thepage\ of \pageref{LastPage}}
+\makeatletter \renewcommand*\l@table{\@dottedtocline{1}{1.5em}{6em}} \makeatother
+\makeatletter \renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{6em}} \makeatother
+\begin{document}
+\renewcommand{\figurename}{} \renewcommand\thefigure{{plot C}}
+
+\begin{figure}[H]
+\hypertarget{example for base plot}{} \bookmark[dest=example for base plot,level=0]{plot C: example for base plot}
+\caption{example for base plot}
+\includegraphics[width=0.9\linewidth]{{"figures/out8001"}.pdf}\\
+\end{figure}\clearpage
+
+\end{document}

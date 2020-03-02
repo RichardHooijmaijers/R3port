@@ -1,0 +1,14 @@
+\renewcommand{\figurename}{} \renewcommand\thefigure{{plot B}}
+
+\begin{figure}[H]
+\hypertarget{example for plotting lists}{} \bookmark[dest=example for plotting lists,level=0]{plot B: example for plotting lists}
+\caption{example for plotting lists}
+\includegraphics[width=0.9\linewidth]{{"figures/out7001"}.pdf}\\
+\end{figure}\clearpage
+\renewcommand{\figurename}{} \renewcommand\thefigure{{plot B}}
+
+\begin{figure}[H]
+\caption[]{example for plotting lists, cont'd}
+\includegraphics[width=0.9\linewidth]{{"figures/out7002"}.pdf}\\
+\end{figure}\clearpage
+

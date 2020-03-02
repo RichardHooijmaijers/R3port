@@ -34,10 +34,10 @@ Currently the generated output is saved in the same place where the separate tab
 \examples{
 
 # Take into account the usage of tempfile() with multiple function calls
-data(Theoph)
-ltx_list(Theoph[1:11,],out=tempfile(fileext=".tex"),show=FALSE)
-ltx_plot(plot(conc~Time,data=Theoph),out=tempfile(fileext=".tex"),show=FALSE)
 \dontrun{
+  data(Theoph)
+  ltx_list(Theoph[1:11,],out=tempfile(fileext=".tex"),show=FALSE)
+  ltx_plot(plot(conc~Time,data=Theoph),out=tempfile(fileext=".tex"),show=FALSE)
   ltx_combine(combine=tempdir(),out="rep1.tex")
 
   # possibility for presentation layout (beamer template provided in package)
