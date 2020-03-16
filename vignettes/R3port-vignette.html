@@ -12,7 +12,7 @@
 
 <meta name="author" content="Richard Hooijmaijers" />
 
-<meta name="date" content="2020-03-02" />
+<meta name="date" content="2020-03-16" />
 
 <title>Introduction to the R3port package</title>
 
@@ -303,7 +303,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Introduction to the R3port package</h1>
 <h4 class="author">Richard Hooijmaijers</h4>
-<h4 class="date">2020-03-02</h4>
+<h4 class="date">2020-03-16</h4>
 
 
 
@@ -402,7 +402,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb11-6" data-line-number="6">xtbl_html &lt;-<span class="st"> </span><span class="kw">print</span>(<span class="kw">xtable</span>(xtbl),<span class="dt">print.results=</span><span class="ot">FALSE</span>,<span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">html.table.attributes =</span> <span class="st">&quot;class=table&quot;</span>)</a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="kw">html_doc</span>(xtbl_html,<span class="dt">out=</span><span class="st">&quot;out1.html&quot;</span>,</a>
 <a class="sourceLine" id="cb11-8" data-line-number="8">         <span class="dt">css=</span><span class="st">&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&quot;</span>)</a></code></pre></div>
-<p><a target="_blank" href="out1.pdf">out1.pdf</a><br /> <a target="_blank" href="out1.html">out1.html</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out1.pdf">out1.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out1.html">out1.html</a></p>
 </div>
 <div id="the-list-functions" class="section level1">
 <h1>The list functions</h1>
@@ -417,7 +417,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>An html document can be created quite similar, with the exception of the column width option</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">html_list</span>(lst,<span class="dt">vargroup=</span><span class="kw">c</span>(<span class="st">&quot;&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;income&quot;</span>),<span class="dt">group =</span> <span class="dv">2</span>,<span class="dt">title=</span><span class="st">&quot;a listing&quot;</span>,</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">          <span class="dt">fill=</span><span class="st">&quot;-&quot;</span>,<span class="dt">footnote=</span><span class="st">&quot;a footnote&quot;</span>,<span class="dt">out=</span><span class="st">&quot;out2.html&quot;</span>)</a></code></pre></div>
-<p><a target="_blank" href="out2.pdf">out2.pdf</a><br /> <a target="_blank" href="out2.html">out2.html</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out2.pdf">out2.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out2.html">out2.html</a></p>
 </div>
 <div id="the-table-functions" class="section level1">
 <h1>The table functions</h1>
@@ -426,14 +426,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb14-2" data-line-number="2">          <span class="dt">title=</span><span class="st">&quot;total bill statistics&quot;</span>,<span class="dt">xabove=</span><span class="ot">TRUE</span>,<span class="dt">out=</span><span class="st">&quot;out3.tex&quot;</span>)</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">html_table</span>(tbl1,<span class="dt">x=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>,<span class="st">&quot;statistic&quot;</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;day&quot;</span>,<span class="st">&quot;time&quot;</span>),<span class="dt">var=</span><span class="st">&quot;value&quot;</span>,</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4">          <span class="dt">title=</span><span class="st">&quot;total bill statistics&quot;</span>,<span class="dt">xabove=</span><span class="ot">TRUE</span>,<span class="dt">out=</span><span class="st">&quot;out3.html&quot;</span>)</a></code></pre></div>
-<p><a target="_blank" href="out3.pdf">out3.pdf</a><br /> <a target="_blank" href="out3.html">out3.html</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out3.pdf">out3.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out3.html">out3.html</a></p>
 <p>The xabove option makes it possible to group the data and to save space. the header has two levels as two variables are selected to cast the results. Although you can add many levels this way, it is advised to use no more than three for the sake of readability. Another examples is presented where labels are added to the data frame and where some common options are adapted</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">attr</span>(tbl2<span class="op">$</span>sex,<span class="st">&quot;label&quot;</span>) &lt;-<span class="st"> &quot;Gender&quot;</span></a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">attr</span>(tbl2<span class="op">$</span>day,<span class="st">&quot;label&quot;</span>) &lt;-<span class="st"> &quot;Day of the week&quot;</span></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">ltx_table</span>(tbl2,<span class="dt">x=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>,<span class="st">&quot;day&quot;</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;time&quot;</span>),<span class="dt">var=</span><span class="st">&quot;FreqPerc&quot;</span>,<span class="dt">yhead =</span> <span class="ot">TRUE</span>,<span class="dt">size=</span><span class="st">&quot;</span><span class="ch">\\</span><span class="st">normalsize&quot;</span>,</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4">          <span class="dt">title=</span><span class="st">&quot;customer frequency&quot;</span>,<span class="dt">xabove=</span><span class="ot">TRUE</span>,<span class="dt">out=</span><span class="st">&quot;out4.tex&quot;</span>,<span class="dt">group=</span><span class="dv">1</span>,<span class="dt">mancol=</span><span class="st">&quot;lllll&quot;</span>,</a>
 <a class="sourceLine" id="cb15-5" data-line-number="5">          <span class="dt">template=</span><span class="kw">paste0</span>(<span class="kw">system.file</span>(<span class="dt">package =</span>  <span class="st">&quot;R3port&quot;</span>), <span class="st">&quot;/listing.tex&quot;</span>))</a></code></pre></div>
-<p><a target="_blank" href="out4.pdf">out4.pdf</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out4.pdf">out4.pdf</a></p>
 <p>With a bit of fantasy you can make combinations like this for instance:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(plyr)</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2">tbl3           &lt;-<span class="st"> </span><span class="kw">freq</span>(tips,<span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>,<span class="st">&quot;day&quot;</span>,<span class="st">&quot;time&quot;</span>),<span class="dt">total=</span><span class="kw">c</span>(<span class="st">&quot;day&quot;</span>,<span class="st">&quot;time&quot;</span>),<span class="dt">spacechar =</span> <span class="st">&quot;~&quot;</span>)</a>
@@ -444,7 +444,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb16-7" data-line-number="7">          <span class="dt">title=</span><span class="st">&quot;total bill statistics&quot;</span>,<span class="dt">xabove=</span><span class="ot">TRUE</span>,<span class="dt">out=</span><span class="st">&quot;out5.tex&quot;</span>,</a>
 <a class="sourceLine" id="cb16-8" data-line-number="8">          <span class="dt">mancol=</span><span class="kw">paste</span>(<span class="kw">rep</span>(<span class="st">&quot;l&quot;</span>,<span class="dv">16</span>),<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>),</a>
 <a class="sourceLine" id="cb16-9" data-line-number="9">          <span class="dt">template=</span><span class="kw">paste0</span>(<span class="kw">system.file</span>(<span class="dt">package =</span>  <span class="st">&quot;R3port&quot;</span>), <span class="st">&quot;/listing.tex&quot;</span>))</a></code></pre></div>
-<p><a target="_blank" href="out5.pdf">out5.pdf</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out5.pdf">out5.pdf</a></p>
 </div>
 <div id="graphical-output" class="section level1">
 <h1>Graphical output</h1>
@@ -473,7 +473,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb17-22" data-line-number="22">         <span class="dt">title=</span><span class="st">&quot;example for base plot&quot;</span>,<span class="dt">lwidth=</span><span class="st">&quot;0.9</span><span class="ch">\\</span><span class="st">linewidth&quot;</span>)</a>
 <a class="sourceLine" id="cb17-23" data-line-number="23"><span class="kw">html_plot</span>(<span class="kw">bpl</span>(),<span class="dt">out=</span><span class="st">&quot;out8.html&quot;</span>,<span class="dt">titlepr =</span> <span class="st">&quot;plot C&quot;</span>,</a>
 <a class="sourceLine" id="cb17-24" data-line-number="24">          <span class="dt">title=</span><span class="st">&quot;example for base plot&quot;</span>)</a></code></pre></div>
-<p><a target="_blank" href="out6.pdf">out6.pdf</a><br /> <a target="_blank" href="out6.html">out6.html</a><br /> <a target="_blank" href="out7.pdf">out7.pdf</a><br /> <a target="_blank" href="out7.html">out7.html</a><br /> <a target="_blank" href="out8.pdf">out8.pdf</a><br /> <a target="_blank" href="out8.html">out8.html</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out6.pdf">out6.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out6.html">out6.html</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out7.pdf">out7.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out7.html">out7.html</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out8.pdf">out8.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out8.html">out8.html</a></p>
 </div>
 <div id="putting-it-together" class="section level1">
 <h1>Putting it together</h1>
@@ -481,7 +481,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ltx_combine</span>(<span class="dt">out=</span><span class="st">&quot;comb1.tex&quot;</span>,<span class="dt">template=</span><span class="kw">paste0</span>(<span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;R3port&quot;</span>),<span class="st">&quot;/default.tex&quot;</span>))</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">html_combine</span>(<span class="dt">out=</span><span class="st">&quot;comb1.html&quot;</span>,<span class="dt">toctheme=</span><span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb18-3" data-line-number="3">             <span class="dt">template=</span><span class="kw">paste0</span>(<span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;R3port&quot;</span>),<span class="st">&quot;/bootstrap.html&quot;</span>))</a></code></pre></div>
-<p><a target="_blank" href="comb1.pdf">comb1.pdf</a><br /> <a target="_blank" href="comb1.html">comb1.html</a></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/comb1.pdf">comb1.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/comb1.html">comb1.html</a></p>
 </div>
 <div id="the-templates" class="section level1">
 <h1>The templates</h1>
@@ -491,7 +491,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb19-3" data-line-number="3">  ppt &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;beamer.tex&quot;</span>,tmpl[x]),<span class="ot">TRUE</span>,<span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb19-4" data-line-number="4">  <span class="kw">ltx_combine</span>(<span class="dt">out=</span><span class="kw">paste0</span>(<span class="st">&quot;combt&quot;</span>,x,<span class="st">&quot;.tex&quot;</span>),<span class="dt">template=</span>tmpl[x],<span class="dt">presentation=</span>ppt)</a>
 <a class="sourceLine" id="cb19-5" data-line-number="5">})</a></code></pre></div>
-<p><a target="_blank" href="combt1.pdf">comb1.pdf</a><br /> <a target="_blank" href="combt2.pdf">comb2.pdf</a><br /> <a target="_blank" href="combt3.pdf">comb3.pdf</a><br /> <a target="_blank" href="combt4.pdf">comb4.pdf</a><br /> <a target="_blank" href="combt5.pdf">comb5.pdf</a><br /></p>
+<p><a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt1.pdf">comb1.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt2.pdf">comb2.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt3.pdf">comb3.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt4.pdf">comb4.pdf</a><br /> <a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt5.pdf">comb5.pdf</a><br /></p>
 <div id="create-your-own-template" class="section level2">
 <h2>Create your own template</h2>
 <p>The way the package handles the rendlist is that certain information is always added to this list within a function. This is off course necessary to be able to include the table,list or plot to be created within the final document. Practically this means that the <code>rrres</code> tag is always included in the template to place in the R results to be included. Other special tags include <code>rrtoc</code>, <code>css</code> and <code>orientation</code>. The safest way is to not include these tags in rendlist or change this within the template (or at least be aware of the effect when omitting tags or placing them elsewhere in the template)</p>

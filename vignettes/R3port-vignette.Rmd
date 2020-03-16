@@ -81,8 +81,8 @@ xtbl_html <- print(xtable(xtbl),print.results=FALSE,type="html", html.table.attr
 html_doc(xtbl_html,out="out1.html",
          css="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
 ```
-<a target="_blank" href="out1.pdf">out1.pdf</a><br/>
-<a target="_blank" href="out1.html">out1.html</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out1.pdf">out1.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out1.html">out1.html</a>
 
 
 # The list functions
@@ -103,8 +103,8 @@ An html document can be created quite similar, with the exception of the column 
 html_list(lst,vargroup=c("","","","income","income"),group = 2,title="a listing",
           fill="-",footnote="a footnote",out="out2.html")
 ```
-<a target="_blank" href="out2.pdf">out2.pdf</a><br/>
-<a target="_blank" href="out2.html">out2.html</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out2.pdf">out2.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out2.html">out2.html</a>
 
 # The table functions
 
@@ -119,8 +119,8 @@ ltx_table(tbl1,x=c("sex","statistic"),y=c("day","time"),var="value",
 html_table(tbl1,x=c("sex","statistic"),y=c("day","time"),var="value",
           title="total bill statistics",xabove=TRUE,out="out3.html")
 ```
-<a target="_blank" href="out3.pdf">out3.pdf</a><br/>
-<a target="_blank" href="out3.html">out3.html</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out3.pdf">out3.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out3.html">out3.html</a>
 
 The xabove option makes it possible to group the data and to save space. the header has two levels
 as two variables are selected to cast the results. Although you can add many levels this way, it is
@@ -134,7 +134,7 @@ ltx_table(tbl2,x=c("sex","day"),y=c("time"),var="FreqPerc",yhead = TRUE,size="\\
           title="customer frequency",xabove=TRUE,out="out4.tex",group=1,mancol="lllll",
           template=paste0(system.file(package =  "R3port"), "/listing.tex"))
 ```
-<a target="_blank" href="out4.pdf">out4.pdf</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out4.pdf">out4.pdf</a>
 
 With a bit of fantasy you can make combinations like this for instance:
 ```{r echo=TRUE,eval=FALSE}
@@ -148,7 +148,7 @@ ltx_table(tbl3,x=c("sex","day"),y=c("time","statistic"),var="value",convchar = T
           mancol=paste(rep("l",16),collapse=""),
           template=paste0(system.file(package =  "R3port"), "/listing.tex"))
 ```
-<a target="_blank" href="out5.pdf">out5.pdf</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out5.pdf">out5.pdf</a>
 
 # Graphical output
 
@@ -179,12 +179,12 @@ ltx_plot(bpl(),out="out8.tex",titlepr = "plot C",
 html_plot(bpl(),out="out8.html",titlepr = "plot C",
           title="example for base plot")
 ```
-<a target="_blank" href="out6.pdf">out6.pdf</a><br/>
-<a target="_blank" href="out6.html">out6.html</a><br/>
-<a target="_blank" href="out7.pdf">out7.pdf</a><br/>
-<a target="_blank" href="out7.html">out7.html</a><br/>
-<a target="_blank" href="out8.pdf">out8.pdf</a><br/>
-<a target="_blank" href="out8.html">out8.html</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out6.pdf">out6.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out6.html">out6.html</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out7.pdf">out7.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out7.html">out7.html</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out8.pdf">out8.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/out8.html">out8.html</a>
 
 
 # Putting it together
@@ -198,8 +198,8 @@ ltx_combine(out="comb1.tex",template=paste0(system.file(package="R3port"),"/defa
 html_combine(out="comb1.html",toctheme=TRUE,
              template=paste0(system.file(package="R3port"),"/bootstrap.html"))
 ```
-<a target="_blank" href="comb1.pdf">comb1.pdf</a><br/>
-<a target="_blank" href="comb1.html">comb1.html</a>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/comb1.pdf">comb1.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/comb1.html">comb1.html</a>
 
 # The templates
 
@@ -219,11 +219,11 @@ lapply(1:length(tmpl),function(x){
   ltx_combine(out=paste0("combt",x,".tex"),template=tmpl[x],presentation=ppt)
 })
 ```
-<a target="_blank" href="combt1.pdf">comb1.pdf</a><br/>
-<a target="_blank" href="combt2.pdf">comb2.pdf</a><br/>
-<a target="_blank" href="combt3.pdf">comb3.pdf</a><br/>
-<a target="_blank" href="combt4.pdf">comb4.pdf</a><br/>
-<a target="_blank" href="combt5.pdf">comb5.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt1.pdf">comb1.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt2.pdf">comb2.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt3.pdf">comb3.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt4.pdf">comb4.pdf</a><br/>
+<a target="_blank" href="http://richardhooijmaijers.github.io/R3port/combt5.pdf">comb5.pdf</a><br/>
 
 
 ## Create your own template
