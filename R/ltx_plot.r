@@ -24,6 +24,7 @@
 #' @param captpl character with the caption placement, can be either "top" or "bottom"
 #' @param rotate logical indicating if the resulting figure should be rotated 90 degrees clockwise
 #' @param cleancur logical indicating if the available plots should be deleted before creating new ones
+#' @param titlesub character string to define the subtext after title in footnotesize
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
@@ -50,7 +51,7 @@
 #'            outfmt="png",pwidth=2000,pheight=1200)
 #' }
 ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",lwidth=NULL,pwidth=10,pheight=5.5,res=NULL,hyper=TRUE,outfmt="pdf",
-                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,label=NULL,captpl="top",rotate=FALSE,cleancur=FALSE,...){
+                     fontsize=12,units="px",rawout=paste0(out,".rawtex"),linebreak=TRUE,label=NULL,captpl="top",rotate=FALSE,cleancur=FALSE,titlesub=NULL,...){
   if(is.null(out)|out=="") stop("A valid name for the output should be specified")
 
   # Set logics for option system
@@ -95,14 +96,16 @@ ltx_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",plotnote="",
   for(i in 1:length(numplots)){
     if(!missing(titlepr))  plt <- c(plt,paste0("\\renewcommand{\\figurename}{} \\renewcommand\\thefigure{{",titlepr,"}}"))
     if(footnote!="")  plt <- c(plt,paste0("\\lfoot{\\footnotesize ",footnote,"}"))
-    plt  <- c(plt,ifelse(rotate,"\\begin{sidewaysfigure}",""),"\\begin{figure}[H]")
+    plt     <- c(plt,ifelse(rotate,"\\begin{sidewaysfigure}",""),"\\begin{figure}[H]")
     if(hyper & !missing(titlepr) & i==1) plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",titlepr,": ",title,"}"))
     if(hyper & missing(titlepr) & i==1)  plt <- c(plt,paste0("\\hypertarget{",title,"}{} \\bookmark[dest=",title,",level=0]{",title,"}"))
+    subdef  <- ifelse(is.null(titlesub),"",paste0("\\footnotesize{",titlesub,"}"))
     if(i==1) {
       labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
-      capt    <- paste0("\\caption{",title,"}",labdef)
+      capt    <- paste0("\\caption[",title,"]{",title," ",subdef,"}",labdef)
     }else{
-      if(!missing(titlepr)) {capt  <- paste0("\\caption[]{",title,", cont'd}")}else{capt <- ""}
+      #if(!missing(titlepr)) {capt  <- paste0("\\caption[]{",title,", cont'd}"," ",subdef)}else{capt <- ""}
+      capt  <- paste0("\\caption[]{",title,", cont'd ",subdef,"}")
     }
     if(captpl=="top") plt <- c(plt,capt)
     if(is.null(lwidth)){

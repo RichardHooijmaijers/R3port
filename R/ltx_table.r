@@ -28,6 +28,7 @@
 #' @param convchar logical indicating if special characters should be masked
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
+#' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
@@ -54,11 +55,12 @@
 #'             footnote="this table is not very informative")
 #' }
 ltx_table <- function(dfrm,x,y,var,fill="",uselabel=TRUE,yhead=FALSE,footnote="",tablenote="",mancol=NULL,size="\\footnotesize",title="table",titlepr=NULL,
-                      xabove=FALSE,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,tabenv="longtable",label=NULL,...){
+                      xabove=FALSE,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,tabenv="longtable",label=NULL,
+                      flt="h",...){
 
   tableprep    <- table_prep(dfrm=dfrm,x=x,y=y,var=var,fill=fill,type="latex",convchar=convchar)
   tabledesign  <- ltx_table_design(tableprep,uselabel=uselabel,yhead=yhead,footnote=footnote,mancol=mancol,size=size,title=title,titlepr=titlepr,
-                                   xabove=xabove,group=group,xrepeat=xrepeat,hyper=hyper,tabenv=tabenv,tablenote=tablenote,label=label)
+                                   xabove=xabove,group=group,xrepeat=xrepeat,hyper=hyper,tabenv=tabenv,tablenote=tablenote,label=label,flt=flt)
   ltx_doc(tabledesign,out=out,...)
   if(!is.null(rawout) & !dir.exists(dirname(rawout))){
     succ <- try(dir.create(dirname(rawout),showWarnings = FALSE))

@@ -19,7 +19,8 @@ ltx_table_design(
   xrepeat = FALSE,
   hyper = TRUE,
   tabenv = "longtable",
-  label = NULL
+  label = NULL,
+  flt = "h"
 )
 }
 \arguments{
@@ -53,6 +54,8 @@ If set to TRUE, the function will try to use the label attribute for the display
 \item{tabenv}{character with the table environment to use. Currently "longtable" and "tabular" are supported}
 
 \item{label}{character with the label to add after the caption for referencing the table in text}
+
+\item{flt}{character with the type of floating environment to use (onyl applicable for tabular environment)}
 }
 \value{
 The function returns a vector that defines the entire latex table. This vector can be adapted manually

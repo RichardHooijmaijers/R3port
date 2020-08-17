@@ -25,6 +25,7 @@ ltx_plot(
   captpl = "top",
   rotate = FALSE,
   cleancur = FALSE,
+  titlesub = NULL,
   ...
 )
 }
@@ -69,6 +70,8 @@ In case NULL no raw output will be generated. In order to combine results the fi
 \item{rotate}{logical indicating if the resulting figure should be rotated 90 degrees clockwise}
 
 \item{cleancur}{logical indicating if the available plots should be deleted before creating new ones}
+
+\item{titlesub}{character string to define the subtext after title in footnotesize}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }

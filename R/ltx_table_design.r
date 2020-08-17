@@ -19,6 +19,7 @@
 #' @param hyper logical indicating if a hypertarget should be set used for bookmarks
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
+#' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
 #'
 #' @details This function designs a latex pivot table based on the results of the table_prep output. This means that the function
 #'   Should always be used in conjunction with this function.
@@ -31,7 +32,7 @@
 #' \dontrun{ltx_table_design(lstobject)}
 
 ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",tablenote="",mancol=NULL,size="\\normalsize",title="table",titlepr=NULL,
-                             xabove=TRUE,group=NULL,xrepeat=FALSE,hyper=TRUE,tabenv="longtable",label=NULL){
+                             xabove=TRUE,group=NULL,xrepeat=FALSE,hyper=TRUE,tabenv="longtable",label=NULL,flt="h"){
 
   # Create pre-table attributes
   tbl <- NULL
@@ -42,8 +43,8 @@ ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",tablenote
 
   coldef  <- ifelse(is.null(mancol),paste((c(rep("l",length(dfl$tblo$x)),rep("r",ncol(dfl$tbld)-length(dfl$tblo$x)))),collapse=""),mancol)
   labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
-  if(tabenv=="longtable") tbl <- c(tbl,paste0("\\begin{longtable}{",coldef,"}\n\\caption{",title,"}",labdef,"\\\\"))
-  if(tabenv=="tabular")   tbl <- c(tbl,paste0("\\begin{table}\n\\caption{",title,"}",labdef,"\\begin{tabular}{",coldef,"}\n"))
+  if(tabenv=="longtable") tbl <- c(tbl,paste0("\\begingroup",size,"\\begin{longtable}{",coldef,"}\n\\caption{",title,"}",labdef,"\\\\"))
+  if(tabenv=="tabular")   tbl <- c(tbl,paste0("\\begin{table}[",flt,"]\n\\caption{",title,"}",labdef," ",size,"\\begin{tabular}{",coldef,"}\n"))
 
   # Create header (check for future if hdr can be provided as argument (to create non standard tables))
   hdrl <- plyr::llply(1:length(dfl$tblo$y),function(num){
@@ -98,7 +99,7 @@ ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",tablenote
   })
   tbl <- c(tbl,unlist(dtal))
   if(tabenv=="longtable") {
-    tbl <- c(tbl,"\\end{longtable}")
+    tbl <- c(tbl,"\\end{longtable}\\endgroup")
   }else{
     tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
   }

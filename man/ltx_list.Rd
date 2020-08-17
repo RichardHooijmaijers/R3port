@@ -25,6 +25,7 @@ ltx_list(
   convchar = TRUE,
   tabenv = "longtable",
   label = NULL,
+  flt = "h",
   ...
 )
 }
@@ -70,6 +71,8 @@ In case NULL no raw output will be generated. In order to combine results the fi
 \item{tabenv}{character with the table environment to use. Currently "longtable" and "tabular" are supported}
 
 \item{label}{character with the label to add after the caption for referencing the table in text}
+
+\item{flt}{character with the type of floating environment to use (onyl applicable for tabular environment)}
 
 \item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
 }

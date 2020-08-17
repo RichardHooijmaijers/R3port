@@ -31,7 +31,7 @@ table_prep <- function(dfrm,x,y,var,fill="",type="latex",convchar=TRUE){
   tbld  <- tbld[do.call("order", do.call("list",tbld[,y,drop=FALSE])),]
   form  <- paste(paste0(x,collapse="+"),"~",paste0(y,collapse="+"))
   tbldt <- reshape2::dcast(tbld,stats::as.formula(form),value.var=var,fill=fill)
-  if(type=="latex" & convchar==TRUE) {for(i in 1:ncol(tbldt)) tbldt[,i] <- gsub('([#$%&_\\^\\\\{}])', '\\\\\\1', as.character(tbldt[,i]), perl = TRUE)}
+  if(type=="latex" & convchar==TRUE) {for(i in 1:ncol(tbldt)) tbldt[,i] <- gsub('([<>])', '$\\1$',gsub('([#$%&_\\^\\\\{}])', '\\\\\\1', as.character(tbldt[,i]), perl = TRUE), perl = TRUE)}
   if(type=="html" | convchar!=TRUE)  {for(i in 1:ncol(tbldt)) tbldt[,i] <- as.character(tbldt[,i])}
 
   # generate table header

@@ -25,6 +25,7 @@
 #' @param convchar logical indicating if special characters should be masked
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
+#' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
 #' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
 #'
 #' @details The vargroup argument should be provided in the following form: \cr
@@ -45,15 +46,15 @@
 #' }
 ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,uselabel=TRUE,footnote="",tablenote="",mancol=NULL,size="\\footnotesize",
                    title="listing",titlepr=NULL,group=NULL,xrepeat=FALSE,hyper=TRUE,out=NULL,rawout=paste0(out,".rawtex"),convchar=TRUE,tabenv="longtable",
-                   label=NULL,...){
+                   label=NULL,flt="h",...){
 
   # Create pre-table attributes
   tbld  <- dfrm[,c(vars)]
   if(porder) tbld  <- tbld[do.call("order", do.call("list",tbld[,vars,drop=FALSE])),]
   if(convchar){
-    tbld[]  <- apply(tbld,2,function(x) gsub('([#$%&_\\^\\\\{}])', '\\\\\\1', as.character(x), perl = TRUE))
+    tbld[]  <- apply(tbld,2,function(x) gsub('([<>])', '$\\1$',gsub('([#$%&_\\^\\\\{}])', '\\\\\\1', as.character(x), perl = TRUE), perl = TRUE))
   }else{
-    tbld[]      <- apply(tbld,2,as.character)
+    tbld[]  <- apply(tbld,2,as.character)
   }
 
   tbl <- NULL
@@ -64,8 +65,8 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
 
   coldef  <- ifelse(is.null(mancol),paste(rep("l",ncol(tbld)),collapse=""),mancol)
   labdef  <- ifelse(is.null(label),"",paste0("\\label{",label,"}"))
-  if(tabenv=="longtable") tbl <- c(tbl,paste0("\\begin{longtable}{",coldef,"}\n\\caption{",title,"}",labdef,"\\\\"))
-  if(tabenv=="tabular")   tbl <- c(tbl,paste0("\\begin{table}\n\\caption{",title,"}",labdef,"\\begin{tabular}{",coldef,"}\n"))
+  if(tabenv=="longtable") tbl <- c(tbl,paste0("\\begingroup",size,"\\begin{longtable}{",coldef,"}\n\\caption{",title,"}",labdef,"\\\\"))
+  if(tabenv=="tabular")   tbl <- c(tbl,paste0("\\begin{table}[",flt,"]\n\\caption{",title,"}",labdef," ",size,"\\begin{tabular}{",coldef,"}\n"))
 
   # Create header
   hdr <- NULL
@@ -106,7 +107,7 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
   })
   tbl <- c(tbl,unlist(dtal))
   if(tabenv=="longtable") {
-    tbl <- c(tbl,"\\end{longtable}")
+    tbl <- c(tbl,"\\end{longtable}\\endgroup")
   }else{
     tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
   }
