@@ -88,8 +88,8 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
   hdr <- c(hdr,"\\hline")
   if(tabenv=="longtable"){
     tbl <- c(tbl,"\\toprule",hdr,"\\endfirsthead")
-    tbl <- c(tbl,paste0("\\multicolumn{",ncol(tbld),"}{c}{\\tablename~\\thetable{}: ",title,", cont'd}\\\\\\\\"))
-    tbl <- c(tbl,"\\toprule",hdr,"\\endhead \\hline \\endfoot \\hline",tablenote,"\\endlastfoot")
+    tbl <- c(tbl,paste0("\\multicolumn{",ncol(tbld),"}{c}{\\tablename~\\thetable{}: (continued)}\\\\\\\\"))
+    tbl <- c(tbl,"\\toprule",hdr,"\\endhead \\hline \\endfoot \\hline","\\endlastfoot")
   }else{
     tbl <- c(tbl,"\\hline",hdr)
   }
@@ -107,7 +107,7 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
   })
   tbl <- c(tbl,unlist(dtal))
   if(tabenv=="longtable") {
-    tbl <- c(tbl,"\\end{longtable}\\endgroup")
+    tbl <- c(tbl,"\\end{longtable}",tablenote,"\\endgroup")
   }else{
     tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
   }

@@ -73,8 +73,8 @@ ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",tablenote
 
   if(tabenv=="longtable"){
     tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endfirsthead")
-    tbl <- c(tbl,paste0("\\multicolumn{",ncol(dfl$tbld),"}{c}{\\tablename~\\thetable{}: ",title," ,cont'd}\\\\\\\\"))
-    tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endhead \\hline \\endfoot \\hline",tablenote,"\\endlastfoot")
+    tbl <- c(tbl,paste0("\\multicolumn{",ncol(dfl$tbld),"}{c}{\\tablename~\\thetable{}: (continued)}\\\\\\\\"))
+    tbl <- c(tbl,"\\toprule",unlist(hdrl),"\\endhead \\hline \\endfoot \\hline","\\endlastfoot")
   }else{
     tbl <- c(tbl,"\\hline",unlist(hdrl))
   }
@@ -99,7 +99,7 @@ ltx_table_design <- function(dfl,uselabel=TRUE,yhead=FALSE,footnote="",tablenote
   })
   tbl <- c(tbl,unlist(dtal))
   if(tabenv=="longtable") {
-    tbl <- c(tbl,"\\end{longtable}\\endgroup")
+    tbl <- c(tbl,"\\end{longtable}",tablenote,"\\endgroup")
   }else{
     tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
   }
