@@ -66,7 +66,7 @@ html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000
     grDevices::dev.off()
   }
   tplot <- try(prpl())
-  if(class(tplot)=="try-error"){
+  if("try-error"%in%class(tplot)){
     if(!is.null(grDevices::dev.list())) grDevices::dev.off()
     stop("Cannot create the plot")
   }

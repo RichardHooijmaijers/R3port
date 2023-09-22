@@ -18,3 +18,7 @@ First version of the package
 - Added possibility to define a floating environment for latex tables
 - For longtable changed titles to 'continued' in case it spans more than 1 page
 - Changed location of a tablenote when longtable is used, to after end longtable (ensures that table is not resized with long notes)
+
+# R3port 0.2.5
+
+- Made necessary changes for CRAN following [this issue](https://github.com/r-lib/roxygen2/issues/1491)

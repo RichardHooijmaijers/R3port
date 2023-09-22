@@ -37,7 +37,7 @@
 
 html_combine <- function(combine=".",out=NULL,toctheme=TRUE,css=paste0(system.file(package="R3port"),"/style.css"),clean=0,...){
 
-  if(class(combine)!="list"){rt <- list.files(combine,"\\.rawhtml$",full.names=TRUE)}else{rt <- unlist(combine)}
+  if(!"list"%in%class(combine)){rt <- list.files(combine,"\\.rawhtml$",full.names=TRUE)}else{rt <- unlist(combine)}
 
   # For now assume that output is always saved in (one) 'location' (to prevent broken links for figures)
   location <- dirname(rt)[1]

@@ -3,6 +3,7 @@
 \docType{package}
 \name{R3port}
 \alias{R3port}
+\alias{R3port-package}
 \title{Report functions for HTML and PDF files}
 \description{
 The R3port package is written to easily create pdf and html documents
@@ -22,4 +23,20 @@ The following options can be set within the package:
     \item pwidth (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
     \item pheight (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
   }
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/RichardHooijmaijers/R3port}
+}
+
+}
+\author{
+\strong{Maintainer}: Richard Hooijmaijers \email{richardhooijmaijers@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Richard Hooijmaijers [copyright holder]
+}
+
 }

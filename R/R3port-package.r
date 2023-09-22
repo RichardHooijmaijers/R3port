@@ -17,7 +17,7 @@
 #'     \item pheight (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
 #'   }
 #'
-#' @docType package
 #' @name R3port
 #' @import plyr reshape2 whisker tools
+"_PACKAGE"
 NULL

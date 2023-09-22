@@ -41,7 +41,7 @@
 ltx_combine <- function(combine=".",out=NULL,presentation=FALSE,clean=0,...){
 
   # list files, read and combine tex files and compile
-  if(class(combine)!="list"){rt <- list.files(combine,"\\.rawtex$",full.names=TRUE)}else{rt <- unlist(combine)}
+  if(!"list"%in%class(combine)){rt <- list.files(combine,"\\.rawtex$",full.names=TRUE)}else{rt <- unlist(combine)}
   location <- dirname(rt)[1]
 
   # remove log and aux files in directory

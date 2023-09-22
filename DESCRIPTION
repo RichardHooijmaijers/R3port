@@ -1,6 +1,6 @@
 Package: R3port
 Type: Package
-Version: 0.2.4
+Version: 0.2.5
 Title: Report Functions to Create HTML and PDF Files
 Description: Create and combine HTML and PDF reports from within R.
     Possibility to design tables and listings for reporting and also include R plots.
@@ -27,7 +27,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 URL: https://github.com/RichardHooijmaijers/R3port
 Encoding: UTF-8
