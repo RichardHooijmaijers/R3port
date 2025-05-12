@@ -28,7 +28,7 @@
 #' @param convchar logical indicating if special characters should be masked
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
-#' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
+#' @param flt character with the type of floating environment to use (only applicable for tabular environment)
 #' @param ... additional arguments passed through to [ltx_doc()]. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)

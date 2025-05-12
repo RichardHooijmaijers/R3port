@@ -6,7 +6,7 @@
 #' @param plot plot object or function call that creates plot to be printed to file
 #' @param out filename for the output latex file
 #' @param title character string to define the title of the plot which will be added to the caption
-#' @param shorttitle character string to define the title in a shorter version of the plot which will be used in the TOF in a TaTex document
+#' @param shorttitle character string to define the title in a shorter version of the plot which will be used in the TOF in a latex document
 #' @param titlepr character string to define the prefix of the title. Can be used to create custom numbering
 #' @param footnote character string with the footnote to be placed in the footer of the page (LaTeX coding can be used for example to create line breaks)
 #' @param plotnote character string with the plot note to be placed directly below the plot (LaTeX coding can be used for example to create line breaks)

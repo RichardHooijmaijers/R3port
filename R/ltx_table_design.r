@@ -19,7 +19,7 @@
 #' @param hyper logical indicating if a hypertarget should be set used for bookmarks
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
-#' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
+#' @param flt character with the type of floating environment to use (only applicable for tabular environment)
 #'
 #' @details This function designs a latex pivot table based on the results of the table_prep output. This means that the function
 #'   Should always be used in conjunction with this function.

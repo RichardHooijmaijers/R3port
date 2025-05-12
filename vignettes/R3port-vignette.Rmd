@@ -38,7 +38,7 @@ head(tbl1,20)
 The function above calculates a standard set of descriptive statistics frequently used in reporting clinical
 results. Also it places the results in a long format data frame (for easy processing in the other functions). There are some options for
 calculation of totals and number of digits in output but mainly it uses plyr to do the work.
-For this reason a predefined set of statisitcs was chosen as it is quite easy to calculate other statistics just using plyr.
+For this reason a predefined set of statistics was chosen as it is quite easy to calculate other statistics just using plyr.
 
 Using a similar function, the frequencies within a data frame can be calculated. Let's say we want
 to know the frequencies of each gender, day of the week and time of day within the data frame.
@@ -191,7 +191,7 @@ html_plot(bpl(),out="out8.html",titlepr = "plot C",
 
 The last thing to after creating the tables listings and plots is to combine it in an overall
 document. Here the last two functions will come in `ltx_combine` and `html_combine`.
-To have a bit of background on how these functions work we should first look at all the output that is created. For each table and listing, by default 3 files are generated. For latex output, the tex file,  compiled pdf and a raw tex file. For html only a html and raw html file. In case of plotting also a figures folder is created with teh plots.  The raw files have only the text/coding for the table or listing. The combine functions can pick these files up and place it in a combined document. The combine argument can be used to select files, for instance if you want to combine a selected set of output.
+To have a bit of background on how these functions work we should first look at all the output that is created. For each table and listing, by default 3 files are generated. For latex output, the tex file,  compiled pdf and a raw tex file. For html only a html and raw html file. In case of plotting also a figures folder is created with the plots.  The raw files have only the text/coding for the table or listing. The combine functions can pick these files up and place it in a combined document. The combine argument can be used to select files, for instance if you want to combine a selected set of output.
 
 ```{r echo=TRUE,eval=FALSE}
 ltx_combine(out="comb1.tex",template=paste0(system.file(package="R3port"),"/default.tex"))
@@ -205,7 +205,7 @@ html_combine(out="comb1.html",toctheme=TRUE,
 
 You probably noticed that not all output generated has the same layout. This is controlled by the templates,
 I didn't explain the template argument before because I think it deserves a section of it's own.
-The template system uses `whisker` to create output in different styes. A couple
+The template system uses `whisker` to create output in different styles. A couple
 of templates are included within the package to start with, however users can generate their own
 templates using this system. The whisker package is set up to provide a template and a list with
 variables to render (called rendlist in this package). Provide a template and a rendlist to create

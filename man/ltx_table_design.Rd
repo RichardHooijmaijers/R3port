@@ -55,7 +55,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{label}{character with the label to add after the caption for referencing the table in text}
 
-\item{flt}{character with the type of floating environment to use (onyl applicable for tabular environment)}
+\item{flt}{character with the type of floating environment to use (only applicable for tabular environment)}
 }
 \value{
 The function returns a vector that defines the entire latex table. This vector can be adapted manually
