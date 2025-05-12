@@ -19,7 +19,7 @@
 #' @param title character string to define the title of the table which will be added to the caption
 #' @param titlepr character string to define the prefix of the table title. Can be used to create custom table numbering
 #' @param xabove logical indicating if the first unique x variable should be placed in the table row above. Mostly used to save space on a page
-#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]
+#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as `x[1:group]`
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param hyper logical indicating if a hypertarget should be set used for bookmarks
 #' @param out filename for the output latex file (if NULL it will print to console)
@@ -29,7 +29,7 @@
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
 #' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
-#' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
+#' @param ... additional arguments passed through to [ltx_doc()]. Most important are template, rendlist, compile and show
 #'
 #' @return The function returns a latex file (or writes output to console)
 #'
@@ -61,10 +61,11 @@ ltx_table <- function(dfrm,x,y,var,fill="",uselabel=TRUE,yhead=FALSE,footnote=""
   tableprep    <- table_prep(dfrm=dfrm,x=x,y=y,var=var,fill=fill,type="latex",convchar=convchar)
   tabledesign  <- ltx_table_design(tableprep,uselabel=uselabel,yhead=yhead,footnote=footnote,mancol=mancol,size=size,title=title,titlepr=titlepr,
                                    xabove=xabove,group=group,xrepeat=xrepeat,hyper=hyper,tabenv=tabenv,tablenote=tablenote,label=label,flt=flt)
-  ltx_doc(tabledesign,out=out,...)
+  
   if(!is.null(rawout) & !dir.exists(dirname(rawout))){
     succ <- try(dir.create(dirname(rawout),showWarnings = FALSE))
     if(!succ) stop("Output folder for raw files cannot be created")
   }
   if(!is.null(rawout)) cat(tabledesign,sep="\n",file=rawout)
+  ltx_doc(tabledesign,out=out,...)
 }

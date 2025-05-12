@@ -34,7 +34,7 @@ ltx_list(
 
 \item{vars}{character vector that defines the variables within the data frame to be placed in the listing}
 
-\item{fill}{character vector of one indicating the character to use in case of missing values}
+\item{fill}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character vector of one indicating the character to use in case of missing values this is only applicable for \link{ltx_table}}
 
 \item{vargroup}{a vector of the same length as vars. Creates a first line in the table to group variables (see details)}
 
@@ -55,7 +55,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{titlepr}{character string to define the prefix of the table title. Can be used to create custom table numbering}
 
-\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]}
+\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as \code{x[1:group]}}
 
 \item{xrepeat}{logical indicating if duplicate x values should be repeated in the table or not}
 
@@ -74,7 +74,7 @@ In case NULL no raw output will be generated. In order to combine results the fi
 
 \item{flt}{character with the type of floating environment to use (onyl applicable for tabular environment)}
 
-\item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
+\item{...}{additional arguments passed through to \code{\link[=ltx_doc]{ltx_doc()}}. Most important are template, rendlist, compile and show}
 }
 \value{
 The function returns a latex file (or writes output to console)
@@ -84,9 +84,9 @@ This function creates a latex listing which can be written to a file or console
 }
 \details{
 The vargroup argument should be provided in the following form: \cr
-  \code{c(rep("",4),rep("group1",3),rep("group2",4))}.
-  The function will place the text within the vector with the given length as first line in the table with a midrule below it.
-  an exception is made for empty strings.
+\code{c(rep("",4),rep("group1",3),rep("group2",4))}.
+The function will place the text within the vector with the given length as first line in the table with a midrule below it.
+an exception is made for empty strings.
 }
 \examples{
 

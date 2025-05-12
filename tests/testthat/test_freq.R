@@ -17,4 +17,10 @@ test_that("frequencies correctly calculated", {
   res3 <- freq(tst,"b",total="",denom=10,totaldenom = 20)
   expect_equal(as.numeric(res3$dnm[res3$b=="Total"]),20)
   expect_equal(unique(as.numeric(res3$dnm[res3$b!="Total"])),10)
+  
+  dnmd  <- data.frame(b=1:6,dnm=1:6)
+  tdnmd <- data.frame(b=1:6,tdnm=6:1)
+  res4  <- freq(tst,"b",total="",denom=dnmd,totaldenom = tdnmd)
+  expect_equal(res4$dnm[1],1)
+  expect_equal(res4$dnm[nrow(res4)],6)
 })

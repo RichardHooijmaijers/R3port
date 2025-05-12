@@ -8,13 +8,13 @@
 #' argument.
 #' The following options can be set within the package:
 #' \itemize{
-#'     \item show (see \code{\link{ltx_doc}}, \code{\link{html_doc}})
-#'     \item template (see \code{\link{ltx_doc}}, \code{\link{html_doc}})
-#'     \item css (see \code{\link{html_doc}})
-#'     \item compile (see \code{\link{ltx_doc}})
-#'     \item orientation (see \code{\link{ltx_doc}})
-#'     \item pwidth (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
-#'     \item pheight (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
+#'     \item show (see [ltx_doc()], [html_doc()])
+#'     \item template (see [ltx_doc()], [html_doc()])
+#'     \item css (see [html_doc()])
+#'     \item compile (see [ltx_doc()])
+#'     \item orientation (see [ltx_doc()])
+#'     \item pwidth (see [ltx_plot()], [html_plot()])
+#'     \item pheight (see [ltx_plot()], [html_plot()])
 #'   }
 #'
 #' @name R3port

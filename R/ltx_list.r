@@ -5,7 +5,7 @@
 #'
 #' @param dfrm the data frame to be prepared
 #' @param vars character vector that defines the variables within the data frame to be placed in the listing
-#' @param fill character vector of one indicating the character to use in case of missing values
+#' @param fill `r lifecycle::badge("deprecated")` character vector of one indicating the character to use in case of missing values this is only applicable for [ltx_table]
 #' @param vargroup a vector of the same length as vars. Creates a first line in the table to group variables (see details)
 #' @param porder logical indicating if the data frame should be ordered on the variables given in vars
 #' @param uselabel logical indicating if labels should be used for the x variable(s).
@@ -16,7 +16,7 @@
 #' @param size character string to define the font size of the table
 #' @param title character string to define the title of the table which will be added to the caption
 #' @param titlepr character string to define the prefix of the table title. Can be used to create custom table numbering
-#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]
+#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as `x[1:group]`
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param hyper logical indicating if a hypertarget should be set used for bookmarks
 #' @param out filename for the output latex file (if NULL it will print to console)
@@ -26,10 +26,10 @@
 #' @param tabenv character with the table environment to use. Currently "longtable" and "tabular" are supported
 #' @param label character with the label to add after the caption for referencing the table in text
 #' @param flt character with the type of floating environment to use (onyl applicable for tabular environment)
-#' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
+#' @param ... additional arguments passed through to [ltx_doc()]. Most important are template, rendlist, compile and show
 #'
 #' @details The vargroup argument should be provided in the following form: \cr
-#'   \code{c(rep("",4),rep("group1",3),rep("group2",4))}.
+#'   `c(rep("",4),rep("group1",3),rep("group2",4))`.
 #'   The function will place the text within the vector with the given length as first line in the table with a midrule below it.
 #'   an exception is made for empty strings.
 #'
@@ -112,10 +112,10 @@ ltx_list <- function(dfrm,vars=names(dfrm),fill="",vargroup=NULL,porder=TRUE,use
     tbl <- c(tbl,"\\hline\\end{tabular}\\\\",tablenote,"\\end{table}")
   }
 
-  ltx_doc(text=tbl,out=out,...)
   if(!is.null(rawout) & !dir.exists(dirname(rawout))){
     succ <- try(dir.create(dirname(rawout),showWarnings = FALSE))
     if(!succ) stop("Output folder for raw files cannot be created")
   }
   if(!is.null(rawout)) cat(tbl,sep="\n",file=rawout)
+  ltx_doc(text=tbl,out=out,...)
 }

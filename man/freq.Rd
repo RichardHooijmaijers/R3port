@@ -42,11 +42,11 @@ calculate the frequency and percentages based on a predefined denominator.
 }
 \details{
 The function calculates frequency statistics of variable(s) within a data frame. Furthermore, the frequencies for a total
-  can also be generated. To calculate the percentages, the denominator should be supplied (and in case totals has a value also totaldenom).
-  The denom and totaldenom can be a constant numerical value, a variable within the data frame or a separate data frame. In case the argument
-  is a data frame, the function will attempt to merge this data frame based on equal variables within dfrm/denom and dfrm/totaldenom.
-  The possibility for a separate denominator is implemented as in many cases the denominator is not the total number of observations
-  but is defined elsewhere (e.g. for number of adverse events, the total number of subjects is used as denominator).
+can also be generated. To calculate the percentages, the denominator should be supplied (and in case totals has a value also totaldenom).
+The denom and totaldenom can be a constant numerical value, a variable within the data frame or a separate data frame. In case the argument
+is a data frame, the function will attempt to merge this data frame based on equal variables within dfrm/denom and dfrm/totaldenom.
+The possibility for a separate denominator is implemented as in many cases the denominator is not the total number of observations
+but is defined elsewhere (e.g. for number of adverse events, the total number of subjects is used as denominator).
 }
 \examples{
 

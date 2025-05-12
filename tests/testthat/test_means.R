@@ -24,13 +24,12 @@ test_that("alpha is used correctly", {
   comp1 <- as.character(formatC(round(comp1,15),digits=2,format="f"))
   comp2 <- mean(comp) + qt(0.95,df=length(comp)-1) * sd(comp) / sqrt(length(comp))
   comp2 <- as.character(formatC(round(comp2,15),digits=2,format="f"))
-
+  
   expect_equivalent(as.character(unique(res$statistic[grep("CLM",res$statistic)])),"90% CLM")
   expect_equivalent(calc,paste(comp1,comp2,sep=" - "))
 })
 
-test_that("check if totals are calculated correctly", {
-  data(Indometh)
-  res  <- means(Indometh,"conc","time",total="time",pack=2,alpha=.1,dig=2)
-
-})
+# test_that("check if totals are calculated correctly", {
+#   data(Indometh)
+#   res  <- means(Indometh,"conc","time",total="time",pack=2,alpha=.1,dig=2)
+# })

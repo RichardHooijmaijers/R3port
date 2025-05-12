@@ -46,7 +46,7 @@ In case NULL no raw output will be generated. In order to combine results the fi
 
 \item{cleancur}{logical indicating if the available plots should be deleted before creating new ones}
 
-\item{...}{additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show}
+\item{...}{additional arguments passed through to \code{\link[=html_doc]{html_doc()}}. Most important are template, rendlist, css and show}
 }
 \value{
 The function returns a HTML file (or writes output to console)

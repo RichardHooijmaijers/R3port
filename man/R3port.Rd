@@ -2,8 +2,8 @@
 % Please edit documentation in R/R3port-package.r
 \docType{package}
 \name{R3port}
-\alias{R3port}
 \alias{R3port-package}
+\alias{R3port}
 \title{Report functions for HTML and PDF files}
 \description{
 The R3port package is written to easily create pdf and html documents
@@ -15,14 +15,14 @@ an option in case it was set in options(). If an option is NULL, the function wi
 argument.
 The following options can be set within the package:
 \itemize{
-    \item show (see \code{\link{ltx_doc}}, \code{\link{html_doc}})
-    \item template (see \code{\link{ltx_doc}}, \code{\link{html_doc}})
-    \item css (see \code{\link{html_doc}})
-    \item compile (see \code{\link{ltx_doc}})
-    \item orientation (see \code{\link{ltx_doc}})
-    \item pwidth (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
-    \item pheight (see \code{\link{ltx_plot}}, \code{\link{html_plot}})
-  }
+\item show (see \code{\link[=ltx_doc]{ltx_doc()}}, \code{\link[=html_doc]{html_doc()}})
+\item template (see \code{\link[=ltx_doc]{ltx_doc()}}, \code{\link[=html_doc]{html_doc()}})
+\item css (see \code{\link[=html_doc]{html_doc()}})
+\item compile (see \code{\link[=ltx_doc]{ltx_doc()}})
+\item orientation (see \code{\link[=ltx_doc]{ltx_doc()}})
+\item pwidth (see \code{\link[=ltx_plot]{ltx_plot()}}, \code{\link[=html_plot]{html_plot()}})
+\item pheight (see \code{\link[=ltx_plot]{ltx_plot()}}, \code{\link[=html_plot]{html_plot()}})
+}
 }
 \seealso{
 Useful links:

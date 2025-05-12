@@ -8,14 +8,14 @@
 #' @param text character vector to be placed within latex document
 #' @param out filename for the output latex file (if NULL it will print to console)
 #' @param template file name of the template file to use (see examples how templates can be used/adapted)
-#' @param rendlist a render list to be used for the template file (see (see \code{\link{whisker-package}}))
+#' @param rendlist a render list to be used for the template file (see [whisker::whisker.render])
 #' @param orientation string indicating the page orientation (can be either "landscape" or "portrait")
 #' @param rtitle string indicating the title of the output document
-#' @param compile logical indicating if the tex file should be compiled (using tools::texi2dvi)
+#' @param compile logical indicating if the tex file should be compiled (using `tools::texi2dvi`)
 #' @param show logical indicating if the resulting pdf file from the compiled tex file should be opened when created
 #'
 #' @return The function returns a latex file (or writes output to console)
-#' @seealso \code{\link{html_doc}}
+#' @seealso [html_doc()]
 #'
 #' @export
 #' @examples

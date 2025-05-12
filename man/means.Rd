@@ -30,13 +30,13 @@ calculate a standard number of descriptive statistics which are defined in the p
 }
 \details{
 The function calculates multiple statistics of a data frame that can be stratified. Furthermore, the statistics for a total
-  can also be generated. Currently the function has the possibility to calculate 3 different sets of statistics which are commonly
-  used within the field of clinical data analysis:
-  \enumerate{
-    \item N, Mean, Median, SD, Min, Max
-    \item Ntot, N, Nmiss, Mean, Median, SD, Min, Max, CLM (different N values are given to identify the number of missing values)
-    \item N, Mean (SD), Median, Range (Both Mean (SD) and Range are concatenated to generate a dense overview of statistics)
-  }
+can also be generated. Currently the function has the possibility to calculate 3 different sets of statistics which are commonly
+used within the field of clinical data analysis:
+\enumerate{
+\item N, Mean, Median, SD, Min, Max
+\item Ntot, N, Nmiss, Mean, Median, SD, Min, Max, CLM (different N values are given to identify the number of missing values)
+\item N, Mean (SD), Median, Range (Both Mean (SD) and Range are concatenated to generate a dense overview of statistics)
+}
 All statistics are calculated on using na.rm set to TRUE, meaning that NA values are removed before calculating the statistics.
 A predefined set of statistics is chosen and not the possibility to implement user defined descriptive statistics.
 The reason for this is that there are many other (more simple) options to do this within R.

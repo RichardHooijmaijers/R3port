@@ -11,7 +11,7 @@
 #' @param title character string to define the title of the table which will be added to the caption
 #' @param titlepr character string to define the prefix of the table title. Can be used to create custom table numbering
 #' @param xabove logical indicating if the first unique x variable should be placed in the table row above. Mostly used to save space on a page
-#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]
+#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as `x[1:group]`
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param tclass character string with the table class. Can be used in combination with custom css
 #'

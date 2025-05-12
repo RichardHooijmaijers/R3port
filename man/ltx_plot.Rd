@@ -26,6 +26,7 @@ ltx_plot(
   rotate = FALSE,
   cleancur = FALSE,
   titlesub = NULL,
+  shorttitle = NULL,
   ...
 )
 }
@@ -73,7 +74,9 @@ In case NULL no raw output will be generated. In order to combine results the fi
 
 \item{titlesub}{character string to define the subtext after title in footnotesize}
 
-\item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
+\item{shorttitle}{character string to define the title in a shorter version of the plot which will be used in the TOF in a TaTex document}
+
+\item{...}{additional arguments passed through to \code{\link[=ltx_doc]{ltx_doc()}}. Most important are template, rendlist, compile and show}
 }
 \value{
 The function returns a latex file (or writes output to console)
@@ -87,7 +90,7 @@ This function makes a latex document including the plots defined
 \dontrun{
   data(Theoph)
   library(ggplot2)
-  pl <- qplot(Time, conc, data=Theoph, facets=~Subject,geom="line")
+  pl <- ggplot(Theoph,aes(Time,conc)) + geom_line() + facet_wrap(~Subject)
   ltx_plot(pl,out=tempfile(fileext=".tex"))
 
   # Base plots work a bit different and can be placed

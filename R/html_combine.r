@@ -10,7 +10,7 @@
 #' @param css character with name of the css style sheet to use, default use package style sheet
 #' @param clean integer between 0 and 2 indicating if all individual files should be kept (0), all individual raw html files should
 #'    be deleted (1) or all individual files should be deleted (2)
-#' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
+#' @param ... additional arguments passed through to [html_doc()]. Most important are template, rendlist, css and show
 #'
 #' @details Currently the generated output is saved in the same place where the separate tables and plots are located
 #'   defined in the 'combine' argument. This is done even when a different file path is specified in 'out' (using the basename function).

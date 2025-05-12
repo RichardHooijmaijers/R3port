@@ -10,7 +10,7 @@
 #'    within frames and without captions and clearpage)
 #' @param clean integer between 0 and 2 indicating if all individual files should be kept (0), all individual tex and raw tex files should
 #'    be deleted (1) or all individual files should be deleted (2)
-#' @param ... additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show
+#' @param ... additional arguments passed through to [ltx_doc()]. Most important are template, rendlist, compile and show
 #'
 #' @details Currently the generated output is saved in the same place where the separate tables and plots are located
 #'   defined in the 'combine' argument. This is done even when a different file path is specified in 'out' (using the basename function).

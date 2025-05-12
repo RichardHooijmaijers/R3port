@@ -22,13 +22,13 @@ ltx_doc(
 
 \item{template}{file name of the template file to use (see examples how templates can be used/adapted)}
 
-\item{rendlist}{a render list to be used for the template file (see (see \code{\link{whisker-package}}))}
+\item{rendlist}{a render list to be used for the template file (see \link[whisker:whisker.render]{whisker::whisker.render})}
 
 \item{orientation}{string indicating the page orientation (can be either "landscape" or "portrait")}
 
 \item{rtitle}{string indicating the title of the output document}
 
-\item{compile}{logical indicating if the tex file should be compiled (using tools::texi2dvi)}
+\item{compile}{logical indicating if the tex file should be compiled (using \code{tools::texi2dvi})}
 
 \item{show}{logical indicating if the resulting pdf file from the compiled tex file should be opened when created}
 }
@@ -57,5 +57,5 @@ the user select various options to customize the output.
 }
 }
 \seealso{
-\code{\link{html_doc}}
+\code{\link[=html_doc]{html_doc()}}
 }

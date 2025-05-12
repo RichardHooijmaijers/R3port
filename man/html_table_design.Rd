@@ -33,7 +33,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{xabove}{logical indicating if the first unique x variable should be placed in the table row above. Mostly used to save space on a page}
 
-\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]}
+\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as \code{x[1:group]}}
 
 \item{xrepeat}{logical indicating if duplicate x values should be repeated in the table or not}
 
@@ -41,14 +41,14 @@ If set to TRUE, the function will try to use the label attribute for the display
 }
 \value{
 The function returns a vector that defines the entire HTML table. This vector can be adapted manually
-  however it is intended to be used in a print function to add to a HTML document.
+however it is intended to be used in a print function to add to a HTML document.
 }
 \description{
 This function designs the a HTML table based on the data frame list returned by the table_prep function.
 }
 \details{
 This function designs a HTML pivot table based on the results of the table_prep output. This means that the function
-  Should always be used in conjunction with this function.
+Should always be used in conjunction with this function.
 }
 \examples{
 

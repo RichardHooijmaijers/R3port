@@ -10,14 +10,14 @@
 #' @param show logical indicating if the resulting pdf file from the compiled tex file should be opened when created
 #' @param rtitle string indicating the title of the output document
 #' @param template character with file name of the template file to use
-#' @param rendlist list with render items to be used for the template file (see (see \code{\link{whisker-package}}))
+#' @param rendlist list with render items to be used for the template file (see [whisker::whisker.render])
 #' @param css character with name of the css style sheet to use, default use package style sheet
 #'
 #' @details This function is used as wrapper within multiple functions in the R3port package but is also convenient in case
 #'   custom information should be placed within an output document
 #'
 #' @return The function returns a HTML file (or writes output to console)
-#' @seealso \code{\link{ltx_doc}}
+#' @seealso [ltx_doc()]
 #'
 #' @export
 #' @examples

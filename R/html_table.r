@@ -16,13 +16,13 @@
 #' @param title character string to define the title of the table which will be added to the caption
 #' @param titlepr character string to define the prefix of the table title. Can be used to create custom table numbering
 #' @param xabove logical indicating if the first unique x variable should be placed in the table row above. Mostly used to save space on a page
-#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]
+#' @param group number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as `x[1:group]`
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param tclass character string with the table class. Can be used in combination with custom css
 #' @param out filename for the output HTML file (if NULL it will print to console)
 #' @param rawout character string with the name of the raw HTML file to generate (e.g. only table with)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html
-#' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
+#' @param ... additional arguments passed through to [html_doc()]. Most important are template, rendlist, css and show
 #'
 #' @details The format of the current table/css was designed to look good in the browser and in a WORD
 #'   document (when html is opened in WORD). Additional colspans are added in the table header which might lead to additional space in case

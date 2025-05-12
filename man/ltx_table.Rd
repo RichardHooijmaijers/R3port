@@ -61,7 +61,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{xabove}{logical indicating if the first unique x variable should be placed in the table row above. Mostly used to save space on a page}
 
-\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]}
+\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as \code{x[1:group]}}
 
 \item{xrepeat}{logical indicating if duplicate x values should be repeated in the table or not}
 
@@ -80,7 +80,7 @@ In case NULL no raw output will be generated. In order to combine results the fi
 
 \item{flt}{character with the type of floating environment to use (onyl applicable for tabular environment)}
 
-\item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
+\item{...}{additional arguments passed through to \code{\link[=ltx_doc]{ltx_doc()}}. Most important are template, rendlist, compile and show}
 }
 \value{
 The function returns a latex file (or writes output to console)

@@ -16,7 +16,7 @@
 #' @param rawout character string with the name of the raw HTML file to generate (e.g. only plotting code)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html
 #' @param cleancur logical indicating if the available plots should be deleted before creating new ones
-#' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
+#' @param ... additional arguments passed through to [html_doc()]. Most important are template, rendlist, css and show
 #'
 #' @return The function returns a HTML file (or writes output to console)
 #'
@@ -56,7 +56,7 @@ html_plot <- function(plot,out,title="plot",titlepr=NULL,footnote="",pwidth=1000
   }
 
   # Create subfolder to place graphs in
-  dir.create(paste(dirname(out),"figures",sep="/"),showWarnings = FALSE)
+  dir.create(paste(dirname(out),"figures",sep="/"),showWarnings = FALSE, recursive = TRUE)
 
   # Save plot to location. For now only png is selected as this is the best format for HTML
   prpl <- function(){

@@ -25,7 +25,7 @@ html_doc(
 
 \item{template}{character with file name of the template file to use}
 
-\item{rendlist}{list with render items to be used for the template file (see (see \code{\link{whisker-package}}))}
+\item{rendlist}{list with render items to be used for the template file (see \link[whisker:whisker.render]{whisker::whisker.render})}
 
 \item{css}{character with name of the css style sheet to use, default use package style sheet}
 }
@@ -39,7 +39,7 @@ the user select various options to customize the output.
 }
 \details{
 This function is used as wrapper within multiple functions in the R3port package but is also convenient in case
-  custom information should be placed within an output document
+custom information should be placed within an output document
 }
 \examples{
 
@@ -51,5 +51,5 @@ add <- "<p>Including some additional text</p>"
 }
 }
 \seealso{
-\code{\link{ltx_doc}}
+\code{\link[=ltx_doc]{ltx_doc()}}
 }

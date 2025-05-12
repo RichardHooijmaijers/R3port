@@ -22,3 +22,10 @@ First version of the package
 # R3port 0.2.5
 
 - Made necessary changes for CRAN following [this issue](https://github.com/r-lib/roxygen2/issues/1491)
+
+# R3port 0.3.0
+
+- Made adaptations for captions in latex (continued captions and sub caption) 
+- Updated documentation, used md for roxygen2
+- Included tests to improve coverage
+- Minor improvements and bug fixes

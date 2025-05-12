@@ -5,7 +5,7 @@
 #'
 #' @param dfrm data frame to be listed
 #' @param vars character vector that defines the variables within the data frame to be placed in the table
-#' @param fill character indicating the character to use in case of missing values
+#' @param fill `r lifecycle::badge("deprecated")` character indicating the character to use in case of missing values this is only applicable for [html_table]
 #' @param vargroup character vector of the same length as vars. Creates a first line in the table to group variables (see details)
 #' @param porder logical indicating if the data frame should be ordered on the variables given in vars
 #' @param uselabel logical indicating if labels should be used for the variable(s).
@@ -13,16 +13,16 @@
 #' @param footnote character string with the footnote to be placed in the footer of the page (HTML coding can be used for example to create line breaks)
 #' @param title character string to define the title of the output which will be added to the caption
 #' @param titlepr character string to define the prefix of the output title. Can be used to create custom table numbering
-#' @param group numeric indicating the last index of the used variables that should be grouped (displayed in table with a certain white space), interpreted as x[1:group]
+#' @param group numeric indicating the last index of the used variables that should be grouped (displayed in table with a certain white space), interpreted as `x[1:group]`
 #' @param xrepeat logical indicating if duplicate x values should be repeated in the table or not
 #' @param tclass character string with the table class. Can be used in combination with custom css
 #' @param out filename for the output HTML file (if NULL it will print to console)
 #' @param rawout character string with the name of the raw HTML file to generate (e.g. only table)
 #'    In case NULL no raw output will be generated. In order to combine results the filename should end in .rawhtml
-#' @param ... additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show
+#' @param ... additional arguments passed through to [html_doc()]. Most important are template, rendlist, css and show
 #'
 #' @details The vargroup argument should be provided in the following form: \cr
-#'   \code{c(rep("",4),rep("group1",3),rep("group2",4))}.
+#'   `c(rep("",4),rep("group1",3),rep("group2",4))`.
 #'   The function will place the text within the vector with the given length as first line in the table with a midrule below it.
 #'   an exception is made for empty strings. The format of the current listing/css was designed to look good in the browser and in a WORD
 #'   document (when html is opened in WORD). Additional colspans are added in the table header which might lead to additional space in case

@@ -48,7 +48,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{xabove}{logical indicating if the first unique x variable should be placed in the table row above. Mostly used to save space on a page}
 
-\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as x[1:group]}
+\item{group}{number indicating which x variables should be grouped (displayed in table with a certain white space) and interpreted as \code{x[1:group]}}
 
 \item{xrepeat}{logical indicating if duplicate x values should be repeated in the table or not}
 
@@ -59,7 +59,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 \item{rawout}{character string with the name of the raw HTML file to generate (e.g. only table with)
 In case NULL no raw output will be generated. In order to combine results the filename should end in .raw.html}
 
-\item{...}{additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show}
+\item{...}{additional arguments passed through to \code{\link[=html_doc]{html_doc()}}. Most important are template, rendlist, css and show}
 }
 \value{
 The function returns a HTML file (or writes output to console)
@@ -70,8 +70,8 @@ R3port package to create an overall table and writes it to a file or console
 }
 \details{
 The format of the current table/css was designed to look good in the browser and in a WORD
-  document (when html is opened in WORD). Additional colspans are added in the table header which might lead to additional space in case
-  a user defined css file is used.
+document (when html is opened in WORD). Additional colspans are added in the table header which might lead to additional space in case
+a user defined css file is used.
 }
 \examples{
 

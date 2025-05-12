@@ -17,7 +17,7 @@ within frames and without captions and clearpage)}
 \item{clean}{integer between 0 and 2 indicating if all individual files should be kept (0), all individual tex and raw tex files should
 be deleted (1) or all individual files should be deleted (2)}
 
-\item{...}{additional arguments passed through to \code{\link{ltx_doc}}. Most important are template, rendlist, compile and show}
+\item{...}{additional arguments passed through to \code{\link[=ltx_doc]{ltx_doc()}}. Most important are template, rendlist, compile and show}
 }
 \value{
 The function returns a latex file (or writes output to console)
@@ -28,8 +28,8 @@ end with raw.tex to make the function pick-up these files.
 }
 \details{
 Currently the generated output is saved in the same place where the separate tables and plots are located
-  defined in the 'combine' argument. This is done even when a different file path is specified in 'out' (using the basename function).
-  The reason is to not copy files linked within the document and preventing broken links. This behaviour might change in future releases
+defined in the 'combine' argument. This is done even when a different file path is specified in 'out' (using the basename function).
+The reason is to not copy files linked within the document and preventing broken links. This behaviour might change in future releases
 }
 \examples{
 

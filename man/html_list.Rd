@@ -27,7 +27,7 @@ html_list(
 
 \item{vars}{character vector that defines the variables within the data frame to be placed in the table}
 
-\item{fill}{character indicating the character to use in case of missing values}
+\item{fill}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character indicating the character to use in case of missing values this is only applicable for \link{html_table}}
 
 \item{vargroup}{character vector of the same length as vars. Creates a first line in the table to group variables (see details)}
 
@@ -42,7 +42,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 
 \item{titlepr}{character string to define the prefix of the output title. Can be used to create custom table numbering}
 
-\item{group}{numeric indicating the last index of the used variables that should be grouped (displayed in table with a certain white space), interpreted as x[1:group]}
+\item{group}{numeric indicating the last index of the used variables that should be grouped (displayed in table with a certain white space), interpreted as \code{x[1:group]}}
 
 \item{xrepeat}{logical indicating if duplicate x values should be repeated in the table or not}
 
@@ -53,7 +53,7 @@ If set to TRUE, the function will try to use the label attribute for the display
 \item{rawout}{character string with the name of the raw HTML file to generate (e.g. only table)
 In case NULL no raw output will be generated. In order to combine results the filename should end in .rawhtml}
 
-\item{...}{additional arguments passed through to \code{\link{html_doc}}. Most important are template, rendlist, css and show}
+\item{...}{additional arguments passed through to \code{\link[=html_doc]{html_doc()}}. Most important are template, rendlist, css and show}
 }
 \value{
 The function returns a HTML file (or writes output to console)
@@ -63,11 +63,11 @@ This function creates a HTML listing which can be written to a file or console
 }
 \details{
 The vargroup argument should be provided in the following form: \cr
-  \code{c(rep("",4),rep("group1",3),rep("group2",4))}.
-  The function will place the text within the vector with the given length as first line in the table with a midrule below it.
-  an exception is made for empty strings. The format of the current listing/css was designed to look good in the browser and in a WORD
-  document (when html is opened in WORD). Additional colspans are added in the table header which might lead to additional space in case
-  a user defined css file is used.
+\code{c(rep("",4),rep("group1",3),rep("group2",4))}.
+The function will place the text within the vector with the given length as first line in the table with a midrule below it.
+an exception is made for empty strings. The format of the current listing/css was designed to look good in the browser and in a WORD
+document (when html is opened in WORD). Additional colspans are added in the table header which might lead to additional space in case
+a user defined css file is used.
 }
 \examples{
 

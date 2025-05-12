@@ -30,9 +30,9 @@ in the creation of a report pivotal table. It is not likely that this function w
 }
 \details{
 This function only prepares the data for pivotal tabulation. The base of the function is the dcast
-  function from plyr to reshape the data and the generation of a table header object to indicate how headers
-  should be placed within the table. The function also specifies a type argument which includes "latex" or "html",
-  this is necessary to identify specific character handling (convchar) that differs between HTML and LaTeX.
+function from plyr to reshape the data and the generation of a table header object to indicate how headers
+should be placed within the table. The function also specifies a type argument which includes "latex" or "html",
+this is necessary to identify specific character handling (convchar) that differs between HTML and LaTeX.
 }
 \examples{
 
