@@ -29,3 +29,7 @@ First version of the package
 - Updated documentation, used md for roxygen2
 - Included tests to improve coverage
 - Minor improvements and bug fixes
+
+# R3port 0.3.1
+
+- Update for testthat test due to CRAN check
