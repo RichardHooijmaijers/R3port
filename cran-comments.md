@@ -3,4 +3,5 @@
 
 ## R CMD check results
 There were no ERRORs or WARNINGs and 1 minor NOTEs 'unable to verify current time'.
-Update submission
+Update submission 
+Corrected test issue picked up by CRAN check

@@ -3,7 +3,7 @@ library(R3port)
 context("frequency calculations")
 
 test_that("frequencies correctly calculated", {
-  tst <- data.frame(a=rep(1:3,4),b=sample(1:6,12,replace=TRUE))
+  tst  <- data.frame(a=rep(1:3,4),b=c(1:6,6:1))
   res1 <- freq(tst,"b")
   expect_equal(round(sum(as.numeric(res1$Perc)),1),100)
   expect_equal(sum(as.numeric(res1$Freq)),nrow(tst))
